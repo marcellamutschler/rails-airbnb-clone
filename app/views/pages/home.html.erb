@@ -1,2 +1,94 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="navbar-home">
+  <%= link_to root_path, class: "navbar-wagon-brand" do %>
+  <%= image_tag "logo_white.png" %>
+  <% end %>
+  <!-- Right Navigation -->
+  <div class="navbar-home-right hidden-xs hidden-sm">
+    <%= link_to "#", class: "btn-navbar" do %>
+    List Your Venue
+    <% end %>
+
+    <%= link_to "#", class: "btn-navbar" do %>
+    Sign Up
+    <% end %>
+
+    <%= link_to "#", class: "btn-navbar" do %>
+    Login
+    <% end %>
+  </div>
+</div>
+
+
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://www.homejournal.hk/wp-content/uploads/2016/03/Issaya-Bar.jpg');">
+
+  <div class="banner-content">
+    <h1>Find the perfect location for your</h1>
+      <h1 class="typewrite" data-period="2000" data-type='[ "wedding.", "dinner.", "meeting.", "photo shoot.", "workshop.", "birthday." ]'>
+        <span class="wrap"></span>
+      </h1>
+      <br>
+    <div class="home-form" >
+      <form action="#">
+        <input type="text" name="Location" placeholder="City, Country" style = "border: 1px grey; padding: 7px 20px;">
+        <input type="text" name="Category" placeholder ="What are you planning?" style = "border: 1px grey; padding: 7px 20px;">
+        <input type="submit" value="Search" style="background-color: #DE1A1A; border: 1px #DE1A1A; color: #CECECE; padding: 7px 7px; width: 100px;">
+      </form>
+    </div>
+      <br>
+      <br>
+      <br>
+      <br>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4">
+
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/shanghai');">
+        <div class="card-category">Popular</div>
+        <div class="card-description">
+          <h2>Le Wagon Shanghai</h2>
+          <p>Very cool city, the best</p>
+        </div>
+        <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+        <a class="card-link" href="#" ></a>
+      </div>
+
+    </div>
+    <div class="col-xs-12 col-sm-4">
+
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/shanghai');">
+        <div class="card-category">Popular</div>
+        <div class="card-description">
+          <h2>Le Wagon Shanghai</h2>
+          <p>Very cool city, the best</p>
+        </div>
+        <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+        <a class="card-link" href="#" ></a>
+      </div>
+
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/shanghai');">
+        <div class="card-category">Popular</div>
+        <div class="card-description">
+          <h2>Le Wagon Shanghai</h2>
+          <p>Very cool city, the best</p>
+        </div>
+        <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+        <a class="card-link" href="#" ></a>
+      </div>
+
+
+
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+

@@ -1,0 +1,18 @@
+.btn-navbar {
+  color: white;
+  border: 1px solid white;
+  padding: 7px 20px;
+  border-radius: 50px;
+  font-weight: lighter;
+  opacity: 0.8;
+  margin: 10px;
+  text-decoration: none;
+}
+
+.btn-navbar:hover, .btn-navbar:active, .btn-navbar:focus  {
+  color: #DE1A1A;
+  border: 1px solid #DE1A1A;
+  opacity: 1;
+  text-decoration: none;
+
+}

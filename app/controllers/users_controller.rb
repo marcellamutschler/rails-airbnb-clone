@@ -1,9 +1,7 @@
 class UsersController < ApplicationController
-  def index
-    @tasks = Manager.all
-  end
 
   def show
+    @user = User.find(params[:id])
   end
 
   def new

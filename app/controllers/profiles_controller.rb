@@ -1,8 +1,4 @@
 class ProfilesController < ApplicationController
-  def index
-    @tasks = Manager.all
-  end
-
   def show
   end
 
