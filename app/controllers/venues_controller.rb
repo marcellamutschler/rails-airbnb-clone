@@ -1,7 +1,8 @@
 class VenuesController < ApplicationController
+  before_action :set_venue, only: [:show, :edit, :update, :destroy]
 
   def index
-    @venue = Venue.all
+    @venues = Venue.all
   end
 
   def show
@@ -12,23 +13,31 @@ class VenuesController < ApplicationController
   end
 
   def create
-    new_task = Venue.new(task_params)
-    new_task.save
-    redirect_to managers_path
+    new_venue = Venue.new(task_params)
+    new_venue.save
+    redirect_to venues_path
   end
 
   def edit
-    @venue = Venue.find(params[:id])
   end
 
   def update
-    @venue.update(task_params)
-    redirect_to manager_path(@venue)
+    @venue.update(venue_params)
+    redirect_to venue_path(@venue)
   end
 
   def destroy
     @venue.destroy!
-    redirect_to managers_path
+    redirect_to venues_path
   end
 
+  private
+
+  def set_venue
+    @venue = Venue.find(params[:id])
+  end
+
+  def venue_params
+    params.require(:venue).params(:capacity, :location, :description, :price)
+  end
 end

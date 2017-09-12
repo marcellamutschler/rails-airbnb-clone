@@ -1,0 +1,13 @@
+
+<ol>
+  <% @bookings.each do |booking| %>
+    <li>
+      <%= booking.status %>
+      Total price - <%= booking.total_price %>
+      <%= link_to 'Delete!', venue_booking_path(@venue, booking), method: :delete , data: {confirm: 'Are you sure??'}%>
+      <%= link_to "Edit a Booking", edit_venue_booking_path(@venue, booking) %>
+    </li>
+  <% end %>
+      <%= link_to "Return", venue_path(@venue), class: "btn btn-primary" %>
+</ol>
+
