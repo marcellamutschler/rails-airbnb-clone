@@ -1,0 +1,47 @@
+.navbar-home {
+  transition: all 0.3s ease;
+  height: 57px;
+  padding: 0px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo */
+.navbar-home-brand img {
+  height: 52px;
+  align-items: center;
+
+}
+
+
+/* Right section */
+.navbar-home-right {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Basic navbar item */
+.navbar-home-item {
+  cursor: pointer;
+  padding: 0 20px;
+}
+
+/* Navbar link */
+.navbar-home-link {
+  color: white;
+  font-size: 18px;
+}
+.navbar-home-link:hover {
+  color: #DE1A1A;
+  text-decoration: none;
+}
+
+.navbar-home-link:focus,.navbar-home-link:active  {
+  color: white;
+  text-decoration: none;
+}
+
+
+
