@@ -4,9 +4,11 @@ input {
   border-radius: 50px;
   width: 320px;
   font-weight: lighter;
-  height: 38px;
+  height: 45px;
+  font-size: 22px;
 }
 
 input::placeholder {
   color: white;
+  font-size: 22px;
 }
