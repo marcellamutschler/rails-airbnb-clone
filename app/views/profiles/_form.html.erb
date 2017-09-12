@@ -1,0 +1,25 @@
+
+<%= simple_form_for(@profile, url: profile_path) do |f| %>
+
+
+  <% if @profile.errors %>
+    <% @profile.errors.messages.each do |error|  %>
+      Error: <%= error  %>
+    <% end %>
+  <% end %>
+
+  <%= f.input :first_name, placeholder: 'Wolfgang' %>
+   <%= f.input :last_name, placeholder: 'Schilling' %>
+  <%= f.input :bio, placeholder: 'Write here a few lines about yourself' %>
+
+  <%= f.submit 'Create', class: 'btn btn-primary' %>
+<% end %>
+
+
+<!-- new + create  //
+qd on appuie sur create, va au profile path, methode controler profile create
+cette méthode crééz un url, l u'rl sait dans quel methode taper
+magie du rooting
+
+-->
+

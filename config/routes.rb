@@ -7,8 +7,15 @@ Rails.application.routes.draw do
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :venues do
     resources :bookings
+    # creermoi toutes les routes
   end
-    resources :profile
+
+
+#  resources :users do
+    resource :profile
+    # ici on parle de 2 méthodes
+    #génére  toutes les routes mais emt profile au singulier
+ # end
 
 
 end
