@@ -5,3 +5,19 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+Venue.create(capacity: 100, location: "barcelona", description: "blabla", price: 25, user_id: 1)
+Venue.create(capacity: 200, location: "barceloneta", description: "blabl", price: 20, user_id: 2)
+Venue.create(capacity: 300, location: "barcelonarina", description: "blab", price: 255, user_id: 2)
+
+x = User.create(email: "hey@gmail.com", password: "Ihave6letters")
+
+y = Venue.new(capacity: 400, location: "bacelonarina", description: "bla", price: 225)
+
+y.user = x #we are association (you find the .user in the model of venue) y with the user x
+y.save
+
+Booking.create(status: "accepted", total_price: 300, user_id: 1, venue_id: 1)
+Booking.create(status: "accepted", total_price: 400, user_id: 2, venue_id: 2)
+Booking.create(status: "declined", total_price: 500, user_id: 3, venue_id: 4)
