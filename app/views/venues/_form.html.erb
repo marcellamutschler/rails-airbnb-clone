@@ -1,0 +1,16 @@
+
+<%= form_for(@venue) do |f| %>
+  <%= f.label :capacity %>
+  <%= f.text_field :capacity %>
+
+  <%= f.label :location %>
+  <%= f.text_field :location %>
+
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+
+  <%= f.label :price %>
+  <%= f.text_field :price %>
+
+  <%= f.submit %>
+<% end %>

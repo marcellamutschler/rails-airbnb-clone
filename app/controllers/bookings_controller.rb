@@ -14,10 +14,12 @@ class BookingsController < ApplicationController
   end
 
   def create
-    new_booking = Booking.new(venue_params)
+    @booking = Booking.new(booking_params)
     @booking.venue = @venue
-    if @venue.save
-      redirect_to venue_path(@venue)
+    @booking.user = current_user
+    @booking.status = "pending"
+    if @venue.save &&  @booking.save
+      redirect_to venue_booking_path(@venue, @booking)
     else
       render :new
     end
@@ -27,8 +29,8 @@ class BookingsController < ApplicationController
   end
 
   def update
-    @booking.update(venue_params)
-    redirect_to venue_path(@booking)
+    @booking.update(booking_params)
+    redirect_to venue_booking_path(@venue)
   end
 
   def destroy
@@ -46,7 +48,7 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
   end
 
-  def venue_params
-    params.require(:booking).params(:capacity, :location, :description, :price)
+  def booking_params
+    params.require(:booking).permit(:status, :total_price, :user_id, :venue_id)
   end
 end

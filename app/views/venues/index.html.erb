@@ -7,8 +7,9 @@
       max capacity - <%= venue.capacity %> , price: <%= venue.price %> per hour, <%= venue.description %>
       <%= link_to 'Delete!', venue_path(venue), method: :delete , data: {confirm: 'Are you sure??'}%>
       <%= link_to "Edit a Venue", edit_venue_path(venue) %>
-      <%= button_to 'Show this location', venue_path(venue) %>
+      <%= link_to 'Show this location', venue_path(venue) %>
     </li>
   <% end %>
-      <%= link_to "Add a new task", new_venue_path, class: "btn btn-primary" %>
+      <%= link_to "Add a new Venue", new_venue_path, class: "btn btn-primary" %>
 </ol>
+
