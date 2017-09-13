@@ -9,6 +9,7 @@
       <%= link_to 'Delete!', venue_path(venue), method: :delete , data: {confirm: 'Are you sure??'}%>
       <%= link_to "Edit a Venue", edit_venue_path(venue) %>
       <%= link_to 'Show this location', venue_path(venue) %>
+      <%= link_to "Book venue", new_venue_booking_path(venue) %>
     </li>
   <% end %>
       <%= link_to "Add a new Venue", new_venue_path, class: "btn btn-primary" %>
