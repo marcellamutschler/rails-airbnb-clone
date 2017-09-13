@@ -9,10 +9,48 @@
   text-decoration: none;
 }
 
+.btn-red {
+  color: white;
+  background-color: #DE1A1A;
+  border: 1px solid #DE1A1A;
+  padding: 7px 20px;
+  border-radius: 50px;
+  font-weight: lighter;
+  margin: 10px;
+  text-decoration: none;
+}
+
+.btn-normal {
+  color: black;
+  border: 1px solid black;
+  padding: 7px 20px;
+  border-radius: 50px;
+  font-weight: lighter;
+  margin: 10px;
+  text-decoration: none;
+}
+
+
+.btn-normal:hover, .btn-normal:active, .btn-normal:focus  {
+  color: grey;
+  border: 1px solid grey;
+  opacity: 1;
+  text-decoration: none;
+}
+
+
+
+.btn-red:hover, .btn-red:active, .btn-red:focus  {
+  color: white;
+  border: 1px solid white;
+  opacity: 1;
+  text-decoration: none;
+}
+
+
 .btn-navbar:hover, .btn-navbar:active, .btn-navbar:focus  {
   color: #DE1A1A;
   border: 1px solid #DE1A1A;
   opacity: 1;
   text-decoration: none;
-
 }

@@ -17,6 +17,7 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'devise'
 gem 'omniauth-facebook'
+gem 'figaro'
 
 
 group :development, :test do
