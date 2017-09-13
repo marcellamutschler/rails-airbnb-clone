@@ -1,5 +1,5 @@
 
-<%= form_for(@booking) do |f| %>
+<%= form_for([@venue @booking]) do |f| %>
   <%= f.label :status %>
   <%= f.text_field :status %>
 
