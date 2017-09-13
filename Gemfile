@@ -7,6 +7,8 @@ gem 'pg'
 gem 'puma'
 gem 'rails', '5.1.4'
 gem 'redis'
+gem 'carrierwave'
+gem 'cloudinary'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
@@ -20,8 +22,6 @@ gem 'omniauth-facebook'
 gem 'figaro'
 
 
-gem 'cloudinary'
-gem 'carrierwave', '~> 0.11.2'
 
 
 group :development, :test do
