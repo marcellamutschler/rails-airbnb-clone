@@ -13,7 +13,7 @@ class VenuesController < ApplicationController
   end
 
   def create
-    new_venue = Venue.new(task_params)
+    new_venue = Venue.new(venue_params)
     new_venue.save
     redirect_to venues_path
   end
@@ -38,6 +38,6 @@ class VenuesController < ApplicationController
   end
 
   def venue_params
-    params.require(:venue).params(:capacity, :location, :description, :price)
+    params.require(:venue).permit(:capacity, :location, :description, :price, :user_id)
   end
 end

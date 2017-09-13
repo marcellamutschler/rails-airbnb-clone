@@ -1,0 +1,14 @@
+
+<%= form_for(@booking) do |f| %>
+  <%= f.label :status %>
+  <%= f.text_field :status %>
+
+  <%= f.label :total_price %>
+  <%= f.text_field :total_price %>
+
+  <%= f.submit %>
+<% end %>
+
+  <%= link_to 'Delete!', venue_path(venue), method: :delete , data: {confirm: 'Are you sure??'}%>
+
+ <%= link_to 'Go Back', venues_path, class: "btn btn-danger" %>
