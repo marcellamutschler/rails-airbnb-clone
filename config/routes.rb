@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     # creermoi toutes les routes
   end
 
+  mount Attachinary::Engine => "/attachinary"
 
 #  resources :users do
     resource :profile

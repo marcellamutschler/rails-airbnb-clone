@@ -1,17 +1,122 @@
-<h1>hello</h1>
+<div class="container">
+  <div class="row">
+    <% @venues.each do |venue| %>
 
-<ol>
-  <% @venues.each do |venue| %>
-    <li>
+
+    <div class="col-sm-4">
+      <div class="card">
       <%= venue.name %>
-      <%= venue.location %>
-      max capacity - <%= venue.capacity %> , price: <%= venue.price %> per hour, <%= venue.description %>
-      <%= link_to 'Delete!', venue_path(venue), method: :delete , data: {confirm: 'Are you sure??'}%>
-      <%= link_to "Edit a Venue", edit_venue_path(venue) %>
-      <%= link_to 'Show this location', venue_path(venue) %>
-      <%= link_to "Book venue", new_venue_booking_path(venue) %>
-    </li>
-  <% end %>
-      <%= link_to "Add a new Venue", new_venue_path, class: "btn btn-primary" %>
-</ol>
+        <%= venue.location %>
+        max capacity - <%= venue.capacity %> , price: <%= venue.price %> per hour, <%= venue.description %>
+        <%= link_to 'Delete!', venue_path(venue), method: :delete , data: {confirm: 'Are you sure??'}%>
+        <%= link_to "Edit a Venue", edit_venue_path(venue) %>
+        <%= link_to 'Show this location', venue_path(venue) %>
+      </div>
+    </div>
+
+    <% end %>
+  </div>
+</div>
+
+
+
+
+<div class="container">
+  <h1> Available Venues</h1>
+  <br>
+  <div class="row">
+    <div class="col-xs-12 col-sm-4">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://www.serplogic.com/wp-content/uploads/2016/04/ibiza-marketing.jpg');">
+        <div class="card-description">
+          <h2>Parties</h2>
+
+          <%= @venues[0].location %>
+    max capacity - <%= @venues[0].capacity %> , price: <%= @venues[0].price %> per hour, <%= @venues[0].description %>
+    <%= link_to 'Delete!', venue_path(@venues[0]), method: :delete , data: {confirm: 'Are you sure??'}%>
+    <%= link_to "Edit a Venue", edit_venue_path(@venues[0]) %>
+    <%= link_to 'Show this location', venue_path(@venues[0]) %>
+        </div>
+        <a class="card-link" href="/venues" ></a>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-4">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://wwcdn.weddingwire.com/assets/category-landings/inspiration_tiles/11/rustic-california-garden-wedding-685c40d3962159d56df7f1863a683530f88412e5ea3e3b30b83eeaacccd34067.jpg');">
+        <div class="card-description">
+          <h2>Weddings</h2>
+        </div>
+        <a class="card-link" href="/venues" ></a>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-4">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://planetdepos.com/wp-content/uploads/2016/06/Business-Meeting-V2-1024x796.jpg');">
+        <div class="card-description">
+          <h2>Business Conferences</h2>
+        </div>
+        <a class="card-link" href="/venues" ></a>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-4">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://i.ytimg.com/vi/pmdAufSKx-8/maxresdefault.jpg');">
+        <div class="card-description">
+          <h2>Photoshoots</h2>
+        </div>
+        <a class="card-link" href="/venues" ></a>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-4">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://www.platux.de/wp-content/uploads/2013/03/Modern-ART-PLATUX-Photography-Arist-Gallery-Dubai-Düsseldorf-London-Miami.jpg');">
+        <div class="card-description">
+          <h2>Exhibitions</h2>
+        </div>
+        <a class="card-link" href="/venues" ></a>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-4">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://www.domainedefontenille.com/image/images_site/33/le-champ-des-lunes-restaurant-gastronomique-au-coeur-du-luberon-fond-background.jpg');">
+        <div class="card-description">
+          <h2>Dinners</h2>
+        </div>
+        <a class="card-link" href="/venues" ></a>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-4">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://a.abcnews.com/images/Entertainment/HT-dierks-bentley-jef-170508_4x3_992.jpg');">
+        <div class="card-description">
+          <h2> Concerts </h2>
+        </div>
+        <a class="card-link" href="/venues" ></a>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-4">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://www.printwand.com/blog/media/2011/11/Product-Launch-Event-e1323291603303.jpg');">
+        <div class="card-description">
+          <h2>Launch Events</h2>
+        </div>
+        <a class="card-link" href="/venues" ></a>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-4">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://www.iisks.com/wp-content/uploads/2016/08/How-to-get-the-most-out-of-conferences.jpg');">
+        <div class="card-description">
+          <h2> Conferences </h2>
+        </div>
+        <a class="card-link" href="/venues" ></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
 

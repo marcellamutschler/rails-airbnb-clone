@@ -8,6 +8,11 @@ gem 'puma'
 gem 'rails', '5.1.4'
 gem 'redis'
 
+gem 'cloudinary', '1.1.7'
+gem 'attachinary', github: 'assembler/attachinary'
+gem 'jquery-fileupload-rails'
+gem 'coffee-rails'
+
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
@@ -17,7 +22,9 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'devise'
 gem 'omniauth-facebook'
-gem "geocoder"
+gem 'figaro'
+
+
 
 
 group :development, :test do

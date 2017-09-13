@@ -14,11 +14,13 @@
       <% else %>
 
       <% if current_user.profile %>
+
       <%= link_to "Go to Profile", profile_path, class: "btn-navbar" %>
       <% else %>
       <%= link_to "Create Profile", new_profile_path, class: "btn-navbar" %>
      <% end %>
       <%= link_to "List Your Venue", venues_path, class: "btn-navbar"%>
+
 
       <%= link_to destroy_user_session_path, method: :delete do %>
 
@@ -60,7 +62,7 @@
         <div class="card-description">
           <h2>Parties</h2>
         </div>
-        <a class="card-link" href="#" ></a>
+        <a class="card-link" href="/venues" ></a>
       </div>
     </div>
 
@@ -69,7 +71,7 @@
         <div class="card-description">
           <h2>Weddings</h2>
         </div>
-        <a class="card-link" href="#" ></a>
+        <a class="card-link" href="/venues" ></a>
       </div>
     </div>
 
@@ -78,7 +80,7 @@
         <div class="card-description">
           <h2>Business Conferences</h2>
         </div>
-        <a class="card-link" href="#" ></a>
+        <a class="card-link" href="/venues" ></a>
       </div>
     </div>
 
@@ -87,7 +89,7 @@
         <div class="card-description">
           <h2>Photoshoots</h2>
         </div>
-        <a class="card-link" href="#" ></a>
+        <a class="card-link" href="/venues" ></a>
       </div>
     </div>
 
@@ -96,7 +98,7 @@
         <div class="card-description">
           <h2>Exhibitions</h2>
         </div>
-        <a class="card-link" href="#" ></a>
+        <a class="card-link" href="/venues" ></a>
       </div>
     </div>
 
@@ -105,7 +107,7 @@
         <div class="card-description">
           <h2>Dinners</h2>
         </div>
-        <a class="card-link" href="#" ></a>
+        <a class="card-link" href="/venues" ></a>
       </div>
     </div>
 
@@ -114,7 +116,7 @@
         <div class="card-description">
           <h2> Concerts </h2>
         </div>
-        <a class="card-link" href="#" ></a>
+        <a class="card-link" href="/venues" ></a>
       </div>
     </div>
 
@@ -123,7 +125,7 @@
         <div class="card-description">
           <h2>Launch Events</h2>
         </div>
-        <a class="card-link" href="#" ></a>
+        <a class="card-link" href="/venues" ></a>
       </div>
     </div>
 
@@ -132,7 +134,7 @@
         <div class="card-description">
           <h2> Conferences </h2>
         </div>
-        <a class="card-link" href="#" ></a>
+        <a class="card-link" href="/venues" ></a>
       </div>
     </div>
   </div>
