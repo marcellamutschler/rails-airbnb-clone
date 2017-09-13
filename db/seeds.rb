@@ -7,9 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-Venue.create(capacity: 100, location: "barcelona", description: "blabla", price: 25, user_id: 1)
-Venue.create(capacity: 200, location: "barceloneta", description: "blabl", price: 20, user_id: 2)
-Venue.create(capacity: 300, location: "barcelonarina", description: "blab", price: 255, user_id: 2)
+Venue.create(name: "beautiful flat", capacity: 100, location: "barcelona", description: "blabla", price: 25, user_id: 1)
+Venue.create(name: "villa", capacity: 200, location: "barceloneta", description: "blabl", price: 20, user_id: 2)
+Venue.create(name: "two rooms", capacity: 300, location: "barcelonarina", description: "blab", price: 255, user_id: 2)
 
 x = User.create(email: "hey@gmail.com", password: "Ihave6letters")
 
@@ -21,3 +21,7 @@ y.save
 Booking.create(status: "accepted", total_price: 300, user_id: 1, venue_id: 1)
 Booking.create(status: "accepted", total_price: 400, user_id: 2, venue_id: 2)
 Booking.create(status: "declined", total_price: 500, user_id: 3, venue_id: 4)
+
+Profile.create(first_name: "Celia", last_name: "Mutschler", bio: "He i am german", user_id: 6)
+
+

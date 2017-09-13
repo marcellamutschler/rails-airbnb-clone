@@ -1,11 +1,16 @@
 <div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-      <%= @profile.first_name %>
-      <%= @profile.last_name %>
-      <%= @profile.bio %>
 
+  <h1>This is your profile</h1>
+  <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
+<%= image_tag avatar_url %>
+  <br>
+  <h2>Your name:
+  <%= @profile.first_name %>
+  <%= @profile.last_name %>
+  </h2>
+  <br>
+  <h3>Your description:
+  <%= @profile.bio %>
+  </h3>
 
-    </div>
-  </div>
 </div>

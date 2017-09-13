@@ -5,6 +5,7 @@
 
     <div class="col-sm-4">
       <div class="card">
+      <%= venue.name %>
         <%= venue.location %>
         max capacity - <%= venue.capacity %> , price: <%= venue.price %> per hour, <%= venue.description %>
         <%= link_to 'Delete!', venue_path(venue), method: :delete , data: {confirm: 'Are you sure??'}%>
@@ -112,7 +113,6 @@
     </div>
   </div>
 </div>
-
 
 
 
