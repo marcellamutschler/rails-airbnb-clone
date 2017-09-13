@@ -7,9 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-Venue.create(capacity: 100, location: "barcelona", description: "blabla", price: 25, user_id: 1)
-Venue.create(capacity: 200, location: "barceloneta", description: "blabl", price: 20, user_id: 2)
-Venue.create(capacity: 300, location: "barcelonarina", description: "blab", price: 255, user_id: 2)
+Venue.create(name: "beautiful flat", capacity: 100, location: "barcelona", description: "blabla", price: 25, user_id: 1)
+Venue.create(name: "villa", capacity: 200, location: "barceloneta", description: "blabl", price: 20, user_id: 2)
+Venue.create(name: "two rooms", capacity: 300, location: "barcelonarina", description: "blab", price: 255, user_id: 2)
 
 x = User.create(email: "hey@gmail.com", password: "Ihave6letters")
 
