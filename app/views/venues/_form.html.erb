@@ -1,16 +1,16 @@
 
-<%= form_for(@venue) do |f| %>
-  <%= f.label :capacity %>
-  <%= f.text_field :capacity %>
+<%= simple_form_for(@venue) do |f| %>
+  <%= f.input :capacity %>
 
-  <%= f.label :location %>
-  <%= f.text_field :location %>
+  <%= f.input :location %>
 
-  <%= f.label :description %>
-  <%= f.text_field :description %>
+  <%= f.input :description %>
 
-  <%= f.label :price %>
-  <%= f.text_field :price %>
+  <%= f.input :photo %>
+  <%= f.input :photo_cache, as: :hidden %>
+
+  <%= f.input :price %>
 
   <%= f.submit %>
 <% end %>
+
