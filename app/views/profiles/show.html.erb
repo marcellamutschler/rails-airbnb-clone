@@ -1,20 +1,26 @@
-<div class="container">
-
-  <h1>This is your profile</h1>
+<div class="profile-card">
+  <h1>Profile</h1>
+  <br>
+  <h3>Profile Photo:</h2>
   <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
-<%= image_tag avatar_url %>
+  <%= image_tag avatar_url %>
   <br>
-  <h2>Your name:
+  <h3>Basic Information:</h2>
+  <br>
+  <p>First Name:
   <%= @profile.first_name %>
-  <%= @profile.last_name %>
-  </h2>
   <br>
-  <h3>Your description:
+  Last Name:
+  <%= @profile.last_name %>
+  <br>
+  Personal description:
   <%= @profile.bio %>
-  </h3>
-
+  </p>
+  <h3>Your Bookings:</h3>
+  <br>
   <%= link_to "Edit Profile", edit_profile_path, class: "btn btn-primary"%>
 
 
-
+  <br>
+  <%= link_to "List your Venue", new_venue_path, class: "btn-profile"%>
 </div>
