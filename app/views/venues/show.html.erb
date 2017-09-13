@@ -1,4 +1,8 @@
+
 <h1>Welcome to the <%= @venue.location %> place</h1>
 <p>we should display here the selected venue and the details</p>
 <%= link_to "Book it!", new_venue_booking_path(@venue) %>
+
+
+<%= cl_image_tag @venue.photo.path, width: 200, height: 300, crop: :fill %>
 

@@ -7,4 +7,8 @@ class Venue < ApplicationRecord
   validates :location, presence: true
   validates :description, presence: true
   validates :price, presence: true
+  has_attachment :photo
+
+  # mount_uploader :photo, PictureUploader
+
 end
