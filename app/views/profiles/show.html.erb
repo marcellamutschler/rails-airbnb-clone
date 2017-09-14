@@ -16,14 +16,14 @@
   Personal description:
   <%= @profile.bio %>
   </p>
-  <h3>Your Bookings:</h3>
   <br>
-  <%= link_to "Edit Profile", edit_profile_path, class: "btn-profile"%>
+  <%= link_to "Edit Your Profile", edit_profile_path, class: "btn-normal"%>
 
 
   <br>
-  <br>
-  <%= link_to "List your Venue", new_venue_path, class: "btn-profile"%>
+  <%= link_to "Show Your Bookings", bookings_path, class: "btn-red"%>
 
-  <%= link_to "Update your profile", edit_profile_path, class: "btn btn-danger"%>
+  <br>
+  <%= link_to "List Your Venue", new_venue_path, class: "btn-red"%>
+
 </div>
