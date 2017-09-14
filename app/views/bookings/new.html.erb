@@ -6,7 +6,19 @@
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
 
-      <p>You have sucessfully send a Booking request</p>
+
+<%=form_for([@venue, @booking]) do |f| %>
+
+
+  <%= f.label :hours %>
+  <%= f.number_field :hours %>
+
+  <%= f.submit %>
+<% end %>
+
+
+ <%= link_to 'Go Back', venues_path, class: "btn btn-danger" %>
+
 
     </div>
   </div>

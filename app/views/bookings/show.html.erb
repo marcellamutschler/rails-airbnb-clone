@@ -1,5 +1,9 @@
 <h2>booking show</h2>
-<%= link_to "Edit your booking", edit_venue_booking_path(@venue, @booking)  %>
-<%= link_to "Book another event", venues_path %>
+  <%= @booking.venue.name %>
+    <%= @booking.venue.location %>
+   <%= @booking.total_price %>
+
+  <%= link_to "Edit your booking", edit_venue_booking_path(@venue, @booking)  %>
+  <%= link_to "Book another event", venues_path %>
 
 <%= @user.booking %>

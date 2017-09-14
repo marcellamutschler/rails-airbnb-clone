@@ -20,6 +20,10 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.venue = @venue
     @booking.user = current_user
+
+    @booking.total_price = (params[:booking][:hours]).to_i*@venue.price
+
+
     if @venue.save &&  @booking.save
       redirect_to venue_booking_path(@venue, @booking)
     else
