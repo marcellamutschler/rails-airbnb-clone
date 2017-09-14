@@ -18,6 +18,8 @@ class BookingsController < ApplicationController
     @booking.venue = @venue
     @booking.user = current_user
     @booking.status = "pending"
+    @booking.total_price = (params[:booking][:hours]).to_i*@venue.price
+
     if @venue.save &&  @booking.save
       redirect_to venue_booking_path(@venue, @booking)
     else
