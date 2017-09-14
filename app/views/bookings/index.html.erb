@@ -1,6 +1,8 @@
+
 <h1>All your bookings </h1>
 
-<% current_user.bookings %>
+
+<h1>This is all the bookings on your flats</h1>
 
 <% if current_user.venues.present? %>
   <% current_user.venues.each do |venue| %>
@@ -12,8 +14,23 @@
   <% booking.user.profile.first_name %>
   <% booking.user.profile.first_name %>
   <% end %>
-<!--
-boucler sur toutes mes venues et pour chacune, montrer les bookings -->
+
+
+<h1>We should display here all the bookings for a Users profile</h1>
+<p><%= @current_user.profile.first_name %> Bookings</p>
+
+<p>You have booked</p>
+<% @bookings.each do |booking| %>
+<li>
+
+<%= booking.venue.location %> for a max of
+<%= booking.venue.capacity %> people,
+Bio: <%= booking.venue.description %>,
+<%= booking.venue.price %> € per hour,
+<%= booking.status %>
+<%= booking.total_price %> (still need to do a method for total price here) <p></p>
+</li>
+
 <% end %>
 
 
