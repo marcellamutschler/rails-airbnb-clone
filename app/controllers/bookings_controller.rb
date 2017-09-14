@@ -17,7 +17,6 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.venue = @venue
     @booking.user = current_user
-    @booking.status = "pending"
     if @venue.save &&  @booking.save
       redirect_to venue_booking_path(@venue, @booking)
     else

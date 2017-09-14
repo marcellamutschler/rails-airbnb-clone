@@ -1,5 +1,6 @@
 <div class="profile-card">
-  <h1>Profile</h1>
+<br>
+  <h1>Your Profile</h1>
   <br>
   <h3>Profile Photo:</h2>
   <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
@@ -16,6 +17,16 @@
   Personal description:
   <%= @profile.bio %>
   </p>
+
+  <h3>Your Bookings:</h3>
+  <p> Nothing so far </p>
+  <br>
+  <br>
+ <%= link_to "List a Venue", new_venue_path, class: "btn-profile"%>
+ <%= link_to "Edit Profile", edit_profile_path, class: "btn-profile"%>
+ <%= link_to "List your Bookings", class: "btn-profile"%>
+ <br>
+ <br>
   <br>
   <%= link_to "Edit Your Profile", edit_profile_path, class: "btn-normal"%>
 
