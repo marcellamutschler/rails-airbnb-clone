@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   mount Attachinary::Engine => "/attachinary"
 
 #  resources :users do
-  resources :profile do
+  resources :profiles do
     resources :bookings, except: [:new ,:create]
   end
     # ici on parle de 2 méthodes
