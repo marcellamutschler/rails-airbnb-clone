@@ -1,3 +1,20 @@
-<h1>We should display here all the bookings for a Users profile</h1>
+<h1>All your bookings </h1>
+
+<% current_user.bookings %>
+
+<% if current_user.venues.present? %>
+  <% current_user.venues.each do |venue| %>
+  <% venue.name %>
+  <% venue.location %>
+  <% venue.price %>
+  <% venue.bookings.each do |booking| %>
+  <% booking.user.profile.avatar %>
+  <% booking.user.profile.first_name %>
+  <% booking.user.profile.first_name %>
+  <% end %>
+<!--
+boucler sur toutes mes venues et pour chacune, montrer les bookings -->
+<% end %>
+
 
  <%= link_to 'Go Back', venues_path, class: "btn-normal" %>

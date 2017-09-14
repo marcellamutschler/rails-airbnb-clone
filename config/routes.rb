@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
 #  resources :users do
     resource :profile do
-    resource :bookings
+      resource :bookings
   end
     # ici on parle de 2 méthodes
     #génére  toutes les routes mais emt profile au singulier
