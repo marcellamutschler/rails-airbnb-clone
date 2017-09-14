@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
-  before_action :find_venue, only:[:index, :show, :new, :create, :edit, :update, :destroy]
+  before_action :find_venue, only:[:new, :create, :edit, :update]
 
   def index
     @bookings = current_user.bookings
@@ -10,14 +10,15 @@ class BookingsController < ApplicationController
   end
 
   def new
+
     @booking = Booking.new
   end
 
   def create
+
     @booking = Booking.new(booking_params)
     @booking.venue = @venue
     @booking.user = current_user
-    @booking.status = "pending"
     if @venue.save &&  @booking.save
       redirect_to venue_booking_path(@venue, @booking)
     else

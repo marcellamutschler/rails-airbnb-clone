@@ -6,8 +6,16 @@
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
 
-      <p>You have send a Booking request</p>
+      <p>You have sucessfully send a Booking request</p>
 
     </div>
   </div>
 </div>
+
+<%= form_for(@booking) do |f| %>
+
+  <%= f.label :total_price %>
+  <%= f.text_field :total_price %>
+
+  <%= f.submit %>
+<% end %>

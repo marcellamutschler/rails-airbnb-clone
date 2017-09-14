@@ -1,3 +1,18 @@
 <h1>We should display here all the bookings for a Users profile</h1>
+<p><%= @current_user.profile.first_name %> Bookings</p>
 
- <%= link_to 'Go Back', venues_path, class: "btn btn-danger" %>
+<p>You have booked</p>
+<% @bookings.each do |booking| %>
+<li>
+
+<%= booking.venue.location %> for a max of
+<%= booking.venue.capacity %> people,
+Bio: <%= booking.venue.description %>,
+<%= booking.venue.price %> € per hour,
+<%= booking.status %>
+<%= booking.total_price %> (still need to do a method for total price here) <p></p>
+</li>
+<% end %>
+
+
+ <%= link_to 'Go Back', venues_path, class: "btn-normal" %>
