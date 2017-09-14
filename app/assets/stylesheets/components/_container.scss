@@ -1,3 +1,13 @@
 .container {
   text-align: center;
+  width: 840px;
+  max-width: 100%;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.padded {
+    padding-top: 25px;
+    padding-bottom: 25px;
 }
