@@ -13,18 +13,19 @@
     <%= link_to "Log In", new_user_session_path, class: "btn-navbar"%>
       <% else %>
 
+      <%= link_to "List Your Venue", new_venue_path, class: "btn-red"%>
+
       <% if current_user.profile %>
 
-      <%= link_to "Go to Profile", profile_path, class: "btn-navbar" %>
+      <%= link_to "Go to Profile", profile_path(current_user.profile), class: "btn-navbar" %>
       <% else %>
       <%= link_to "Create Profile", new_profile_path, class: "btn-navbar" %>
      <% end %>
-      <%= link_to "List Your Venue", new_venue_path, class: "btn-navbar"%>
 
 
       <%= link_to destroy_user_session_path, method: :delete do %>
 
-        <i class="btn-navbar"> <%= t(".sign_out", default: "Log out") %></i>
+        <p class="btn-navbar", style="text-decoration: none"> <%= t(".sign_out", default: "Log out") %></p>
       <% end %>
     <% end %>
   </div>

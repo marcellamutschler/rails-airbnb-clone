@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20170914153305) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -30,7 +31,7 @@ ActiveRecord::Schema.define(version: 20170914153305) do
   end
 
   create_table "bookings", force: :cascade do |t|
-    t.integer "status"
+    t.integer "status", default: 2
     t.float "total_price"
     t.bigint "user_id"
     t.bigint "venue_id"
@@ -83,6 +84,8 @@ ActiveRecord::Schema.define(version: 20170914153305) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+
+    t.string "name"
     t.string "photo"
     t.string "name"
     t.index ["user_id"], name: "index_venues_on_user_id"

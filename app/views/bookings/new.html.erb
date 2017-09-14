@@ -19,6 +19,15 @@
 
  <%= link_to 'Go Back', venues_path, class: "btn btn-danger" %>
 
+
     </div>
   </div>
 </div>
+
+<%= form_for(@booking) do |f| %>
+
+  <%= f.label :total_price %>
+  <%= f.text_field :total_price %>
+
+  <%= f.submit %>
+<% end %>
