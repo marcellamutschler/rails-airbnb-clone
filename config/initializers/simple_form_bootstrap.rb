@@ -1,7 +1,7 @@
 # Use this setup block to configure all options available in SimpleForm.
 SimpleForm.setup do |config|
   config.error_notification_class = 'alert alert-danger'
-  config.button_class = 'btn btn-default'
+  config.button_class = 'btn-red'
   config.boolean_label_class = nil
 
   config.wrappers :vertical_form, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|
@@ -31,6 +31,7 @@ SimpleForm.setup do |config|
     b.use :error, wrap_with: { tag: 'span', class: 'help-block' }
     b.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
   end
+
 
   config.wrappers :vertical_boolean, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|
     b.use :html5
