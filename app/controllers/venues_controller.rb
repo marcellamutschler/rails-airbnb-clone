@@ -3,8 +3,8 @@ class VenuesController < ApplicationController
 
   def index
     @venues = Venue.all
-    @venues = Venue.where.not(latitude: nil, longitude: nil)
-    @hash = Gmaps4rails.build_markers(@venues) do |venue, marker|
+    @venues_with_coordinates = Venue.where.not(latitude: nil, longitude: nil)
+    @hash = Gmaps4rails.build_markers(@venues_with_coordinates) do |venue, marker|
       marker.lat venue.latitude
       marker.lng venue.longitude
       end
