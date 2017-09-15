@@ -7,11 +7,16 @@
     <div class="col-sm-6 col-sm-offset-3">
 
 
-<%=form_for([@venue, @booking]) do |f| %>
-
+<%=simple_form_for([@venue, @booking]) do |f| %>
 
   <%= f.label :hours %>
   <%= f.number_field :hours %>
+
+  <%= f.label :start_date %>
+  <%= f.input :start_date, as: :string, input_html: {class: 'datepicker'} %>
+
+ <%= f.label :end_date %>
+<%= f.input :end_date, as: :string, input_html: {class: 'datepicker'} %>
 
   <%= f.submit %>
 <% end %>
@@ -23,11 +28,3 @@
     </div>
   </div>
 </div>
-
-<%= form_for(@booking) do |f| %>
-
-  <%= f.label :total_price %>
-  <%= f.text_field :total_price %>
-
-  <%= f.submit %>
-<% end %>

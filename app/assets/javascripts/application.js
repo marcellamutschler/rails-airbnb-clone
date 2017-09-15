@@ -4,11 +4,8 @@
 //= require cloudinary/jquery.cloudinary
 //= require attachinary
 //= require bootstrap-sprockets
-//= require_tree .
-
+//= require bootstrap-datepicker
 //= require underscore
 //= require gmaps/google
-
-
-// app/assets/javascripts/application.js
+//= require_tree .
 
