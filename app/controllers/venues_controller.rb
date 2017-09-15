@@ -11,6 +11,7 @@ class VenuesController < ApplicationController
    end
 
   def show
+
     @booking = Booking.new
     if @venue.geocoded?
      @hash = Gmaps4rails.build_markers(@venue) do |venue, marker|
@@ -18,6 +19,7 @@ class VenuesController < ApplicationController
         marker.lng venue.longitude
       end.flatten
     end
+
   end
 
   def new
