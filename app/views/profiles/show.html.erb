@@ -62,6 +62,8 @@
       </div>
   <%= link_to "Show Your Bookings", profile_bookings_path(@profile, @bookings), class: "btn-normal"%>
 
+  <%= link_to "Bookings for your places", owner_bookings_profile_bookings_path(@profile), class: "btn-normal" %>
+
   <%= link_to "List Your Venue", new_venue_path, class: "btn-red"%>
     </div>
   </div>

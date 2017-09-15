@@ -1,10 +1,11 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: [:show, :edit, :update, :destroy]
+  before_action :set_booking, only: [:show, :edit, :update, :destroy, :accept, :decline]
   before_action :find_venue, only:[:new, :create, :edit, :update]
+  before_action :find_profile, only: [:index, :owner, :accept, :decline]
 
   def index
     @bookings = current_user.bookings
-    @profile = current_user.profile
+
   end
 
   def show
@@ -44,7 +45,27 @@ class BookingsController < ApplicationController
     redirect_to venues_path
   end
 
+  def owner
+    @bookings = current_user.bookings
+  end
+
+  def accept
+    @booking.status = 0
+    @booking.save
+    redirect_to owner_bookings_profile_bookings_path(@profile)
+  end
+
+  def decline
+    @booking.status = 1
+    @booking.save
+    redirect_to owner_bookings_profile_bookings_path(@profile)
+  end
+
   private
+
+  def find_profile
+    @profile = current_user.profile
+  end
 
   def find_venue
     @venue = Venue.find(params[:venue_id])
