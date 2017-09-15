@@ -43,9 +43,32 @@
     <div class="home-form" >
       <form action="#">
         <input type="text" name="Location" placeholder="City, Country" style = "border: 1px grey; padding: 7px 20px;">
-        <input type="text" name="Category" placeholder ="What are you planning?" style = "border: 1px grey; padding: 7px 20px;">
-        <input type="submit" value="Search" style="background-color: #DE1A1A; border: 1px #DE1A1A; color: #CECECE; padding: 7px 7px; width: 100px;">
-      </form>
+
+        <select name="Category" placeholder ="What are you planning?" style = "border: 1px grey; padding: 7px 20px;">>
+          <option value="What are you planning?">What are you planning?</option>
+          <option value="Birthday">Birthday</option>
+          <option value="Business Meeting">Business Meeting</option>
+          <option value="Concert">Concert</option>
+          <option value="Dinner">Dinner</option>
+          <option value="Exhibition">Exhibition</option>
+          <option value="Foto Shoot">Foto Shoot</option>
+          <option value="Film Shoot">Film Shoot</option>
+          <option value="Launch Event">Launch Event</option>
+          <option value="Social Event">Social Event</option>
+          <option value="Presentation">Presentation</option>
+          <option value="Conference">Conference</option>
+          <option value="Workshop">Workshop</option>
+
+      </select>
+
+
+
+
+        <%= link_to "Search", venues_path, class: "btn-red" %>
+
+
+<!--         <input type="submit" value="Search" style="background-color: #DE1A1A; border: 1px #DE1A1A; color: #CECECE; padding: 7px 7px; width: 100px;">
+ -->      </form>
     </div>
     <br>
     <br>

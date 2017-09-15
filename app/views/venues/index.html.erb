@@ -15,6 +15,7 @@
       </div>
       <div class="card-description-2">
         <%= venue.price %> €/h
+
       </div>
       <div class="card-description-2">
        <h1>
@@ -34,6 +35,32 @@
 <% end %>
 </div>
 </div>
+
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+
+      var handler = Gmaps.build('Google');
+
+
+
+    handler.buildMap({
+    provider: {},
+
+      internal: { id: 'map' } }, function() {
+        markers = handler.addMarkers(<%= raw @hash.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        if (markers.length == 0) {
+          handler.getMap().setZoom(2);
+        } else if (markers.length == 1) {
+          handler.getMap().setZoom(14);
+        }
+      });
+    });
+  <% end %>
+<% end %>
 
 
 

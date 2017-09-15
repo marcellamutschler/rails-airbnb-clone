@@ -2,36 +2,23 @@
 <h1>All your bookings </h1>
 
 
-<h1>This is all the bookings on your flats</h1>
-
-<% if current_user.venues.present? %>
-  <% current_user.venues.each do |venue| %>
-  <% venue.name %>
-  <% venue.location %>
-  <% venue.price %>
-  <% venue.bookings.each do |booking| %>
-  <% booking.user.profile.avatar %>
-  <% booking.user.profile.first_name %>
-  <% booking.user.profile.first_name %>
-  <% end %>
 
 
-<h1>We should display here all the bookings for a Users profile</h1>
-<p><%= @current_user.profile.first_name %> Bookings</p>
 
-<p>You have booked</p>
+
+<h1>This is what you have booked</h1>
 <% @bookings.each do |booking| %>
 <li>
 
-<%= booking.venue.location %> for a max of
-<%= booking.venue.capacity %> people,
-Bio: <%= booking.venue.description %>,
-<%= booking.venue.price %> € per hour,
-<%= booking.status %>
-<%= booking.total_price %> (still need to do a method for total price here) <p></p>
+  <%= booking.venue.location %> for a max of
+  <%= booking.venue.capacity %> people,
+  Bio: <%= booking.venue.description %>,
+  <%= booking.venue.price %> € per hour,
+  <%= booking.status %>
+  <%= booking.total_price %> (still need to do a method for total price here) <p></p>
 </li>
 
 <% end %>
 
 
- <%= link_to 'Go Back', venues_path, class: "btn-normal" %>
+<%= link_to 'Go Back', venues_path, class: "btn-normal" %>
