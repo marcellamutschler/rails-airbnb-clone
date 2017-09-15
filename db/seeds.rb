@@ -7,13 +7,13 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-Venue.create(name: "beautiful flat", capacity: 100, location: "barcelona", description: "blabla", price: 25, user_id: 1)
-Venue.create(name: "villa", capacity: 200, location: "barceloneta", description: "blabl", price: 20, user_id: 2)
-Venue.create(name: "two rooms", capacity: 300, location: "barcelonarina", description: "blab", price: 255, user_id: 2)
+Venue.create(name: "Romantic Wedding Venue", capacity: 200, location: "Barcelona", description: "Beautiful Wedding Venue in the Heart of Barcelona", price: 100, user_id: 1)
+Venue.create(name: "Artsy Studio", capacity: 50, location: "Berlin", description: "Modern studio for your photo-shooting, exhibition or fahsion shows", price: 70, user_id: 2)
+Venue.create(name: "Modern Meeting Room", capacity: 30, location: "Frankfurt", description: "New meeting room for business events, pitches, etc.", price: 100, user_id: 3)
 
-x = User.create(email: "hey@gmail.com", password: "Ihave6letters")
+x = User.create(email: "max.mustermann@gmail.com", password: "password")
 
-y = Venue.new(capacity: 400, location: "bacelonarina", description: "bla", price: 225)
+y = Venue.new(capacity: 400, location: "Madrid", description: "Factory hall for exhibitions, birthday-parties, photo shoots, fashion shows, etc.", price: 225)
 
 y.user = x #we are association (you find the .user in the model of venue) y with the user x
 y.save
@@ -23,6 +23,7 @@ Booking.create(status: "accepted", total_price: 400, user_id: 2, venue_id: 2)
 Booking.create(status: "declined", total_price: 500, user_id: 3, venue_id: 4)
 Booking.create(status: "declined", total_price: 100, user_id: 6, venue_id: 2)
 
-Profile.create(first_name: "Celia", last_name: "Mutschler", bio: "Hey i am german", user_id: 6)
+Profile.create(first_name: "Max", last_name: "Mustermann", bio: "Max Mustermann, looking for nice venues for my events", user_id: 6)
+
 
 

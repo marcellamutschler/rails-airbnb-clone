@@ -1,14 +1,22 @@
     <div class="profile_font">
     <div class="profile-header-wrapper">
       <div class="profile-container profile-header-container">
-            <%= link_to edit_profile_path do %>
+
+        <div class="profile-header-infos">
+
+           <% avatar_url = current_user.facebook_picture_url || "https://material-components-web.appspot.com/images/animal1.svg" %>
+          <%= image_tag avatar_url  %>
+
+          <h1><%= @profile.first_name %> <%= @profile.last_name %></h1>
+
+
+          <h2>Bio: <%= @profile.bio %></h2>
+
+
+          <%= link_to edit_profile_path do %>
             <h2>Edit <i class="fa fa-pencil-square-o" aria-hidden="true"></i></h2>
             <% end %>
-        <div class="profile-header-infos">
-           <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
-          <%= image_tag avatar_url %>
-          <h1><%= @profile.first_name %> <%= @profile.last_name %></h1>
-          <h2>Bio: <%= @profile.bio %></h2>
+
         </div>
         <div class="tabs">
           <a class="tab active" href="#">
