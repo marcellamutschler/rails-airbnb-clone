@@ -19,23 +19,38 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "HelveticaNeue-Light"}
     <h3>for <%= @venue.price %> € <br></h3>
     <h6>per hour</h6>
     <hr>
-    <form action="/action_page.php" target="_blank">
-      <p><label><i class="fa fa-calendar-check-o"></i> Start Date</label></p>
-      <input class="w3-input w3-border" style="color: black" type="text" placeholder="DD MM YYYY" name="CheckIn" required>
-      <br>
-      <p><label><i class="fa fa-clock-o"></i> Start Time</label></p>
-      <input class="w3-input w3-border" style="color: black" type="text" placeholder="HH:MM AM/PM" name="CheckIn" required>
-      <br>
-      <br>
-      <p><label><i class="fa fa-calendar-times-o"></i> End Date</label></p>
-      <input class="w3-input w3-border" style="color: black" type="text" placeholder="DD MM YYYY" name="CheckOut" required>
-      <br>
-      <p><label><i class="fa fa-clock-o"></i> End Time</label></p>
-      <input class="w3-input w3-border" style="color: black" type="text" placeholder="HH:MM AM/PM" name="CheckOut" required>
-      <br>
 
-      <p><button class="btn-red w3-block" type="submit"></i> Book this Venue</button></p>
-    </form>
+    <div class="text-center">
+  <h1>Book this place</h1>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+
+
+<%= simple_form_for([@venue, @booking]) do |f| %>
+
+  <%= f.label :hours %>
+  <%= f.number_field :hours %>
+
+  <%= f.label :start_date %>
+  <%= f.input :start_date, as: :string, input_html: {class: 'datepicker'} %>
+
+ <%= f.label :end_date %>
+<%= f.input :end_date, as: :string, input_html: {class: 'datepicker'} %>
+
+  <%= f.submit %>
+<% end %>
+
+
+ <%= link_to 'Go Back', venues_path, class: "btn btn-danger" %>
+
+
+    </div>
+  </div>
+</div>
+
   </div>
  <!--  <div class="w3-bar-block">
     <a href="#apartment" class="w3-bar-item w3-button w3-padding-16"><i class="fa fa-building"></i> Apartment</a>

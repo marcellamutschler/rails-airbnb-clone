@@ -12,6 +12,7 @@ class VenuesController < ApplicationController
 
   def show
     @hash = [{ lat: @venue.latitude, lng: @venue.longitude }]
+    @booking = Booking.new
   end
 
   def new
