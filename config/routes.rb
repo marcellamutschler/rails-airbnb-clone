@@ -6,14 +6,17 @@ Rails.application.routes.draw do
   devise_for :users,
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :venues do
-    resources :bookings
+    resources :bookings, only: [:new ,:create]
     # creermoi toutes les routes
   end
 
   mount Attachinary::Engine => "/attachinary"
 
 #  resources :users do
-    resource :profile
+
+  resources :profiles do
+    resources :bookings, except: [:new ,:create]
+  end
     # ici on parle de 2 méthodes
     #génére  toutes les routes mais emt profile au singulier
  # end

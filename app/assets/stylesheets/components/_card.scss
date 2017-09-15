@@ -9,25 +9,7 @@
   margin-bottom: 70px;
 }
 
-.card_2 {
-height: 400px;
-width:350px;
-text-shadow: 0 1px 3px rgba(0,0,0,0.6);
-background-size: cover !important;
-background-position: center;
-color: white;
-position: relative;
-margin-bottom: 70px;
 
-}
-
-.card-user {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  width: 40px;
-  border-radius: 50%;
-}
 .card-category {
   position: absolute;
   top: 10px;
@@ -63,7 +45,10 @@ margin-bottom: 70px;
 }
 
 .profile-card {
-  position: absolute;
+  position: relative;
   left: 90px;
   top: 50px;
   }
+
+
+

@@ -1,10 +1,13 @@
+<h1><%= @venue.name %></h1>
 
-<h1>Welcome to the <%= @venue.location %> place</h1>
-<p>we should display here the selected venue and the details</p>
+<%= cl_image_tag @venue.photo.path if @venue.photo %>
+
+<p>Location:<%= @venue.location %></p>
+<p>Max. amount of people<%= @venue.capacity %></p>
+<p>Price: <%= @venue.price %> per hour</p>
+<p><%= @venue.description %></p>
 
 
+<%= link_to "Book this place", new_venue_booking_path(@venue), class: "btn-red" %>
+<%= link_to 'Go Back to all Venues', venues_path, class: "btn-red" %>
 
-<%= cl_image_tag @venue.photo.path, width: 200, height: 300, crop: :fill %>
-<br>
-<br>
-<%= link_to "Book it!", new_venue_booking_path(@venue), class: "btn-profile"%>

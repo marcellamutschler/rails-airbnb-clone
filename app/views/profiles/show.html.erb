@@ -1,29 +1,70 @@
-<div class="profile-card">
-  <h1>Profile</h1>
-  <br>
-  <h3>Profile Photo:</h2>
-  <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
-  <%= image_tag avatar_url %>
-  <br>
-  <h3>Basic Information:</h2>
-  <br>
-  <p>First Name:
-  <%= @profile.first_name %>
-  <br>
-  Last Name:
-  <%= @profile.last_name %>
-  <br>
-  Personal description:
-  <%= @profile.bio %>
-  </p>
-  <h3>Your Bookings:</h3>
-  <br>
-  <%= link_to "Edit Profile", edit_profile_path, class: "btn-profile"%>
+<body cz-shortcut-listen="true">
+    <div class="profile_font">
+    <div class="profile-header-wrapper">
+      <div class="profile-container profile-header-container">
+            <%= link_to edit_profile_path do %>
+            <h2>Edit <i class="fa fa-pencil-square-o" aria-hidden="true"></i></h2>
+            <% end %>
+        <div class="profile-header-infos">
+           <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
+          <%= image_tag avatar_url %>
+          <h1><%= @profile.first_name %> <%= @profile.last_name %></h1>
+          <h2>Bio: <%= @profile.bio %></h2>
+        </div>
+        <div class="tabs">
+          <a class="tab active" href="#">
+            <h3>Your Bookings</h3>
+          </a>
+          <a class="tab" href="#">
+            <h3>Your Venues</h3>
+          </a>
+          <a class="tab" href="#">
+            <h3>Your Wishlist</h3>
+          </a>
+        </div>
+      </div>
+    </div>
 
 
-  <br>
-  <br>
-  <%= link_to "List your Venue", new_venue_path, class: "btn-profile"%>
+    <div class="profile-container">
+      <div class="booking">
+        <div class="list-inline product-controls">Date</div>
+        <img src="images/kudoz.jpg" alt="" class="venue-image">
+        <div class="product-body">
+          <h3>Booking 1</h3>
+          <p>Location 1</p>
+        </div>
+          <ul class="list-inline product-controls">
+          <a href="">Show</a>
+        </ul>
+      </div>
+      <div class="booking">
+        <div class="list-inline product-controls">Date</div>
+        <img src="images/uslide.jp" alt="" class="venue-image">
+        <div class="product-body">
+          <h3>Booking 2</h3>
+          <p>Location 2</p>
+        </div>
+         <ul class="list-inline product-controls">
+          <a href="">Show</a>
+        </ul>
+      </div>
+      <div class="booking">
+        <div class="list-inline product-controls">Date</div>
+        <img src="images/roadstr.jpg" alt="" class="venue-image">
+        <div class="product-body">
+          <h3>Booking 3</h3>
+          <p>Location 3</p>
+        </div>
+        <ul class="list-inline product-controls">
+          <a href="">Show</a>
 
-  <%= link_to "Update your profile", edit_profile_path, class: "btn btn-danger"%>
-</div>
+        </ul>
+      </div>
+  <%= link_to "Show Your Bookings", profile_bookings_path(@profile, @bookings), class: "btn-normal"%>
+
+  <%= link_to "List Your Venue", new_venue_path, class: "btn-red"%>
+    </div>
+  </div>
+
+</body>
