@@ -92,12 +92,10 @@ ActiveRecord::Schema.define(version: 20170914153305) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-
     t.string "name"
     t.float "latitude"
     t.float "longitude"
     t.string "photo"
-    t.string "name"
     t.index ["user_id"], name: "index_venues_on_user_id"
   end
 
