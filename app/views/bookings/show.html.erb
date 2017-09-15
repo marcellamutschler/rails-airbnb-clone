@@ -1,10 +1,15 @@
-<h2>booking show</h2>
-  <%= @booking.venue.name %>
-    <%= @booking.venue.location %>
-   <%= @booking.total_price %>
-   <%= @booking.start_date %>
+<h2>Your booking request for  <%= @booking.venue.name %>
+was successful</h2>
+<p> We contacted the host. You should get the booking confirmation within the next three days!</p>
+<p> Booking overview:</p>
+<li> Name: <%= @booking.venue.name %></li>
+<li> Location: <%= @booking.venue.location %></li>
+<li> Date: <%= @start_date %> - <%= @end_date %></li>
+<li>  Total numbers of hours: <%= @hours %></li>
+<li> Total price: <%= @booking.total_price %></li>
+<hr>
 
-  <%= link_to "Edit your booking",  edit_profile_booking_path(@booking)  %>
-  <%= link_to "Book another event", venues_path %>
+  <%= link_to "Edit your booking",  edit_profile_booking_path(@booking), class: "btn-red w3-block"%>
+  <%= link_to "Look for other venues", venues_path, class: "btn-red w3-block" %>
 
 
