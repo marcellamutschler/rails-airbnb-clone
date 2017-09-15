@@ -2,8 +2,9 @@
   <%= @booking.venue.name %>
     <%= @booking.venue.location %>
    <%= @booking.total_price %>
+   <%= @booking.start_date %>
 
-  <%= link_to "Edit your booking", edit_venue_booking_path(@venue, @booking)  %>
+  <%= link_to "Edit your booking",  edit_profile_booking_path(@booking)  %>
   <%= link_to "Book another event", venues_path %>
 
-<%= @user.booking %>
+
