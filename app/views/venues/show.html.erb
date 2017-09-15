@@ -7,6 +7,41 @@
 <p>Price: <%= @venue.price %> per hour</p>
 <p><%= @venue.description %></p>
 
+<div id="map" style="width: 100%; height: 600px;"></div>
+
+<%= javascript_tag do %>
+  $(document).ready(function() {
+    alert('<%= @alert_message %>');
+  });
+<% end %>
+
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+
+      var coord = <%= raw @flat_coordinates.to_json %>;
+
+      var handler = Gmaps.build('Google');
+      handler.buildMap({
+      provider: {},
+      internal: { id: 'map' } }, function() {
+        markers = handler.addMarkers(<%= raw @hash.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        if (markers.length == 0) {
+          handler.getMap().setZoom(2);
+        } else if (markers.length == 1) {
+          handler.getMap().setZoom(14);
+        }
+      });
+    });
+  <% end %>
+<% end %>
+
+
+
+
 
 <%= link_to "Book this place", new_venue_booking_path(@venue), class: "btn-red" %>
 <%= link_to 'Go Back to all Venues', venues_path, class: "btn-red" %>
