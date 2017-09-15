@@ -3,9 +3,15 @@ class VenuesController < ApplicationController
 
   def index
     @venues = Venue.all
-  end
+    @venues = Venue.where.not(latitude: nil, longitude: nil)
+    @hash = Gmaps4rails.build_markers(@venues) do |venue, marker|
+      marker.lat venue.latitude
+      marker.lng venue.longitude
+      end
+   end
 
   def show
+    @hash = [{ lat: @venue.latitude, lng: @venue.longitude }]
   end
 
   def new
@@ -13,7 +19,6 @@ class VenuesController < ApplicationController
   end
 
   def create
-
     @venue = Venue.new(venue_params)
     @venue.user = current_user
     if @venue.save!

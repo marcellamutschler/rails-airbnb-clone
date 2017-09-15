@@ -1,10 +1,14 @@
 
-<%= form_for([@venue @booking]) do |f| %>
+<%= simple_form_for([@venue, @booking]) do |f| %>
   <%= f.label :status %>
   <%= f.text_field :status %>
 
   <%= f.label :hours %>
   <%= f.numeric :hours %>
+
+
+
+
 
   <%= f.submit %>
 <% end %>

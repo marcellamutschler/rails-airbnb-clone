@@ -3,23 +3,7 @@
 
 
 
-<% if current_user.venues.present? %>
-<h1>This is all the bookings on your flats</h1>
-<% current_user.venues.to_a.each do |venue| %>
-<ul>
-  <li>
-  <%= venue.name %>
-   <%= venue.location %>
-   <%= venue.price %>
-   </li>
-   <% venue.bookings.each do |booking| %>
-    <ul>
-     <li> <%= booking.user.profile.first_name %> <%= booking.user.profile.last_name %></li>
-    </ul>
-    <% end %>
- </ul>
-<% end %>
-<% end %>
+
 
 
 <h1>This is what you have booked</h1>
