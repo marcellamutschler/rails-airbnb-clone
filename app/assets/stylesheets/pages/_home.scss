@@ -12,3 +12,34 @@ input::placeholder {
   color: white;
   font-size: 22px;
 }
+
+select {
+  background: rgba(225, 225, 225, 0.3);
+  color: white;
+  border-radius: 50px;
+  width: 320px;
+  font-weight: lighter;
+  height: 45px;
+  font-size: 22px;
+}
+
+select::placeholder {
+  color: white;
+  font-size: 22px;
+}
+
+
+option {
+  background: rgba(225, 225, 225, 0.3);
+  color: white;
+  border-radius: 50px;
+  width: 320px;
+  font-weight: lighter;
+  height: 45px;
+  font-size: 22px;
+}
+
+option::placeholder {
+  color: white;
+  font-size: 22px;
+}
