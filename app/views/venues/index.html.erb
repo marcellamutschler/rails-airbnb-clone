@@ -12,13 +12,41 @@
             <div class="card-description"> <%= venue.price %> €/h </div>
              <div class="card-description"> <h1><%= venue.name %></h1></div>
              <br>
-             <br>
-             <br>
+
+            <div id="map" style="width: 100%; height: 600px;"></div>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+
+      var handler = Gmaps.build('Google');
+
+
+
+    handler.buildMap({
+    provider: {},
+
+      internal: { id: 'map' } }, function() {
+        markers = handler.addMarkers(<%= raw @hash.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        if (markers.length == 0) {
+          handler.getMap().setZoom(2);
+        } else if (markers.length == 1) {
+          handler.getMap().setZoom(14);
+        }
+      });
+    });
+  <% end %>
+<% end %>
+
+
              <br>
              <br>
              <br>
             <br>
             <br>
+
             <%= link_to "Edit a Venue", edit_venue_path(venue) %>
         <%= link_to 'Show this location', venue_path(venue) %>
       </div>
