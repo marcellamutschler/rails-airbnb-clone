@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(version: 20170915104952) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "hours"
+    t.datetime "start_date"
+    t.datetime "end_date"
     t.index ["user_id"], name: "index_bookings_on_user_id"
     t.index ["venue_id"], name: "index_bookings_on_venue_id"
   end
