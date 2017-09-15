@@ -23,6 +23,7 @@ gem 'uglifier'
 gem 'devise'
 gem 'omniauth-facebook'
 gem 'figaro'
+gem 'bootstrap-datepicker-rails'
 
 
 

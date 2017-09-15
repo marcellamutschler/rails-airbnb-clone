@@ -25,16 +25,18 @@ class BookingsController < ApplicationController
 
 
     if @venue.save &&  @booking.save
-      redirect_to venue_booking_path(@venue, @booking)
+      redirect_to profile_booking_path(@booking.user.profile, @booking)
     else
       render :new
     end
   end
 
   def edit
+
   end
 
   def update
+    @profile = current_user.profile
     @booking.update(booking_params)
     redirect_to venue_booking_path(@venue)
   end
