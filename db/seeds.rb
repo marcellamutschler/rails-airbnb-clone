@@ -18,11 +18,24 @@ y = Venue.new(capacity: 400, location: "bacelonarina", description: "bla", price
 y.user = x #we are association (you find the .user in the model of venue) y with the user x
 y.save
 
-Booking.create(status: "accepted", total_price: 300, user_id: 1, venue_id: 1)
-Booking.create(status: "accepted", total_price: 400, user_id: 2, venue_id: 2)
-Booking.create(status: "declined", total_price: 500, user_id: 3, venue_id: 4)
-Booking.create(status: "declined", total_price: 100, user_id: 6, venue_id: 2)
+Booking.create(user_id: 1, venue_id: 1)
+Booking.create(user_id: 2, venue_id: 2)
+Booking.create(user_id: 3, venue_id: 4)
+Booking.create(user_id: 6, venue_id: 2)
 
 Profile.create(first_name: "Celia", last_name: "Mutschler", bio: "Hey i am german", user_id: 6)
 
+
+andrew = User.create(email: "andrew@gmail.com", password: "andrew")
+maria = User.create(email: "maria@gmail.com", password: "maria")
+jesus = User.create(email: "jesus@gmail.com", password: "christ")
+
+new_venue = Venue.new(capacity: 2, location: "Nazareth", description: "cozy place", price: 0 )
+
+names = Profile.new(first_name: "Jesus", last_name: "Christ", bio: "Hey check me out I am 2017 years old!")
+names.user = jesus
+names.save
+
+new_venue.user = maria
+new_venue.save
 
