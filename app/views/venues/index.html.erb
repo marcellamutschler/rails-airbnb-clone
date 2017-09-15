@@ -5,7 +5,7 @@
     <% @venues.each do |venue| %>
 
 
-    <div class="col-sm-4">
+      <div class="col-sm-4">
       <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
          url('<%= cl_image_path venue.photo.path if venue.photo %>')">
           <div class="card-category"> <%= venue.location %> </div>
@@ -13,32 +13,9 @@
              <div class="card-description"> <h1><%= venue.name %></h1></div>
              <br>
 
-            <div id="map" style="width: 100%; height: 600px;"></div>
-
-<% content_for(:after_js) do %>
-  <%= javascript_tag do %>
-    $(document).ready(function() {
-
-      var handler = Gmaps.build('Google');
 
 
 
-    handler.buildMap({
-    provider: {},
-
-      internal: { id: 'map' } }, function() {
-        markers = handler.addMarkers(<%= raw @hash.to_json %>);
-        handler.bounds.extendWith(markers);
-        handler.fitMapToBounds();
-        if (markers.length == 0) {
-          handler.getMap().setZoom(2);
-        } else if (markers.length == 1) {
-          handler.getMap().setZoom(14);
-        }
-      });
-    });
-  <% end %>
-<% end %>
 
 
              <br>
@@ -57,9 +34,31 @@
   </div>
 </div>
 
+<div id="map" style="width: 100%; height: 600px;"></div>
 
 
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
 
+      var handler = Gmaps.build('Google');
+
+    handler.buildMap({
+    provider: {},
+
+      internal: { id: 'map' } }, function() {
+        markers = handler.addMarkers(<%= raw @hash.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        if (markers.length == 0) {
+          handler.getMap().setZoom(2);
+        } else if (markers.length == 1) {
+          handler.getMap().setZoom(14);
+        }
+      });
+    });
+  <% end %>
+  <% end %>
 
 
 

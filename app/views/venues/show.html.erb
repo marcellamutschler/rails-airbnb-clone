@@ -62,7 +62,9 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "HelveticaNeue-Light"}
   <!-- Slideshow Header -->
     <div class="w3-display-container">
     <img style="width: 1000px margin-bottom:-6px">
+    <% unless @venue.photo.nil? %>
     <%= cl_image_tag @venue.photo.path, width: 719%>
+    <% end %>
     </img>
       <div class="w3-display-bottomleft w3-container" style="background-color: #DE1A1A; opacity: 0.9; color: white; width: 500px">
         <h2><%= @venue.name %></h2><%= @venue.location %>
