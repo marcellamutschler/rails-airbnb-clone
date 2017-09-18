@@ -43,6 +43,15 @@ ActiveRecord::Schema.define(version: 20170915131731) do
     t.index ["venue_id"], name: "index_bookings_on_venue_id"
   end
 
+  create_table "flats", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.float "latitude"
+    t.float "longitude"
+  end
+
   create_table "profiles", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -89,6 +98,7 @@ ActiveRecord::Schema.define(version: 20170915131731) do
     t.string "name"
     t.float "latitude"
     t.float "longitude"
+    t.string "photo"
     t.string "category"
     t.index ["user_id"], name: "index_venues_on_user_id"
   end
