@@ -53,7 +53,7 @@ class ProfilesController < ApplicationController
     #   @profile = Profile.find(params[:id]) we have it
      @profile.update(profile_params)
      # you assign the profile to the user its belongs.
-     redirect_to profile_path
+     redirect_to profile_path(@profile)
   end
 
 
