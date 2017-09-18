@@ -1,4 +1,60 @@
 Rails.application.routes.draw do
+  get 'wishlists/index'
+
+  get 'wishlists/show'
+
+  get 'wishlists/new'
+
+  get 'wishlists/create'
+
+  get 'wishlists/edit'
+
+  get 'wishlists/update'
+
+  get 'wishlists/destroy'
+
+  get 'reviews/index'
+
+  get 'reviews/show'
+
+  get 'reviews/new'
+
+  get 'reviews/create'
+
+  get 'reviews/edit'
+
+  get 'reviews/update'
+
+  get 'reviews/destroy'
+
+  get 'availabilities/index'
+
+  get 'availabilities/show'
+
+  get 'availabilities/new'
+
+  get 'availabilities/create'
+
+  get 'availabilities/edit'
+
+  get 'availabilities/update'
+
+  get 'availabilities/destroy'
+
+  get 'amenities/index'
+
+  get 'amenities/show'
+
+  get 'amenities/new'
+
+  get 'amenities/create'
+
+  get 'amenities/edit'
+
+  get 'amenities/update'
+
+  get 'amenities/destroy'
+
   get 'pages/home'
 
   root to: "pages#home"
