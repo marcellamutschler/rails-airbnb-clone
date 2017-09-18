@@ -1,58 +1,65 @@
 <div class="container">
-<h1> Available Venues </h1>
-<br>
-  <div class="row">
-    <% @venues.each do |venue| %>
-
-
-      <div class="col-sm-4">
-      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-         url('<%= cl_image_path venue.photo.path if venue.photo %>')">
-          <div class="card-category"> <%= venue.location %> </div>
-            <div class="card-description"> <%= venue.price %> €/h </div>
-             <div class="card-description"> <h1><%= venue.name %></h1></div>
-             <br>
-             <br>
-             <br>
-             <br>
-            <br>
-            <br>
-
-            <%= link_to "Edit a Venue", edit_venue_path(venue) %>
-        <%= link_to 'Show this location', venue_path(venue) %>
-      </div>
-
-    </div>
-
-    <% end %>
+  <h1>
+    Available Venues
+  </h1>
   </div>
+  <br>
+    <div class="col-sm-4" >
+
+    <div id="map" style="width: 100%; height: 600px;"></div>
+    <% content_for(:after_js) do %>
+      <%= javascript_tag do %>
+        $(document).ready(function() {
+
+          var handler = Gmaps.build('Google');
+
+        handler.buildMap({
+        provider: {},
+
+          internal: { id: 'map' } }, function() {
+            markers = handler.addMarkers(<%= raw @hash.to_json %>);
+            handler.bounds.extendWith(markers);
+            handler.fitMapToBounds();
+            if (markers.length == 0) {
+              handler.getMap().setZoom(2);
+            } else if (markers.length == 1) {
+              handler.getMap().setZoom(14);
+            }
+          });
+        });
+      <% end %>
+    <% end %>
+  <div class="row" >
+    <% @venues_with_coordinates.each do |venue| %>
+
+
+      <div class="card_2" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+      url('<%= cl_image_path venue.photo.path if venue.photo %>')">
+      <div class="card-category-2">
+        <%= venue.location %>
+      </div>
+      <div class="card-description-2">
+        <%= venue.price %> €/h
+      </div>
+      <div class="card-description-2">
+       <h1>
+         <%= venue.name %>
+       </h1>
+      </div>
+       <div class="card-description-title" style="background-color: white">
+        <%= venue.description %>
+        <br>
+        <div style="text-align: center; padding-top: 10px;">
+        <%= link_to "View Venue", venue_path(venue), class: "btn-normal" %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+</div>
 </div>
 
-<div id="map" style="width: 100%; height: 600px;"></div>
 
-
-<% content_for(:after_js) do %>
-  <%= javascript_tag do %>
-    $(document).ready(function() {
-
-      var handler = Gmaps.build('Google');
-
-    handler.buildMap({
-    provider: {},
-
-      internal: { id: 'map' } }, function() {
-        markers = handler.addMarkers(<%= raw @hash.to_json %>);
-        handler.bounds.extendWith(markers);
-        handler.fitMapToBounds();
-        if (markers.length == 0) {
-          handler.getMap().setZoom(2);
-        } else if (markers.length == 1) {
-          handler.getMap().setZoom(14);
-        }
-      });
-    });
-  <% end %>
-  <% end %>
 
 
 

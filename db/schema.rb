@@ -118,6 +118,7 @@ ActiveRecord::Schema.define(version: 20170918141947) do
     t.float "longitude"
     t.string "category"
     t.bigint "wishlists_id"
+
     t.index ["user_id"], name: "index_venues_on_user_id"
     t.index ["wishlists_id"], name: "index_venues_on_wishlists_id"
   end

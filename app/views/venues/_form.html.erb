@@ -1,5 +1,6 @@
 
 <%= simple_form_for(@venue) do |f| %>
+<div class="venue-form ">
 
   <%= f.input :name %>
 
@@ -9,7 +10,7 @@
 
   <%= f.input :description %>
 
-  <%= f.input :category %>
+  <%= f.input :category, as: :string%>
 
   <%= f.input :photo, as: :attachinary %>
 
@@ -20,4 +21,6 @@
   <%= f.submit class: "btn-red" %>
 
 <% end %>
+
+</div>
 
