@@ -1,3 +1,3 @@
 class Availability < ApplicationRecord
-  belongs_to :venues
+  belongs_to :venue
 end
