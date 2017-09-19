@@ -26,11 +26,14 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "HelveticaNeue-Light"}
       <%= f.number_field :hours, class: "w3-input w3-border", style: "color: black"%>
 
       <br>
-      <p><label><i class="fa fa-calendar-check-o"></i> Date</label></p>
+      <p><label><i class="fa fa-calendar-check-o"></i> Start Date</label></p>
       <%= f.input :start_date, as: :string, label: false, input_html: {class: "datepicker"} %>
-
-
+       <p><label><i class="fa fa-calendar-check-o"></i> End Date</label></p>
+      <%= f.input :end_date, as: :string, label: false, input_html: {class: "datepicker"} %>
       <br>
+
+
+
       <%= f.submit class: "btn-red w3-block" %>
       <% end %>
 
