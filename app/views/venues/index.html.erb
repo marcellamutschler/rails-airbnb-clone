@@ -18,12 +18,12 @@
             <br>
             <br>
 
-            <% if policy(restaurant).update? %>
+            <% if policy(venue).update? %>
             <%= link_to "Edit a Venue", edit_venue_path(venue) %>
             <% end %>
 
 
-        <% if policy(restaurant).show? %>
+        <% if policy(venue).show? %>
         <%= link_to 'Show this location', venue_path(venue) %>
        <% end %>
 
