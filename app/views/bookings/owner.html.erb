@@ -1,4 +1,4 @@
- <h1>All your bookings </h1>
+<h1>All your bookings </h1>
 
 
 <% if current_user.venues.present? %>
@@ -10,19 +10,19 @@
   <%= venue.name %> - <%= venue.location %>
    </li>
    <% venue.bookings.each do |booking| %>
-      <p> booked by <%=booking.user.profile.first_name%>
+      <p> booked by booking.user.profile.first_name
         <br>
-        <%= link_to profile_path(booking.user.profile) do %>
+        <%#= link_to profile_path(booking.user.profile) do %>
 
         <%#@ mettre avatar %>
-       <%#= image_tag ..... %>
+        <%#= image_tag ..... %>
 
         <% end %>
-
       <%= booking.status %>,
       <%= link_to "Accept", accept_profile_booking_path(@profile, booking) %>
       <%= link_to "Decline", decline_profile_booking_path(@profile, booking) %>
    <%= booking.total_price %> €
+
     <ul>
 
      <li>  </li>
@@ -34,5 +34,5 @@
 
 
 the date of the booking
-
-
+Status pending
+Two buttons to change the pending to accept or decline
