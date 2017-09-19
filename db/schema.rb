@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20170919135000) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -61,12 +62,10 @@ ActiveRecord::Schema.define(version: 20170919135000) do
   end
 
   create_table "bookmarks", force: :cascade do |t|
-    t.bigint "venue_id"
-    t.bigint "user_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_bookmarks_on_user_id"
-    t.index ["venue_id"], name: "index_bookmarks_on_venue_id"
+    t.integer "venue_id"
   end
 
   create_table "conversations", force: :cascade do |t|
@@ -94,6 +93,7 @@ ActiveRecord::Schema.define(version: 20170919135000) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "photo"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
@@ -137,8 +137,10 @@ ActiveRecord::Schema.define(version: 20170919135000) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "photo"
     t.string "name"
+
+    t.string "photo"
+
     t.float "latitude"
     t.float "longitude"
     t.string "category"
@@ -150,8 +152,6 @@ ActiveRecord::Schema.define(version: 20170919135000) do
   add_foreign_key "availabilities", "venues"
   add_foreign_key "bookings", "users"
   add_foreign_key "bookings", "venues"
-  add_foreign_key "bookmarks", "users"
-  add_foreign_key "bookmarks", "venues"
   add_foreign_key "profiles", "users"
   add_foreign_key "venues", "users"
 end
