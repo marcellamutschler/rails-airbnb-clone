@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-#<<<<<<< HEAD
-#ActiveRecord::Schema.define(version: 20170915131731) do
-#=======
 ActiveRecord::Schema.define(version: 20170918161328) do
-#>>>>>>> master
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -128,7 +124,6 @@ ActiveRecord::Schema.define(version: 20170918161328) do
     t.float "latitude"
     t.float "longitude"
     t.string "category"
-    t.integer "wishlist_id"
     t.index ["user_id"], name: "index_venues_on_user_id"
   end
 
