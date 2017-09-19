@@ -119,12 +119,16 @@ ActiveRecord::Schema.define(version: 20170918161328) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name"
     t.string "photo"
+    t.string "name"
+    t.float "latitude"
+    t.float "longitude"
+    t.string "category"
     t.float "latitude"
     t.float "longitude"
     t.string "category"
     t.integer "wishlist_id"
+
     t.index ["user_id"], name: "index_venues_on_user_id"
   end
 
