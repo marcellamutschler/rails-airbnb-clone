@@ -27,6 +27,10 @@ class Venue < ApplicationRecord
     self.latitude && self.longitude
   end
 
+  def owner
+    user
+  end
+
   def bookmarked_users
     bookmarked_users = []
     self.bookmarks.each do |bookmark|

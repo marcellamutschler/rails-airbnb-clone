@@ -13,6 +13,7 @@ class VenuesController < ApplicationController
   def show
 
     @booking = Booking.new
+    @message = Message.new
     if @venue.geocoded?
      @hash = Gmaps4rails.build_markers(@venue) do |venue, marker|
         marker.lat venue.latitude
