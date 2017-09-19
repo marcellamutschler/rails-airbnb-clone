@@ -4,11 +4,10 @@ class Venue < ApplicationRecord
   belongs_to :user
   has_many :bookmarks
   has_many :bookmarked_users, through: :bookmarks, source: :user
-  has_many :bookings
-  # has_many :amenities
-  has_many :availabilities
+  has_many :bookings  has_many :availabilities
   has_many :reviews
-  # has_many :categories
+  has_many :conversations
+
   geocoded_by :location
   after_validation :geocode, if: :location_changed?
 
