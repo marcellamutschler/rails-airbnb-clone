@@ -6,6 +6,8 @@ class Venue < ApplicationRecord
   has_many :amenities
   has_many :availabilities
   has_many :reviews
+  has_many :conversations
+
   geocoded_by :location
   after_validation :geocode, if: :location_changed?
 

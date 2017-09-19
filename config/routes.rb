@@ -1,62 +1,62 @@
 
 Rails.application.routes.draw do
-  get 'wishlists/index'
+  # get 'wishlists/index'
 
-  get 'wishlists/show'
+  # get 'wishlists/show'
 
-  get 'wishlists/new'
+  # get 'wishlists/new'
 
-  get 'wishlists/create'
+  # get 'wishlists/create'
 
-  get 'wishlists/edit'
+  # get 'wishlists/edit'
 
-  get 'wishlists/update'
+  # get 'wishlists/update'
 
-  get 'wishlists/destroy'
+  # get 'wishlists/destroy'
 
-  get 'reviews/index'
+  # get 'reviews/index'
 
-  get 'reviews/show'
+  # get 'reviews/show'
 
-  get 'reviews/new'
+  # get 'reviews/new'
 
-  get 'reviews/create'
+  # get 'reviews/create'
 
-  get 'reviews/edit'
+  # get 'reviews/edit'
 
-  get 'reviews/update'
+  # get 'reviews/update'
 
-  get 'reviews/destroy'
+  # get 'reviews/destroy'
 
-  get 'availabilities/index'
+  # get 'availabilities/index'
 
-  get 'availabilities/show'
+  # get 'availabilities/show'
 
-  get 'availabilities/new'
+  # get 'availabilities/new'
 
-  get 'availabilities/create'
+  # get 'availabilities/create'
 
-  get 'availabilities/edit'
+  # get 'availabilities/edit'
 
-  get 'availabilities/update'
+  # get 'availabilities/update'
 
-  get 'availabilities/destroy'
+  # get 'availabilities/destroy'
 
-  get 'amenities/index'
+  # get 'amenities/index'
 
-  get 'amenities/show'
+  # get 'amenities/show'
 
-  get 'amenities/new'
+  # get 'amenities/new'
 
-  get 'amenities/create'
+  # get 'amenities/create'
 
-  get 'amenities/edit'
+  # get 'amenities/edit'
 
-  get 'amenities/update'
+  # get 'amenities/update'
 
-  get 'amenities/destroy'
+  # get 'amenities/destroy'
 
-  get 'pages/home'
+  # get 'pages/home'
 
    root to: "pages#home"
 
@@ -72,6 +72,7 @@ Rails.application.routes.draw do
   mount Attachinary::Engine => "/attachinary"
 
 #  resources :users do
+  resources :conversations
 
   resources :profiles do
     resources :bookings, except: [:new ,:create] do
