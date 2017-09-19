@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate_user!
+
   include Pundit
   # give you a whole new bunch of methods - "include" means include the module
   # int he class, including mainly 'autorize'
@@ -33,4 +34,6 @@ class ApplicationController < ActionController::Base
   end
   # if you are in the device controller --> device is a whole world
   # pundit only works with controllers
+
+
 end
