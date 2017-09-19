@@ -18,9 +18,8 @@ class Venue < ApplicationRecord
   validates :categories, presence: true
   validates :description, presence: true
   validates :price, presence: true
-  validates :categories, presence: true
   validates :amenities, presence: true
-  has_attachment :photo
+  has_attachments :photos, maximum: 10;
 
    geocoded_by :location
   after_validation :geocode, if: :location_changed?

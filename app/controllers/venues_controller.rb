@@ -27,6 +27,7 @@ class VenuesController < ApplicationController
   end
 
   def new
+    @profile = current_user.profile
     @venue = Venue.new
   end
 
@@ -60,6 +61,6 @@ class VenuesController < ApplicationController
   end
 
   def venue_params
-    params.require(:venue).permit(:name, :capacity, :location, :description, :price, :user_id, :photo, :categories => [], :amenities => [])
+    params.require(:venue).permit(:name, :capacity, :location, :description, :price, :user_id, :photos => [], :categories => [], :amenities => [])
   end
 end
