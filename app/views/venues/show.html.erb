@@ -1,3 +1,4 @@
+
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -20,7 +21,8 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "HelveticaNeue-Light"}
     <h6>per hour</h6>
     <hr>
 
-      <%=simple_form_for([@venue, @booking]) do |f| %>
+
+      <%=simple_form_for @booking,:url => venue_bookings_path(:venue_id => params[:id], :method => :post) do |f| %>
 
       <p><label><i class="fa fa-clock-o"></i> Number of hours:</label></p>
       <%= f.number_field :hours, class: "w3-input w3-border", style: "color: black"%>

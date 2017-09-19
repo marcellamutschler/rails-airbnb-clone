@@ -23,6 +23,7 @@ class VenuesController < ApplicationController
   end
 
   def new
+    @profile = current_user.profile
     @venue = Venue.new
   end
 
