@@ -1,6 +1,6 @@
 class VenuesController < ApplicationController
   before_action :set_venue, only: [:show, :edit, :update, :destroy]
-  skip_before_action :authenticate_user! [:show, :index]
+  skip_before_action :authenticate_user!, only: [:show, :index]
   # logging in and out
 
   def index
@@ -33,7 +33,7 @@ class VenuesController < ApplicationController
 
   def new
     @venue = Venue.new
-    authorize @venues
+    authorize @venue
   end
 
   def create
@@ -44,7 +44,7 @@ class VenuesController < ApplicationController
     else
       render :new
     end
-    authorize @venues
+    authorize @venue
   end
 
   def edit
