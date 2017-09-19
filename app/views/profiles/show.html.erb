@@ -5,7 +5,13 @@
 
         <div class="profile-header-infos">
 
-           <% avatar_url = current_user.facebook_picture_url || "https://material-components-web.appspot.com/images/animal1.svg" %>
+        <% if current_user.profile.photo? %>
+          <%  avatar_url = cl_image_path current_user.profile.photo.path %>
+        <% elsif current_user.facebook_picture_url.present? %>
+          <% avatar_url = image_path  current_user.facebook_picture_url  %>
+          <% else %>
+          <% avatar_url = "https://material-components-web.appspot.com/images/animal1.svg" %>
+          <% end %>
            <%= image_tag avatar_url  %>
 
           <h1><%= @profile.first_name %> <%= @profile.last_name %></h1>
