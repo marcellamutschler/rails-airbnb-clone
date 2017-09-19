@@ -12,17 +12,8 @@
 
 ActiveRecord::Schema.define(version: 20170919135000) do
 
-
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "amenities", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "venue_id"
-    t.index ["venue_id"], name: "index_amenities_on_venue_id"
-  end
 
   create_table "attachinary_files", force: :cascade do |t|
     t.string "attachinariable_type"
@@ -138,14 +129,15 @@ ActiveRecord::Schema.define(version: 20170919135000) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
+    t.string "categories", default: [], array: true
+    t.string "amenities", default: [], array: true
     t.string "photo"
     t.float "latitude"
     t.float "longitude"
-    t.string "category"
+    t.integer "wishlist_id"
     t.index ["user_id"], name: "index_venues_on_user_id"
   end
 
-  add_foreign_key "amenities", "venues"
   add_foreign_key "availabilities", "venues"
   add_foreign_key "bookings", "users"
   add_foreign_key "bookings", "venues"

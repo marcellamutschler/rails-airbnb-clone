@@ -14,7 +14,19 @@ class VenuesController < ApplicationController
    end
 
   def show
+
     @hash = [{ lat: @venue.latitude, lng: @venue.longitude }]
+    @booking = Booking.new
+    @venue.categories.delete_at(0)
+    @venue.amenities.delete_at(0)
+    @new_array_categories = @venue.categories
+    @new_array_amenities = @venue.amenities
+    if @venue.geocoded?
+     @hash = Gmaps4rails.build_markers(@venue) do |venue, marker|
+        marker.lat venue.latitude
+        marker.lng venue.longitude
+      end.flatten
+    end
   end
 
   def new
@@ -25,7 +37,7 @@ class VenuesController < ApplicationController
   def create
     @venue = Venue.new(venue_params)
     @venue.user = current_user
-    if @venue.save!
+    if @venue.save
       redirect_to venue_path(@venue)
     else
       render :new
@@ -56,6 +68,8 @@ class VenuesController < ApplicationController
   end
 
   def venue_params
-    params.require(:venue).permit(:name, :capacity, :location, :category, :description, :price, :user_id, :photo)
+
+    params.require(:venue).permit(:name, :capacity, :location, :description, :price, :user_id, :photos => [], :categories => [], :amenities => [])
+
   end
 end
