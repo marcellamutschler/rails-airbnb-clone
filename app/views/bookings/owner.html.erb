@@ -10,9 +10,17 @@
   <%= venue.name %> - <%= venue.location %>
    </li>
    <% venue.bookings.each do |booking| %>
-   <%= booking.id %>
-   <p> booked by <%= booking.user.email %></p>
-   <%= booking.status %>, <%= link_to "Accept", accept_profile_booking_path(@profile, booking) %> <%= link_to "Decline", decline_profile_booking_path(@profile, booking) %>
+      <p> booked by booking.user.profile.first_name
+        <br>
+        <%= link_to profile_path(booking.user.profile) do %>
+
+        <%#@ mettre avatar %>
+        <%= image_tag ..... %>
+
+        <% end %>
+      <%= booking.status %>,
+      <%= link_to "Accept", accept_profile_booking_path(@profile, booking) %>
+      <%= link_to "Decline", decline_profile_booking_path(@profile, booking) %>
    <%= booking.total_price %> €
 
     <ul>

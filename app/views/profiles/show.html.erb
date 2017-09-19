@@ -12,10 +12,11 @@
 
           <h2>Bio: <%= @profile.bio %></h2>
 
-
+          <% if current_user == @profile.user %>
           <%= link_to edit_profile_path do %>
             <h2>Edit <i class="fa fa-pencil-square-o" aria-hidden="true"></i></h2>
             <% end %>
+
 
         </div>
         <div class="tabs">
@@ -72,6 +73,12 @@
 
   <%= link_to "Bookings for your places", owner_bookings_profile_bookings_path(@profile), class: "btn-normal" %>
 
+
+
+
   <%= link_to "List Your Venue", new_venue_path, class: "btn-red"%>
+  +<% end %>
     </div>
+
+
   </div>

@@ -1,5 +1,7 @@
 class VenuesController < ApplicationController
   before_action :set_venue, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authenticate_user! [:show, :index]
+  # logging in and out
 
   def index
     @venues = Venue.all
@@ -8,6 +10,7 @@ class VenuesController < ApplicationController
       marker.lat venue.latitude
       marker.lng venue.longitude
       end
+    @venues = policy_scope(Venue)
    end
 
   def show
@@ -16,6 +19,7 @@ class VenuesController < ApplicationController
 
   def new
     @venue = Venue.new
+    authorize @venues
   end
 
   def create
@@ -26,6 +30,7 @@ class VenuesController < ApplicationController
     else
       render :new
     end
+    authorize @venues
   end
 
   def edit
@@ -45,6 +50,9 @@ class VenuesController < ApplicationController
 
   def set_venue
     @venue = Venue.find(params[:id])
+
+
+
   end
 
   def venue_params
