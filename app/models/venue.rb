@@ -4,7 +4,8 @@ class Venue < ApplicationRecord
   belongs_to :user
   has_many :bookmarks
   has_many :bookmarked_users, through: :bookmarks, source: :user
-  has_many :bookings  has_many :availabilities
+  has_many :bookings
+  has_many :availabilities
   has_many :reviews
   has_many :conversations
 
@@ -18,7 +19,7 @@ class Venue < ApplicationRecord
   validates :description, presence: true
   validates :price, presence: true
   validates :amenities, presence: true
-  has_attachments :photos, maximum: 10;
+  has_attachments :photos, maximum: 10
 
    geocoded_by :location
   after_validation :geocode, if: :location_changed?

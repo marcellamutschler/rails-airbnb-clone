@@ -10,8 +10,9 @@
   <%= venue.name %> - <%= venue.location %>
    </li>
    <% venue.bookings.each do |booking| %>
-   <%= booking.id %>
-   <p> booked by <%= booking.user.email %></p>
+   <% raise %>
+
+   <p> booked by <%= booking.user.email %> for <%= booking.hours %> hours on <%= booking.start_date %></p>
    <%= booking.status %>, <%= link_to "Accept", accept_profile_booking_path(@profile, booking) %> <%= link_to "Decline", decline_profile_booking_path(@profile, booking) %>
    <%= booking.total_price %> €
     <ul>
@@ -23,7 +24,5 @@
 <% end %>
 <% end %>
 
-
-the date of the booking
 
 
