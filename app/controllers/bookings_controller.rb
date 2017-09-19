@@ -5,15 +5,14 @@ class BookingsController < ApplicationController
 
   def index
     @bookings = current_user.bookings
-
+    @bookings = policy_scope(Booking)
   end
 
   def show
-
   end
 
   def new
-    @booking = Booking.new
+     @booking = Booking.new
   end
 
   def create
@@ -21,9 +20,8 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.venue = @venue
     @booking.user = current_user
-    #@booking.start_date = booking_params[:start_date].to_datetime
 
-    @booking.total_price = booking_params[:hours].to_i*@venue.price
+    @booking.total_price = (params[:booking][:hours]).to_i*@venue.price
 
 
     if @venue.save &&  @booking.save
@@ -76,9 +74,10 @@ class BookingsController < ApplicationController
 
   def set_booking
     @booking = Booking.find(params[:id])
+    authorize @booking
   end
 
   def booking_params
-    params.require(:booking).permit(:status, :total_price, :hours, :start_date, :user_id, :venue_id)
+    params.require(:booking).permit(:status, :total_price, :user_id, :venue_id)
   end
 end
