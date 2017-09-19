@@ -1,9 +1,10 @@
 class Venue < ApplicationRecord
+  CATEGORIES =  ['Wedding', 'Party', 'Baptism', 'Workshop', 'Trainings', 'Social Event', 'Desk Rentals', 'Conferences', 'Launch Event', 'Business Meeting', 'Birthday', 'Photo Shoot', 'Film Shoot', 'Concert', 'Get-Together', 'Other']
+  AMENITIES = ['Kitchen', 'Tables', 'Wifi', 'TV', 'Elevator', 'Catering', 'Mics', 'Whiteboard', 'Sound System', 'Flipchart', 'Stage', 'Green Screen', 'Coffee', 'Parking Space', 'Rest Rooms', 'Printer', 'Rooftop', 'Balcony', 'Garden', 'Dressing Room', 'Natural Light']
   belongs_to :user
   has_many :bookmarks
   has_many :bookmarked_users, through: :bookmarks, source: :user
   has_many :bookings
-  has_many :amenities
   has_many :availabilities
   has_many :reviews
   has_many :conversations
@@ -14,10 +15,11 @@ class Venue < ApplicationRecord
   validates :name, presence: true
   validates :capacity, presence: true
   validates :location, presence: true
-  validates :category, presence: true
+  validates :categories, presence: true
   validates :description, presence: true
   validates :price, presence: true
-  has_attachments :photos, maximum: 5;
+  validates :amenities, presence: true
+  has_attachments :photos, maximum: 10;
 
    geocoded_by :location
   after_validation :geocode, if: :location_changed?

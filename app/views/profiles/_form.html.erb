@@ -7,14 +7,17 @@
       Error: <%= error  %>
     <% end %>
   <% end %>
+
+
   <%= f.input :first_name, placeholder: 'Max' %>
-   <%= f.input :last_name, placeholder: 'Mustermann' %>
+  <%= f.input :last_name, placeholder: 'Mustermann' %>
   <%= f.input :bio, placeholder: 'Write here a few lines about yourself' %>
   <%= f.input :photo, as: :attachinary %>
 
 
 
   <%= f.submit 'Submit', class: 'btn-red' %>
+
 <% end %>
 
 
