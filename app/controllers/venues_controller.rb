@@ -17,10 +17,12 @@ class VenuesController < ApplicationController
 
     @hash = [{ lat: @venue.latitude, lng: @venue.longitude }]
     @booking = Booking.new
+    @message = Message.new
     @venue.categories.delete_at(0)
     @venue.amenities.delete_at(0)
     @new_array_categories = @venue.categories
     @new_array_amenities = @venue.amenities
+
     if @venue.geocoded?
      @hash = Gmaps4rails.build_markers(@venue) do |venue, marker|
         marker.lat venue.latitude
