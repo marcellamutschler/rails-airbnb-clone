@@ -4,7 +4,8 @@ class Venue < ApplicationRecord
   belongs_to :user
   has_many :bookmarks
   has_many :bookmarked_users, through: :bookmarks, source: :user
-  has_many :bookings  has_many :availabilities
+  has_many :bookings
+  has_many :availabilities
   has_many :reviews
   has_many :conversations
 

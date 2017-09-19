@@ -2,7 +2,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    raise
   end
 
   def destroy
@@ -24,9 +23,6 @@ class UsersController < ApplicationController
 end
 
 
-
-
-# aller dans view/profiles
 
 
 

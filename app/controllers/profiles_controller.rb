@@ -13,7 +13,6 @@ class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
 
 
-
    def show
     # current_user # will return the user that is logged in
    # @user = User.find(params[:user_id])
@@ -40,9 +39,16 @@ class ProfilesController < ApplicationController
      # user ID - it awzits the matching value
      @profile = Profile.new(profile_params)
      @profile.user = current_user
+
      # you assign the profile to the user its belongs.
-     @profile.save
+
+    if @profile.save
      redirect_to profile_path(@profile)
+    else
+     #du current user = id
+      render :new
+      # si le saving ne marche pas, continue de renviger
+    end
   end
 
   def edit
@@ -50,6 +56,10 @@ class ProfilesController < ApplicationController
   end
 
   def update
+
+  #profile = Profile.find(params[:id]) # we have it
+  #profile.update(profile_params) #you assign the profile to the user its belongs.
+  #redirect_to profile_path(@profile)
     #   @profile = Profile.find(params[:id]) we have it
      if @profile.update(profile_params)
 
@@ -62,7 +72,8 @@ class ProfilesController < ApplicationController
  private
     # Use callbacks to share common setup or constraints between actions.
     def set_profile
-      @profile = current_user.profile
+      @profile = Profile.find(params[:id])
+      #authorize @profile
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
@@ -71,13 +82,11 @@ class ProfilesController < ApplicationController
     end
 
 
-
-end
-
-
 #update info mit form
 #update photo
 # show all
 # show my flats
 
 # formulaire avec nested, ça veut dire 1ere étapge enclenche auto la 2e.
+
+end
