@@ -6,6 +6,10 @@ class User < ApplicationRecord
   has_one :profile
   has_many :bookings
   has_many :venues
+  has_many :reviews
+  has_many :bookmarks
+  has_many :bookmarked_venues, through: :bookmarks, source: :venue
+  #You are calling class_name
   devise :omniauthable, omniauth_providers: [:facebook]
 
 

@@ -3,9 +3,23 @@ class VenuesController < ApplicationController
 
   def index
     @venues = Venue.all
-  end
+    @venues_with_coordinates = Venue.where.not(latitude: nil, longitude: nil)
+    @hash = Gmaps4rails.build_markers(@venues_with_coordinates) do |venue, marker|
+      marker.lat venue.latitude
+      marker.lng venue.longitude
+      end
+   end
 
   def show
+
+    @booking = Booking.new
+    if @venue.geocoded?
+     @hash = Gmaps4rails.build_markers(@venue) do |venue, marker|
+        marker.lat venue.latitude
+        marker.lng venue.longitude
+      end.flatten
+    end
+
   end
 
   def new
@@ -13,7 +27,6 @@ class VenuesController < ApplicationController
   end
 
   def create
-
     @venue = Venue.new(venue_params)
     @venue.user = current_user
     if @venue.save!
@@ -43,6 +56,6 @@ class VenuesController < ApplicationController
   end
 
   def venue_params
-    params.require(:venue).permit(:name, :capacity, :location, :description, :price, :user_id, :photo)
+    params.require(:venue).permit(:name, :capacity, :location, :category, :description, :price, :user_id, photos: [])
   end
 end
