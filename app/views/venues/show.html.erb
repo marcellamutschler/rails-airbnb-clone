@@ -199,12 +199,11 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "HelveticaNeue-Light"}
   <div class="w3-container" id="contact">
     <h4><strong>Contact</strong></h4>
     <p>Do you have any questions concerning the location? <br>Go ahead and ask the owner:</p><br>
-    <form action="/action_page.php" target="_blank">
-      <p><label>Your name:</label><input class="w3-input w3-border" style="color: black" type="text" required name="Name"></p>
-      <p><label>Your E-Mail:</label><input class="w3-input w3-border" style="color: black" type="text" required name="Email"></p>
-      <p><label>Your Message:</label><input class="w3-input w3-border" style="color: black" type="text" required name="Message"></p>
-    <button type="submit" class="btn-red">Send</button>
-    </form>
+    <%= simple_form_for(@message, url: conversations_path, html: {method: :post}) do |f| %>
+      <%= f.input :content, class: "w3-input w3-border" %>
+      <%= f.hidden_field :venue_id, value: @venue.id %>
+      <%= f.submit "send", class: "btn-red" %>
+    <% end %>
   </div>
 
 

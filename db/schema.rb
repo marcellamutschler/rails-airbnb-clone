@@ -128,12 +128,16 @@ ActiveRecord::Schema.define(version: 20170919145407) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+
     t.string "name"
     t.string "photo"
-    t.string "categories", default: [], array: true
-    t.string "amenities", default: [], array: true
+
+
+
     t.float "latitude"
     t.float "longitude"
+    t.string "categories", default: [], array: true
+    t.string "amenities", default: [], array: true
     t.index ["user_id"], name: "index_venues_on_user_id"
   end
 
