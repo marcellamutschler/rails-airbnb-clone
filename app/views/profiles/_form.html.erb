@@ -1,6 +1,7 @@
 
 <%= simple_form_for(@profile) do |f| %>
 
+
   <% if @profile.errors %>
     <% @profile.errors.messages.each do |error|  %>
       Error: <%= error  %>
