@@ -11,11 +11,12 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "HelveticaNeue-Light"}
 <!-- Sidebar/menu -->
 <nav class="w3-sidebar w3-light-grey w3-collapse" style="z-index:3;width:260px" id="mySidebar">
 
-  <br><%= link_to 'Back to all Venues', venues_path, class: "btn-normal" %>
+
 
   <div class="w3-container" id="apartment">
   <div class="w3-container w3-display-container w3-padding-16">
     <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-transparent w3-display-topright"></i>
+    <hr>
     <h3>Book this location</h3>
     <h3>for <%= @venue.price %> € <br></h3>
     <h6>per hour</h6>
@@ -38,24 +39,11 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "HelveticaNeue-Light"}
 
       <%= f.submit class: "btn-red w3-block" %>
       <% end %>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      <div class="btn-red w3-block">
+      <p> Add to Wishlist </p>
+      </div>
+      <br><%= link_to 'Back to all Venues', venues_path, class: "btn-normal w3-block" %>
 <!--
-
-
 
     <form action="/action_page.php" target="_blank">
       <p><label><i class="fa fa-calendar-check-o"></i> Start Date</label></p>
@@ -99,14 +87,19 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "HelveticaNeue-Light"}
   <div class="w3-hide-large" style="margin-top:80px"></div>
 
   <!-- Slideshow Header -->
+  <hr>
+  <hr>
+  <hr>
+  <hr>
     <div class="w3-display-container">
+    <h2><%= @venue.name %></h2>
+
     <img style="width: 1000px margin-bottom:-6px">
     <% unless @venue.photos.empty? %>
       <%= cl_image_tag @venue.photos.first.path, width: 719%>
     <% end %>
     </img>
       <div class="w3-display-bottomleft w3-container" style="background-color: #DE1A1A; opacity: 0.9; color: white; width: 500px">
-        <h2><%= @venue.name %></h2><%= @venue.location %>
       </div>
     </div>
     <br>
@@ -129,29 +122,37 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "HelveticaNeue-Light"}
     </div>
     <hr>
 
-    <h4><strong>Amenities</strong></h4>
+    <h4><strong>The following Amenities are available at the location:</strong></h4>
     <div class="w3-row w3-large">
       <div class="w3-col s6">
-        <p><i class="fa fa-fw fa-wifi"></i> WiFi</p>
+      <% @new_array_amenities.each do |amenity| %>
+        <p><i class="fa fa-dot-circle-o"></i> <%= amenity %></p>
+      <% end %>
+        <!-- <p><i class="fa fa-circle"></i> WiFi</p>
         <p><i class="fa fa-fw fa-tv"></i> TV</p>
       </div>
       <div class="w3-col s6">
         <p><i class="fa fa-fw fa-cutlery"></i> Kitchen</p>
         <p><i class="fa fa-fw fa-wheelchair"></i> Accessible</p>
-      </div>
+      </div> -->
     </div>
+    </div>
+    <p>Please contact the host to ask for additional amenities.</p>
     <hr>
 
-    <h4><strong>Possible Events</strong></h4>
+    <h4><strong>This event is perfect for a...</strong></h4>
     <div class="w3-row w3-large">
       <div class="w3-col s6">
-        <p><i class="fa fa-birthday-cake"></i> <%= @venue.category %></p>
-        <p><i class="fa fa-glass"></i> Wedding</p>
-      </div>
-      <div class="w3-col s6">
-        <p><i class="fa fa-fw fa-cutlery"></i> Dinner</p>
-        <p><i class="fa fa-users"></i> Get-Together</p>
-      </div>
+      <% @new_array_categories.each do |category| %>
+        <p><i class="fa fa-dot-circle-o"></i> <%= category %></p>
+      <% end %>
+
+<!--         <p><i class="fa fa-circle"></i> Wedding </p>
+ -->      </div>
+     <!--  <div class="w3-col s6">
+        <p><i class="fa fa-circle"></i> Birthday </p>
+        <p><i class="fa fa-circle"></i> Get-Together</p>
+      </div> -->
     </div>
     <hr>
 
@@ -161,11 +162,12 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "HelveticaNeue-Light"}
 
     <hr>
 
-    <h4><strong>Rules</strong></h4>
+    <!-- <h4><strong>Rules</strong></h4>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-    <hr>
+    <hr> -->
 
-    <h4><strong>Location</strong></h4>
+    <h4><strong>Location: <%= @venue.location %></strong></h4>
+
       <div id="map" style="width: 100%; height: 600px;"></div>
 
       <% content_for(:after_js) do %>
