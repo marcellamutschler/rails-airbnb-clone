@@ -11,9 +11,9 @@
 
 
 <body>
-
  <%= render 'shared/navbar' unless current_page?('/') %>
  <%= render 'shared/flashes' %>
+
 
  <%= yield %>
 
@@ -30,6 +30,7 @@
  <!--  appelle juste le JS de notre map -->
 
  <%= cloudinary_js_config %> <!-- Append this after the main `javascript_include_tag`. -->
+ <%= render 'shared/footer' %>
 
 </body>
 </html>
