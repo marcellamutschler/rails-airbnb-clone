@@ -26,12 +26,19 @@
           <option value="Presentation">Presentation</option>
           <option value="Conference">Conference</option>
           <option value="Workshop">Workshop</option>
-
       </select>
+<!--
+       <select>
+          <#%= f.collection_select name="Location" placeholder="Where?" style = "border: 1px grey; padding: 7px 20px;
+            city.all
+            "%>
+        </select> -->
 
-        <input type="text" name="Location" placeholder="Where?" style = "border: 1px grey; padding: 7px 20px;">
 
 
+<%= form_tag(venues_path, :method => 'get') do %>
+<%= select_tag :city, options_for_select(@cities)  %>
+<% end %>
 
         <%= link_to "Search", venues_path, class: "btn-red" %>
 

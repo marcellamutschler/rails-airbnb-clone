@@ -5,6 +5,8 @@ class VenuesController < ApplicationController
 
   def index
     @venues = Venue.all
+      # si on mettait un raise ici, cela nous donnerait quand meme
+      #l'accès à l'élément juste au dessus.
     @venues_with_coordinates = Venue.where.not(latitude: nil, longitude: nil)
     @hash = Gmaps4rails.build_markers(@venues_with_coordinates) do |venue, marker|
       marker.lat venue.latitude
