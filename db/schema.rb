@@ -10,18 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170918161328) do
+ActiveRecord::Schema.define(version: 20170920094540) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "amenities", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "venue_id"
-    t.index ["venue_id"], name: "index_amenities_on_venue_id"
-  end
 
   create_table "attachinary_files", force: :cascade do |t|
     t.string "attachinariable_type"
@@ -61,12 +53,37 @@ ActiveRecord::Schema.define(version: 20170918161328) do
   end
 
   create_table "bookmarks", force: :cascade do |t|
-    t.bigint "venue_id"
-    t.bigint "user_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_bookmarks_on_user_id"
-    t.index ["venue_id"], name: "index_bookmarks_on_venue_id"
+    t.integer "venue_id"
+  end
+
+  create_table "conversations", force: :cascade do |t|
+    t.integer "owner_id"
+    t.integer "booker_id"
+    t.integer "venue_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "flats", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.float "latitude"
+    t.float "longitude"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.bigint "conversation_id"
+    t.text "content"
+    t.boolean "read", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -76,6 +93,7 @@ ActiveRecord::Schema.define(version: 20170918161328) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "photo"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
@@ -83,7 +101,9 @@ ActiveRecord::Schema.define(version: 20170918161328) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
-    t.integer "venue_id"
+    t.string "review_text"
+    t.integer "review_rating"
+    t.integer "booking_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -119,25 +139,18 @@ ActiveRecord::Schema.define(version: 20170918161328) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "photo"
     t.string "name"
+    t.string "photo"
     t.float "latitude"
     t.float "longitude"
-    t.string "category"
-    t.float "latitude"
-    t.float "longitude"
-    t.string "category"
-    t.integer "wishlist_id"
-
+    t.string "categories", default: [], array: true
+    t.string "amenities", default: [], array: true
     t.index ["user_id"], name: "index_venues_on_user_id"
   end
 
-  add_foreign_key "amenities", "venues"
   add_foreign_key "availabilities", "venues"
   add_foreign_key "bookings", "users"
   add_foreign_key "bookings", "venues"
-  add_foreign_key "bookmarks", "users"
-  add_foreign_key "bookmarks", "venues"
   add_foreign_key "profiles", "users"
   add_foreign_key "venues", "users"
 end
