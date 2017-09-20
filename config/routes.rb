@@ -84,6 +84,7 @@ Rails.application.routes.draw do
         get 'decline', to: "bookings#decline", as: 'decline'
       end
     end
+    get 'myvenues'
   end
     # ici on parle de 2 méthodes
     #génére  toutes les routes mais emt profile au singulier
