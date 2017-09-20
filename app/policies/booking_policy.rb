@@ -1,13 +1,22 @@
 class BookingPolicy < ApplicationPolicy
   class Scope < Scope
+
     def resolve
-      scope.all
+      scope.where(user: user)
     end
+  end
 
     def create?
       return true
     end
 
+    def accept?
+      is_owner?
+    end
+
+    def decline?
+      is_owner?
+    end
 
     def update?
       return false
@@ -21,5 +30,8 @@ class BookingPolicy < ApplicationPolicy
       false
     end
 
-  end
+    def is_owner?
+      user == record.owner
+    end
+
 end
