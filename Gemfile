@@ -27,6 +27,8 @@ gem 'figaro'
 gem 'bootstrap-datepicker-rails'
 gem "geocoder"
 
+gem 'faker'
+
 
 gem "coffee-rails"
 gem "gmaps4rails"

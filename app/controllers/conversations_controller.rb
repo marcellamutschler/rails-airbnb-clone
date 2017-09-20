@@ -1,7 +1,7 @@
 class ConversationsController < ApplicationController
 
   def index
-    @conversations = Conversation.where("owner_id = ? or booker_id = ?", current_user, current_user)
+    @conversations = policy_scope(Conversation).order(created_at: :desc)
   end
 
   def create
@@ -12,7 +12,7 @@ class ConversationsController < ApplicationController
     @conversation.owner = @owner
     @conversation.booker = current_user
     @conversation.venue = @venue
-
+    authorize @conversation
 
     @message = Message.new(content: message_params[:content])
     @message.user = current_user

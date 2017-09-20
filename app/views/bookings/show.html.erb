@@ -8,6 +8,7 @@ was successful</h2>
 <li> Date: <%= @booking.start_date.to_date %></li>
 <li> Total numbers of hours: <%= @booking.hours %></li>
 <li> Total price: <%= @booking.total_price %></li>
+<li> Status: <%= @booking.status %></li>
 <hr>
 
   <%= link_to "Edit your booking",  edit_profile_booking_path(@booking), class: "btn-red w3-block"%>

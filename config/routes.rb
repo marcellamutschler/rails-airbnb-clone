@@ -67,6 +67,7 @@ Rails.application.routes.draw do
   resources :venues do
     resources :bookings, only: [:new ,:create]
     # creermoi toutes les routes
+  resources :reviews, only: [:index]
   end
 
   mount Attachinary::Engine => "/attachinary"
@@ -79,12 +80,15 @@ Rails.application.routes.draw do
       collection do
         get 'owner', to: "bookings#owner", as: 'owner_bookings'
       end
+
       member do
         get 'accept', to: "bookings#accept", as: 'accept'
         get 'decline', to: "bookings#decline", as: 'decline'
       end
+        resources :reviews, except:[:index]
     end
     get 'myvenues'
+
   end
     # ici on parle de 2 méthodes
     #génére  toutes les routes mais emt profile au singulier
