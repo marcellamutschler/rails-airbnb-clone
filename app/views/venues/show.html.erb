@@ -43,32 +43,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "HelveticaNeue-Light"}
         </div>
       <% end %>
       <br><%= link_to 'Back to all Venues', venues_path, class: "btn-normal w3-block" %>
-<!--
 
-    <form action="/action_page.php" target="_blank">
-      <p><label><i class="fa fa-calendar-check-o"></i> Start Date</label></p>
-      <input class="w3-input w3-border" style="color: black" type="text" placeholder="DD MM YYYY" name="CheckIn" required>
-      <br>
-      <p><label><i class="fa fa-clock-o"></i> Start Time</label></p>
-      <input class="w3-input w3-border" style="color: black" type="text" placeholder="HH:MM AM/PM" name="CheckIn" required>
-      <br>
-      <br>
-      <p><label><i class="fa fa-calendar-times-o"></i> End Date</label></p>
-      <input class="w3-input w3-border" style="color: black" type="text" placeholder="DD MM YYYY" name="CheckOut" required>
-      <br>
-      <p><label><i class="fa fa-clock-o"></i> End Time</label></p>
-      <input class="w3-input w3-border" style="color: black" type="text" placeholder="HH:MM AM/PM" name="CheckOut" required>
-      <br>
-
-      <p><button class="btn-red w3-block" type="submit"></i> Book this Venue</button></p>
-    </form>
-  </div> -->
-
-
- <!--  <div class="w3-bar-block">
-    <a href="#apartment" class="w3-bar-item w3-button w3-padding-16"><i class="fa fa-building"></i> Apartment</a>
-    <a href="#contact" class="w3-bar-item w3-button w3-padding-16"><i class="fa fa-envelope"></i> Contact the owner</a>
-  </div> -->
 </nav>
 
 <!-- Top menu on small screens -->
@@ -162,9 +137,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "HelveticaNeue-Light"}
 
     <hr>
 
-    <!-- <h4><strong>Rules</strong></h4>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-    <hr> -->
+
 
     <h4><strong>Location: <%= @venue.location %></strong></h4>
 
@@ -193,7 +166,10 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "HelveticaNeue-Light"}
       <hr>
 
     <h4><strong>Reviews</strong></h4>
-      <li><i class="fa fa-star" class= "fa fa-star"></i> Here will be the reviews</li>
+      <% @venue_reviews.each do |review| %>
+      <li><%= review.review_rating %>/5 stars -  <%= review.user.profile.first_name %>s Review: <%= review.review_text %> </li>
+
+      <% end %>
 
   </div>
 
@@ -201,7 +177,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "HelveticaNeue-Light"}
   <!-- Contact -->
   <div class="w3-container" id="contact">
     <h4><strong>Contact</strong></h4>
-    <p>Do you have any questions concerning the location? <br>Go ahead and ask the owner:</p><br>
+    <p>Do you have any questions or concerns? <br>Please text the host here:</p><br>
     <%= simple_form_for(@message, url: conversations_path, html: {method: :post}) do |f| %>
       <%= f.input :content, class: "w3-input w3-border" %>
       <%= f.hidden_field :venue_id, value: @venue.id %>
@@ -213,19 +189,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "HelveticaNeue-Light"}
 <!-- End page content -->
 </div>
 
-<!-- Subscribe Modal -->
-<div id="subscribe" class="w3-modal">
-  <div class="w3-modal-content w3-animate-zoom w3-padding-large">
-    <div class="w3-container w3-white w3-center">
-      <i onclick="document.getElementById('subscribe').style.display='none'" class="fa fa-remove w3-button w3-xlarge w3-right w3-transparent"></i>
-      <h2 class="w3-wide">SUBSCRIBE</h2>
-      <p>Join our mailing list to receive updates on available dates and special offers.</p>
-      <p><input class="w3-input w3-border" type="text" placeholder="Enter e-mail"></p>
-      <button type="button" class="w3-button w3-padding-large w3-green w3-margin-bottom" onclick="document.getElementById('subscribe').style.display='none'">Subscribe</button>
-    </div>
 
-  </div>
-</div>
 
 </body>
 

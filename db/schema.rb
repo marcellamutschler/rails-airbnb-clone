@@ -93,7 +93,9 @@ ActiveRecord::Schema.define(version: 20170920131943) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
-    t.integer "venue_id"
+    t.string "review_text"
+    t.integer "review_rating"
+    t.integer "booking_id"
   end
 
   create_table "users", force: :cascade do |t|
