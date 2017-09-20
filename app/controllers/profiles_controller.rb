@@ -31,6 +31,7 @@ class ProfilesController < ApplicationController
 
   def new
      @profile = Profile.new
+     authorize @profile
   end
 
   def create
@@ -39,6 +40,7 @@ class ProfilesController < ApplicationController
      # user ID - it awzits the matching value
      @profile = Profile.new(profile_params)
      @profile.user = current_user
+     authorize @profile
 
      # you assign the profile to the user its belongs.
 
@@ -58,7 +60,8 @@ class ProfilesController < ApplicationController
   def update
 
   #profile = Profile.find(params[:id]) # we have it
-  #profile.update(profile_params) #you assign the profile to the user its belongs.
+  #profile.update(profile_params)
+  #you assign the profile to the user its belongs.
   #redirect_to profile_path(@profile)
     #   @profile = Profile.find(params[:id]) we have it
      if @profile.update(profile_params)
@@ -70,13 +73,14 @@ class ProfilesController < ApplicationController
 
   def myvenues
     @profile = current_user.profile
+    authorize @profile
   end
 
  private
     # Use callbacks to share common setup or constraints between actions.
     def set_profile
       @profile = Profile.find(params[:id])
-      #authorize @profile
+      authorize @profile
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

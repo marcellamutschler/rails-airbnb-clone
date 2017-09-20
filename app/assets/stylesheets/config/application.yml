@@ -6,3 +6,4 @@ production:
   FB_SECRET: "9325641fdb0c6300604c9457b400fbed"
 
 CLOUDINARY_URL: "cloudinary://345813544865973:EyR3-WXdPtBBCjJiFS3e-1-7NLg@celianoemi"
+

@@ -3,12 +3,17 @@ class ProfilePolicy < ApplicationPolicy
     def resolve
       scope
     end
+  end
 
     def show?
       true
       # record.user == user
        # Anyone can view a profile
        # current user = profile.uqer
+    end
+
+    def new?
+      true
     end
 
     def create?
@@ -21,6 +26,10 @@ class ProfilePolicy < ApplicationPolicy
     # - user:   the `current_user` signed in with Devise.
     end
 
+    def myvenues?
+      true
+    end
+
     def edit?
       update?
     end
@@ -28,6 +37,10 @@ class ProfilePolicy < ApplicationPolicy
     def destroy?
       record.user == user
     end
-
   end
+
+    def myvenues?
+      record.user == user
+    end
+
 end

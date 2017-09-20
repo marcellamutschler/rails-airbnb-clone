@@ -1,5 +1,7 @@
 
 Rails.application.routes.draw do
+
+
   # get 'wishlists/index'
 
   # get 'wishlists/show'
@@ -71,7 +73,7 @@ Rails.application.routes.draw do
   end
 
   mount Attachinary::Engine => "/attachinary"
-
+  resources :bookmarks, only: [:index, :create, :update, :destroy]
 #  resources :users do
   resources :conversations, only: [:create, :index, :show] do
     resources :messages, only: [:create]
@@ -89,7 +91,8 @@ Rails.application.routes.draw do
       end
         resources :reviews, except:[:index]
     end
-    get "profiles/myvenues"
+    get 'myvenues'
+
   end
     # ici on parle de 2 méthodes
     #génére  toutes les routes mais emt profile au singulier

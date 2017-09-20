@@ -5,7 +5,11 @@ class MessagesController < ApplicationController
     @message.conversation = @conversation
     @message.user = current_user
 
-    @message.save
+    authorize @conversation
+
+    if @message.save
+      redirect_to conversation_path(@conversation)
+    end
   end
 
   private
@@ -13,5 +17,4 @@ class MessagesController < ApplicationController
   def message_params
     params.require(:message).permit(:content)
   end
-
 end
