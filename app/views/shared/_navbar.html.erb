@@ -60,7 +60,8 @@
       </li>
 
       <li>
-        <%= link_to profile_profiles_myvenues_path(current_user.profile) do %>
+        <%= link_to profile_myvenues_path(current_user.profile) do %>
+
         <i class="fa fa-home"></i>  <%= t(".bookings", default: "Your Venues") %>
         <% end %>
       </li>
@@ -78,7 +79,7 @@
       </li>
 
       <li>
-        <%= link_to venues_path do %>
+        <%= link_to bookmarks_path do %>
         <i class="fa fa-heart"></i>  <%= t(".venues", default: "Your Wishlist") %>
         <% end %>
       </li>
