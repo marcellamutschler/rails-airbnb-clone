@@ -71,6 +71,7 @@ class ProfilesController < ApplicationController
 
   def myvenues
     @profile = current_user.profile
+    authorize @profile
   end
 
  private

@@ -30,4 +30,8 @@ class ProfilePolicy < ApplicationPolicy
     end
 
   end
+
+    def myvenues?
+      record.user == user
+    end
 end

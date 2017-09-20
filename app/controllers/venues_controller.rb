@@ -18,6 +18,7 @@ class VenuesController < ApplicationController
     @hash = [{ lat: @venue.latitude, lng: @venue.longitude }]
     @booking = Booking.new
     @message = Message.new
+    @bookmark = Bookmark.new
     @venue.categories.delete_at(0)
     @venue.amenities.delete_at(0)
     @new_array_categories = @venue.categories

@@ -1,5 +1,7 @@
 
 Rails.application.routes.draw do
+
+
   # get 'wishlists/index'
 
   # get 'wishlists/show'
@@ -71,7 +73,7 @@ Rails.application.routes.draw do
   end
 
   mount Attachinary::Engine => "/attachinary"
-
+  resources :bookmarks, only: [:index, :create, :update, :destroy]
 #  resources :users do
   resources :conversations
 
