@@ -36,9 +36,12 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "HelveticaNeue-Light"}
 
       <%= f.submit class: "btn-red w3-block" %>
       <% end %>
-      <div class="btn-red w3-block">
-      <p> Add to Wishlist </p>
-      </div>
+      <%= simple_form_for(@bookmark, url: bookmarks_path, html: {method: :post}) do |f| %>
+        <%= f.hidden_field :venue_id, value: @venue.id %>
+        <div class="btn-red w3-block">
+          <%= f.submit "Add to your Wishlist" %>
+        </div>
+      <% end %>
       <br><%= link_to 'Back to all Venues', venues_path, class: "btn-normal w3-block" %>
 
 </nav>

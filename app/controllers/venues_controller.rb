@@ -7,6 +7,8 @@ class VenuesController < ApplicationController
 
   def index
     @venues = Venue.all
+      # si on mettait un raise ici, cela nous donnerait quand meme
+      #l'accès à l'élément juste au dessus.
     @venues_with_coordinates = Venue.where.not(latitude: nil, longitude: nil)
     @hash = Gmaps4rails.build_markers(@venues_with_coordinates) do |venue, marker|
       marker.lat venue.latitude
@@ -20,6 +22,7 @@ class VenuesController < ApplicationController
     @hash = [{ lat: @venue.latitude, lng: @venue.longitude }]
     @booking = Booking.new
     @message = Message.new
+    @bookmark = Bookmark.new
     @venue.categories.delete_at(0)
     @venue.amenities.delete_at(0)
     @new_array_categories = @venue.categories

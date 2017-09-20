@@ -1,0 +1,9 @@
+<h1>All your listings</h1>
+<% @profile.user.venues.each do |venue| %>
+Name: <%= venue.name %>,
+Location: <%= venue.location %>,
+Price: <%= venue.price %>,
+<%= cl_image_tag venue.photos.first.path %>
+<p>Add here further details</p>
+<% end %>
+
