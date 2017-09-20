@@ -1,10 +1,14 @@
 class VenuesController < ApplicationController
   before_action :set_venue, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:show, :index]
+  before_action :find_reviews, only: [:show]
+
   # logging in and out
 
   def index
     @venues = Venue.all
+      # si on mettait un raise ici, cela nous donnerait quand meme
+      #l'accès à l'élément juste au dessus.
     @venues_with_coordinates = Venue.where.not(latitude: nil, longitude: nil)
     @hash = Gmaps4rails.build_markers(@venues_with_coordinates) do |venue, marker|
       marker.lat venue.latitude
@@ -18,6 +22,7 @@ class VenuesController < ApplicationController
     @hash = [{ lat: @venue.latitude, lng: @venue.longitude }]
     @booking = Booking.new
     @message = Message.new
+    @bookmark = Bookmark.new
     @venue.categories.delete_at(0)
     @venue.amenities.delete_at(0)
     @new_array_categories = @venue.categories
@@ -29,6 +34,7 @@ class VenuesController < ApplicationController
         marker.lng venue.longitude
       end.flatten
     end
+
   end
 
   def new
@@ -60,15 +66,24 @@ class VenuesController < ApplicationController
     redirect_to venues_path
   end
 
+  def find_reviews
+    @bookings = @venue.bookings
+    @venue_reviews = []
+    @bookings.each do |booking|
+      @booking_review = booking.review
+      unless booking.review.nil?
+      @venue_reviews << @booking_review
+      end
+    end
+  end
 
   private
 
   def set_venue
     @venue = Venue.find(params[:id])
     authorize @venue
-
-
   end
+
 
   def venue_params
 
