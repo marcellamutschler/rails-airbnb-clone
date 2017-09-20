@@ -7,4 +7,14 @@ class Conversation < ActiveRecord::Base
 
  has_many :messages
 
+
+  def order_all_messages
+    messages.order(created_at: :desc)
+  end
+
+  def most_recent_message
+    order_all_messages.first
+  end
+
+
 end
