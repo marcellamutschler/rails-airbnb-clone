@@ -1,0 +1,20 @@
+<div class="message" style="margin-top: 60px;">
+  <% if @profile.photo? %>
+          <%= cl_image_tag @profile.photo.path %>
+        <% elsif current_user.facebook_picture_url.present? %>
+          <%= image_tag current_user.facebook_picture_url  %>
+          <% else %>
+          <%= image_tag "https://material-components-web.appspot.com/images/animal1.svg" %>
+          <% end %>
+  <div class="message-name">
+    <h3>Gab Dehan</h3>
+    <p>10/07/17</p>
+  </div>
+  <div class="message-body">
+    <p>
+     <%= @message %>  </p>
+  </div>
+  <div class="message-status">
+    <p class="status pending">Pending</p>
+  </div>
+</div>
