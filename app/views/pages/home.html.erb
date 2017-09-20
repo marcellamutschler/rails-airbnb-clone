@@ -6,21 +6,30 @@
   <div class="navbar-home-right hidden-xs hidden-sm">
   <% if !user_signed_in? %>
 
+  <% if policy(Venue).create? %>
    <%= link_to "List your Venue", new_user_registration_path, class: "btn-navbar"%>
+  <% end %>
 
     <%= link_to "Sign Up", new_user_registration_path, class: "btn-navbar"%>
 
     <%= link_to "Log In", new_user_session_path, class: "btn-navbar"%>
       <% else %>
 
+
+      <% if policy(Venue).create? %>
       <%= link_to "List Your Venue", new_venue_path, class: "btn-red"%>
+      <% end %>
 
-      <% if current_user.profile %>
+   <% if current_user.profile %>
 
-      <%= link_to "Go to Profile", profile_path(current_user.profile), class: "btn-navbar" %>
-      <% else %>
+    <%# if policy(current_user.profile).show? %>
+   <%= link_to "Go to Profile", profile_path(current_user.profile), class: "btn-navbar" %>
+
+
+    <% else %>
+
       <%= link_to "Create Profile", new_profile_path, class: "btn-navbar" %>
-     <% end %>
+    <% end %>
 
 
       <%= link_to destroy_user_session_path, method: :delete do %>
@@ -35,16 +44,15 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://www.homejournal.hk/wp-content/uploads/2016/03/Issaya-Bar.jpg');">
 
   <div class="banner-content">
-    <h1>Find the perfect location for your</h1>
-    <h1 class="typewrite" data-period="2000" data-type='[ "wedding.", "dinner.", "meeting.", "photoshoot.", "workshop.", "birthday." ]'>
+    <h1>Find the perfect venue for your</h1>
+    <h1 class="typewrite" data-period="2000" data-type='[ "wedding.", "dinner.", "business meeting.", "photo shoot.", "workshop.", "birthday.", "conference."]'>
       <span class="wrap"></span>
     </h1>
     <br>
     <div class="home-form" >
       <form action="#">
-        <input type="text" name="Location" placeholder="City, Country" style = "border: 1px grey; padding: 7px 20px;">
 
-        <select name="Category" placeholder ="What are you planning?" style = "border: 1px grey; padding: 7px 20px;">>
+        <select name="Category" data-placeholder ="What are you planning?" style = "border: 1px grey; padding: 7px 20px;">
           <option value="What are you planning?">What are you planning?</option>
           <option value="Birthday">Birthday</option>
           <option value="Business Meeting">Business Meeting</option>
@@ -61,6 +69,7 @@
 
       </select>
 
+        <input type="text" name="Location" placeholder="Where?" style = "border: 1px grey; padding: 7px 20px;">
 
 
 
@@ -78,7 +87,7 @@
 </div>
 
 <div class="container">
-  <h1> Type of Event</h1>
+  <h1> Popular Events</h1>
   <br>
   <div class="row">
     <div class="col-xs-12 col-sm-4">

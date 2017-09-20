@@ -1,4 +1,4 @@
- <h1>All your bookings </h1>
+<h1>All your bookings </h1>
 
 
 <% if current_user.venues.present? %>
@@ -10,10 +10,32 @@
   <%= venue.name %> - <%= venue.location %>
    </li>
    <% venue.bookings.each do |booking| %>
-   <%= booking.id %>
-   <p> booked by <%= booking.user.email %></p>
+
+
+   <p> booked by <%= booking.user.email %> for <%= booking.hours %> hours on <%= booking.start_date %></p>
    <%= booking.status %>, <%= link_to "Accept", accept_profile_booking_path(@profile, booking) %> <%= link_to "Decline", decline_profile_booking_path(@profile, booking) %>
+
+      <p> booked by <%=booking.user.profile.first_name%>
+        <br>
+
+        <%= link_to profile_path(booking.user.profile) do %>
+        <% if booking.user.profile.photo? %>
+          <%= cl_image_tag booking.user.profile.photo.path, class: "avatar" %>
+        <% elsif booking.user.facebook_picture_url.present? %>
+          <%= image_tag booking.user.facebook_picture_url, class: "avatar"  %>
+          <% else %>
+          <%= image_tag 'https://material-components-web.appspot.com/images/animal1.svg', class: "avatar" %>
+          <% end %>
+
+        <% end %>
+
+
+      <%= booking.status %>,
+      <%= link_to "Accept", accept_profile_booking_path(@profile, booking) %>
+      <%= link_to "Decline", decline_profile_booking_path(@profile, booking) %>
+
    <%= booking.total_price %> €
+
     <ul>
 
      <li>  </li>
@@ -23,7 +45,5 @@
 <% end %>
 <% end %>
 
-
-the date of the booking
 
 

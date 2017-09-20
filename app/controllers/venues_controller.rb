@@ -1,5 +1,7 @@
 class VenuesController < ApplicationController
   before_action :set_venue, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:show, :index]
+  # logging in and out
 
   def index
     @venues = Venue.all
@@ -8,34 +10,41 @@ class VenuesController < ApplicationController
       marker.lat venue.latitude
       marker.lng venue.longitude
       end
+    @venues = policy_scope(Venue)
    end
 
   def show
 
+    @hash = [{ lat: @venue.latitude, lng: @venue.longitude }]
     @booking = Booking.new
     @message = Message.new
+    @venue.categories.delete_at(0)
+    @venue.amenities.delete_at(0)
+    @new_array_categories = @venue.categories
+    @new_array_amenities = @venue.amenities
+
     if @venue.geocoded?
      @hash = Gmaps4rails.build_markers(@venue) do |venue, marker|
         marker.lat venue.latitude
         marker.lng venue.longitude
       end.flatten
     end
-
   end
 
   def new
-    @profile = current_user.profile
     @venue = Venue.new
+    authorize @venue
   end
 
   def create
     @venue = Venue.new(venue_params)
     @venue.user = current_user
-    if @venue.save!
+    if @venue.save
       redirect_to venue_path(@venue)
     else
       render :new
     end
+    authorize @venue
   end
 
   def edit
@@ -55,9 +64,14 @@ class VenuesController < ApplicationController
 
   def set_venue
     @venue = Venue.find(params[:id])
+    authorize @venue
+
+
   end
 
   def venue_params
-    params.require(:venue).permit(:name, :capacity, :location, :category, :description, :price, :user_id, photos: [])
+
+    params.require(:venue).permit(:name, :capacity, :location, :description, :price, :user_id, :photos => [], :categories => [], :amenities => [])
+
   end
 end

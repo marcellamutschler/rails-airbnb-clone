@@ -24,6 +24,10 @@
 
  <%= link_to 'Go Back', venues_path, class: "btn btn-danger" %>
 
+<% if policy(Booking).create? %>
+  <%= new_venue_booking_path %>
+<% end %>
+
 
     </div>
   </div>
