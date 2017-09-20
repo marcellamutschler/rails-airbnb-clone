@@ -67,23 +67,29 @@ Rails.application.routes.draw do
   resources :venues do
     resources :bookings, only: [:new ,:create]
     # creermoi toutes les routes
+  resources :reviews, only: [:index]
   end
 
   mount Attachinary::Engine => "/attachinary"
 
 #  resources :users do
-  resources :conversations
+  resources :conversations, only: [:create, :index, :show] do
+    resources :messages, only: [:create]
+  end
 
   resources :profiles do
     resources :bookings, except: [:new ,:create] do
       collection do
         get 'owner', to: "bookings#owner", as: 'owner_bookings'
       end
+
       member do
         get 'accept', to: "bookings#accept", as: 'accept'
         get 'decline', to: "bookings#decline", as: 'decline'
       end
+        resources :reviews, except:[:index]
     end
+    get "profiles/myvenues"
   end
     # ici on parle de 2 méthodes
     #génére  toutes les routes mais emt profile au singulier

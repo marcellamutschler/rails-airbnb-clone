@@ -62,6 +62,7 @@ class VenuesController < ApplicationController
     redirect_to venues_path
   end
 
+
   private
 
   def set_venue
