@@ -1,4 +1,4 @@
-class Conversation < ActiveRecord::Base
+class Conversation < ApplicationRecord
  belongs_to :owner, foreign_key: :owner_id, class_name: "User"
  belongs_to :booker, foreign_key: :booker_id, class_name: "User"
  belongs_to :venue
