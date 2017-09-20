@@ -3,6 +3,7 @@ Your Messages with <%= convo_partner(@conversation).full_name %>
 
 <div class="dialog">
   <% if message.user != current_user  %>
+
   <div class="dialog-left">
    <%= image_tag get_profile_photo(convo_partner(@conversation)), class: "avatar" %>
    <%= message.created_at %>
@@ -23,11 +24,12 @@ Your Messages with <%= convo_partner(@conversation).full_name %>
 </div>
 <% end %>
 
+<div class="form-messenger">
 <%= simple_form_for(@message, url: conversation_messages_path(@conversation), html: {method: :post}) do |f| %>
   <%= f.input :content, class: "w3-input w3-border" %>
   <%= f.submit "send", class: "btn-red" %>
 <% end %>
-
+</div>
 
 
 

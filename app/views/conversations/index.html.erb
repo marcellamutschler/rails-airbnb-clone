@@ -1,8 +1,8 @@
 <% @conversations.each do |conversation| %>
   <%= link_to conversation_path(conversation) do %>
   <div class="message">
-    <img class="avatar-large">
-      <%= image_tag get_profile_photo(convo_partner(conversation)) %>
+      <%= image_tag get_profile_photo(convo_partner(conversation)), class: "avatar" %>
+
     <div class="message-name">
       <h3><%= convo_partner(conversation).full_name %></h3>
       <p><%= conversation.most_recent_message.created_at %></p>
