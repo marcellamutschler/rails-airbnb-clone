@@ -4,6 +4,8 @@ class Booking < ApplicationRecord
   # so in the end everyone model inherit from ActiveRecord::Base
   belongs_to :user
   belongs_to :venue
+  has_one :review
+
   validates :status, presence: true
   validates :total_price, presence: true
 

@@ -1,20 +1,20 @@
 class ConversationsController < ApplicationController
 
   def index
-    @conversations = Conversation.where("owner_id = ? or booker_id = ?", current_user, current_user)
+    @conversations = policy_scope(Conversation).order(created_at: :desc)
   end
 
   def create
-    @venue = Venue.find(message_params[:venue_id])
+    @venue = Venue.find(message_and_conversation_params[:venue_id])
     @owner = @venue.owner
 
     @conversation = Conversation.new
     @conversation.owner = @owner
     @conversation.booker = current_user
     @conversation.venue = @venue
+    authorize @conversation
 
-
-    @message = Message.new(content: message_params[:content])
+    @message = Message.new(content: message_and_conversation_params[:content])
     @message.user = current_user
     @message.conversation = @conversation
 
@@ -26,9 +26,16 @@ class ConversationsController < ApplicationController
     end
   end
 
+  def show
+    @conversation = Conversation.find(params[:id])
+    @messages = @conversation.messages
+    @message = Message.new
+    authorize @conversation
+  end
+
   private
 
-  def message_params
+  def message_and_conversation_params
     params.require(:message).permit(:content, :venue_id)
   end
 end
