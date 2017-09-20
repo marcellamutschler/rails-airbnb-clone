@@ -1,0 +1,33 @@
+Your Messages with <%= convo_partner(@conversation).full_name %>
+<% @messages.each do |message| %>
+
+<div class="dialog">
+  <% if message.user != current_user  %>
+  <div class="dialog-left">
+   <%= image_tag get_profile_photo(convo_partner(@conversation)), class: "avatar" %>
+   <%= message.created_at %>
+
+   <%= convo_partner(@conversation).full_name %>:
+   <%= message.content %>
+  </div>
+
+  <% else  %>
+  <div class="dialog-right">
+    <%= image_tag get_profile_photo(current_user), class: "avatar" %>
+    <%= message.created_at %>
+    Me:
+    <%= message.content %>
+    aösdljfalösdfjk
+  </div>
+  <% end %>
+</div>
+<% end %>
+
+<%= simple_form_for(@message, url: conversation_messages_path(@conversation), html: {method: :post}) do |f| %>
+  <%= f.input :content, class: "w3-input w3-border" %>
+  <%= f.submit "send", class: "btn-red" %>
+<% end %>
+
+
+
+

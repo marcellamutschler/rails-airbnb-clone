@@ -13,7 +13,10 @@
 }
 
 .avatar {
-  width: 30px;
+  background-size: cover !important;
+  background-position: center;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
 }
 .avatar-bordered {
@@ -144,19 +147,7 @@
 .profile-header-infos {
   padding: 20px 0;
 }
-body {
-  font-family: "HelveticaNeue-Thin", sans-serif;
-  letter-spacing: 1.5px;
-}
 
-h1, h2, h3 {
-  font-family: "HelveticaNeue-Thin", sans-serif;
-  letter-spacing: 1.5px;
-}
-
-a {
-  text-decoration: none;
-}
 .text-center {
   text-align: center;
 }

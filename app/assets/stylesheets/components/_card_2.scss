@@ -15,31 +15,6 @@
 /**
  * Basics Styles
  */
-html {
-  font-size: 62.5%;
-}
-body {
-  background-color: #eee;
-  font-family: Roboto;
-  font-weight: 400;
-  font-size: 1.6em;
-  line-height: 1.6;
-  color: #666;
-}
-
-a {
-  text-decoration: none;
-  color: #3498db;
-}
-  a:hover {
-    color: #2980b9;
-  }
-
-h2 {
-  line-height: 1.2;
-  margin-bottom: 1.6rem;
-}
-
 .wrapper {
   max-width: 400px;
   margin: 50px auto;
