@@ -1,6 +1,8 @@
 class VenuesController < ApplicationController
   before_action :set_venue, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:show, :index]
+  before_action :find_reviews, only: [:show]
+
   # logging in and out
 
   def index
@@ -29,6 +31,7 @@ class VenuesController < ApplicationController
         marker.lng venue.longitude
       end.flatten
     end
+
   end
 
   def new
@@ -60,14 +63,24 @@ class VenuesController < ApplicationController
     redirect_to venues_path
   end
 
+  def find_reviews
+    @bookings = @venue.bookings
+    @venue_reviews = []
+    @bookings.each do |booking|
+      @booking_review = booking.review
+      unless booking.review.nil?
+      @venue_reviews << @booking_review
+      end
+    end
+  end
+
   private
 
   def set_venue
     @venue = Venue.find(params[:id])
     authorize @venue
-
-
   end
+
 
   def venue_params
 

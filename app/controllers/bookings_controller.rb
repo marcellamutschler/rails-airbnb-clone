@@ -4,8 +4,8 @@ class BookingsController < ApplicationController
   before_action :find_profile, only: [:index, :owner, :accept, :decline]
 
   def index
-    @bookings = current_user.bookings
     @bookings = policy_scope(Booking)
+    @bookings = current_user.bookings
   end
 
   def show
