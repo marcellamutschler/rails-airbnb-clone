@@ -11,6 +11,10 @@ class ProfilePolicy < ApplicationPolicy
        # current user = profile.uqer
     end
 
+    def create?
+      true
+    end
+
     def update?
       record.user == user
     # - record: the venue passed to the `authorize` method in controller
