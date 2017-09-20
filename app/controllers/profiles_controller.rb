@@ -31,6 +31,7 @@ class ProfilesController < ApplicationController
 
   def new
      @profile = Profile.new
+     authorize @profile
   end
 
   def create
@@ -39,6 +40,7 @@ class ProfilesController < ApplicationController
      # user ID - it awzits the matching value
      @profile = Profile.new(profile_params)
      @profile.user = current_user
+     authorize @profile
 
      # you assign the profile to the user its belongs.
 
@@ -78,7 +80,7 @@ class ProfilesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_profile
       @profile = Profile.find(params[:id])
-      #authorize @profile
+      authorize @profile
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

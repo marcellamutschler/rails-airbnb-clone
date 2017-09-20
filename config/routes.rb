@@ -75,7 +75,9 @@ Rails.application.routes.draw do
   mount Attachinary::Engine => "/attachinary"
   resources :bookmarks, only: [:index, :create, :update, :destroy]
 #  resources :users do
-  resources :conversations
+  resources :conversations, only: [:create, :index, :show] do
+    resources :messages, only: [:create]
+  end
 
   resources :profiles do
     resources :bookings, except: [:new ,:create] do

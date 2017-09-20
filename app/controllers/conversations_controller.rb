@@ -5,7 +5,7 @@ class ConversationsController < ApplicationController
   end
 
   def create
-    @venue = Venue.find(message_params[:venue_id])
+    @venue = Venue.find(message_and_conversation_params[:venue_id])
     @owner = @venue.owner
 
     @conversation = Conversation.new
@@ -14,7 +14,7 @@ class ConversationsController < ApplicationController
     @conversation.venue = @venue
     authorize @conversation
 
-    @message = Message.new(content: message_params[:content])
+    @message = Message.new(content: message_and_conversation_params[:content])
     @message.user = current_user
     @message.conversation = @conversation
 
@@ -26,9 +26,16 @@ class ConversationsController < ApplicationController
     end
   end
 
+  def show
+    @conversation = Conversation.find(params[:id])
+    @messages = @conversation.messages
+    @message = Message.new
+    authorize @conversation
+  end
+
   private
 
-  def message_params
+  def message_and_conversation_params
     params.require(:message).permit(:content, :venue_id)
   end
 end
