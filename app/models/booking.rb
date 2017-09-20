@@ -13,4 +13,8 @@ class Booking < ApplicationRecord
     venue.user
   end
 
+
+#Booking.owner marche
+#Booking.user marche pas car pas de méthode user dans le model.
+
 end
