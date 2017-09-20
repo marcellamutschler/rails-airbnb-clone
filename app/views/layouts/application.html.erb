@@ -19,10 +19,13 @@
 
   <%= render 'shared/flashes' %>
 
-
-  <div class="container" style= "top:57px">
+  <% if current_page?('/') %>
     <%= yield %>
-  </div>
+  <% else %>
+    <div class="page-container">
+      <%= yield %>
+    </div>
+  <% end %>
 
   <!--  ici on appelle tout le HTML de nos views -->
 

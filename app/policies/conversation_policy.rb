@@ -8,4 +8,8 @@ class ConversationPolicy < ApplicationPolicy
   def create?
     true
   end
+
+  def show?
+    record.owner == user || record.booker == user
+  end
 end
