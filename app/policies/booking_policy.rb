@@ -1,9 +1,10 @@
 class BookingPolicy < ApplicationPolicy
   class Scope < Scope
-
     def resolve
       scope.where(user: user)
     end
+
+
   end
 
     def create?
@@ -18,6 +19,9 @@ class BookingPolicy < ApplicationPolicy
       is_owner?
     end
 
+    def owner?
+      true
+    end
     def update?
       return false
     # - record: the venue passed to the `authorize` method in controller
@@ -25,6 +29,8 @@ class BookingPolicy < ApplicationPolicy
     end
 
     private
+
+
 
     def destroy?
       false

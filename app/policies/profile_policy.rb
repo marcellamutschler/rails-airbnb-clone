@@ -26,11 +26,6 @@ class ProfilePolicy < ApplicationPolicy
   # - user:   the `current_user` signed in with Devise.
   end
 
-  def myvenues?
-    true
-  end
-
- 
   def edit?
     update?
   end

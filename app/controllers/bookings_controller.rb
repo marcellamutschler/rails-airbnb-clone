@@ -2,7 +2,11 @@ class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :destroy, :accept, :decline]
   before_action :find_venue, only:[:new, :create, :edit, :update]
   before_action :find_profile, only: [:index, :owner, :accept, :decline]
+
+  # after_action :verify_authorized, except: [:index, :owner], unless: :skip_pundit?
+
   before_action :verify_presence_of_profile, only: [:new, :create]
+
 
   def index
     @bookings = policy_scope(Booking)
@@ -48,7 +52,7 @@ class BookingsController < ApplicationController
   end
 
   def owner
-    @bookings = current_user.bookings
+    authorize Booking
   end
 
   def accept
