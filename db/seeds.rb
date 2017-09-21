@@ -40,7 +40,7 @@
 # new_venue.save
 
 
-50.times do
+5.times do
   user = User.new(email: Faker::Internet.email, password: '123456')
   user.save
   profile = Profile.new(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name)
