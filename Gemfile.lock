@@ -61,7 +61,7 @@ GEM
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
     bootstrap3-datetimepicker-rails (4.17.47)
-      momentjs-rails (>= 2.8.1)
+      momentjs-rails (>= 2.8.0)
     builder (3.2.3)
     byebug (9.1.0)
     cloudinary (1.1.7)
