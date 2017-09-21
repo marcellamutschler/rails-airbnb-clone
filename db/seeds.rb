@@ -6,7 +6,21 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+x = User.create(email: "imdaking@gmail.com", password: "muckfexico")
+y = Profile.new(first_name: "Donald", last_name: "Trump")
+x.user = y
+x.save
 
+dumble = User.create(email: "freshdumbledore@gmail.com", password: "expelliarmus")
+dore = Profile.new(first_name: "Albus", last_name: "Dumbledore")
+
+dore.user = dumble
+dore.save
+
+barney = User.create(email: "bromance@gmail.com", password: "tedsuitup")
+stinson = Profile.new(first_name: "Barney", last_name: "Stinson")
+stinson.user = barney
+stinson.save
 # Venue.create(name: "Romantic Wedding Venue", capacity: 200, location: "Barcelona", description: "Beautiful Wedding Venue in the Heart of Barcelona", price: 100, user_id: 1)
 # Venue.create(name: "Artsy Studio", capacity: 50, location: "Berlin", description: "Modern studio for your photo-shooting, exhibition or fahsion shows", price: 70, user_id: 2)
 # Venue.create(name: "Modern Meeting Room", capacity: 30, location: "Frankfurt", description: "New meeting room for business events, pitches, etc.", price: 100, user_id: 3)
@@ -40,10 +54,11 @@
 # new_venue.save
 
 
-5.times do
-  user = User.new(email: Faker::Internet.email, password: '123456')
-  user.save
-  profile = Profile.new(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name)
-  profile.user = user
-  profile.save
-end
+# 5.times do
+#   user = User.new(email: Faker::Internet.email, password: '123456')
+#   user.save
+#   profile = Profile.new(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name)
+#   profile.user = user
+#   profile.save
+# end
+
