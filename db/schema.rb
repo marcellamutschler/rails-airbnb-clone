@@ -67,6 +67,15 @@ ActiveRecord::Schema.define(version: 20170920131943) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "flats", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.float "latitude"
+    t.float "longitude"
+  end
+
   create_table "messages", force: :cascade do |t|
     t.bigint "conversation_id"
     t.text "content"
@@ -130,10 +139,10 @@ ActiveRecord::Schema.define(version: 20170920131943) do
     t.datetime "updated_at", null: false
     t.string "name"
     t.string "photo"
-    t.string "categories", default: [], array: true
-    t.string "amenities", default: [], array: true
     t.float "latitude"
     t.float "longitude"
+    t.string "categories", default: [], array: true
+    t.string "amenities", default: [], array: true
     t.string "city"
     t.index ["user_id"], name: "index_venues_on_user_id"
   end

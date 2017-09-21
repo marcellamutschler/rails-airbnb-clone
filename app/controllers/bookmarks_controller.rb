@@ -2,10 +2,8 @@ class BookmarksController < ApplicationController
 # before_action :set_venue
 
   def index
-    @bookmark = Bookmark.all
-    @bookmark = policy_scope(Bookmark)
-
-    raise
+    @bookmarks = Bookmark.all
+    @bookmarks = policy_scope(Bookmark)
   end
 
   # def show
@@ -19,18 +17,21 @@ class BookmarksController < ApplicationController
     @bookmark.user = current_user
     authorize @bookmark
     @bookmark.save
-    redirect_to
+    redirect_to bookmarks_path(current_user)
   end
 
   # def edit
   # end
 
-  def update
-    authorize @bookmark
-  end
+  # def update
+  #   authorize @bookmark
+  # end
 
   def destroy
+    @bookmark = Bookmark.find(params[:id])
     authorize @bookmark
+    @bookmark.destroy
+    redirect_to bookmarks_path
   end
 
   private
@@ -42,6 +43,4 @@ class BookmarksController < ApplicationController
   def set_venue
     @venue = Venue.find(params[:id])
   end
-
-
 end
