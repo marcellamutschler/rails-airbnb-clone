@@ -2,6 +2,7 @@ class VenuesController < ApplicationController
   before_action :set_venue, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:show, :index]
   before_action :find_reviews, only: [:show]
+  before_action :verify_presence_of_profile, only: [:new, :create]
 
   # logging in and out
 

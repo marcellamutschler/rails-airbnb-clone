@@ -2,6 +2,7 @@ class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :destroy, :accept, :decline]
   before_action :find_venue, only:[:new, :create, :edit, :update]
   before_action :find_profile, only: [:index, :owner, :accept, :decline]
+  before_action :verify_presence_of_profile, only: [:new, :create]
 
   def index
     @bookings = policy_scope(Booking)
