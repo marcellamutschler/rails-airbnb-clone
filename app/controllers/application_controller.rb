@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
 
   # Pundit: white-list approach.
   after_action :verify_authorized, except: :index, unless: :skip_pundit?
+
   # has to be verified afterwards . 1. does it perform 2. is it conformed?
   # you only deal with one item
   # exactly the same as this - after_action(:verify_authorized, { except: :index, unless: :skip_pundit? })
