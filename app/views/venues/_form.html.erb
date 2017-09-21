@@ -1,6 +1,5 @@
-
-<%= simple_form_for(@venue) do |f| %>
 <div class="venue-form ">
+<%= simple_form_for(@venue) do |f| %>
 
   <%= f.input :name %>
 
@@ -9,22 +8,65 @@
   <%= f.input :location %>
 
   <%= f.input :description %>
+  <br>
 
-  <%= f.input :categories, collection: Venue::CATEGORIES, as: :check_boxes, class: 'checkboxes-venue' %>
+
+  <div class="form-group check_boxes required venue_categories">
+    <label class="control-label check_boxes required"><abbr title="required">*</abbr> Categories</label>
+    <input type="hidden" name="venue[categories][]" value="">
+    <div class="row">
+    <% Venue::CATEGORIES.each do |venue| %>
+    <div class="col-sm-6">
+      <div class="checkbox checkbox_list">
+        <div class="label_venue">
+          <label for="venue_categories_wedding">
+            <%= venue %>
+          </label>
+        </div>
+        <div class="input_venue">
+          <input class="check_boxes required" type="checkbox" value="Wedding" name="venue[categories][]" id="venue_categories_wedding"> </input>
+        </div>
+
+      </div>
+    </div>
+    <% end %>
+    </div>
+  </div>
 
   <br>
-  <%= f.input :amenities, collection: Venue::AMENITIES, as: :check_boxes, class: 'checkboxes-venue' %>
 
-  <%= f.input :photos, as: :attachinary %>
+    <div class="form-group check_boxes required venue_categories">
+    <label class="control-label check_boxes required"><abbr title="required">*</abbr> Amenities</label>
+    <input type="hidden" name="venue[categories][]" value="">
+    <div class="row">
+    <% Venue::AMENITIES.each do |venue| %>
+    <div class="col-sm-6">
+      <div class="checkbox checkbox_list">
+        <div class="label_venue">
+          <label for="venue_categories_wedding">
+            <%= venue %>
+          </label>
+        </div>
+        <div class="input_venue">
+          <input class="check_boxes required" type="checkbox" value="Wedding" name="venue[categories][]" id="venue_categories_wedding"> </input>
+        </div>
+
+      </div>
+    </div>
+    <% end %>
+    </div>
+  </div>
+
+  <br>
+
+  <%= f.input :photos, as: :attachinary%>
 
   <%#= f.input :photo_cache, as: :hidden %>
 
   <%= f.input :price %>
 
-  <%= f.submit class: "btn-red" %>
-
+  <%= f.submit class: "btn-red", style: "background: #DE1A1A"  %>
 
 <% end %>
-
 </div>
 

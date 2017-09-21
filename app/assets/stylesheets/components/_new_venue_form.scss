@@ -1,19 +1,25 @@
 .venue-form {
   text-align: center;
   text-decoration: none;
-  font-size: 15px;
+  font-size: 20px;
   font-family: "HelveticaNeue-Light";
-  margin-bottom: 100px;
-  padding-left: 200px;
-  padding-right: 200px;
-
+  margin-bottom: 50px;
 }
-
 
 .venue-form input {
   border-radius: 50px;
   background: transparent;
   height: 45px;
+}
+
+.venue-form textarea {
+  border-radius: 20px;
+  background: transparent;
+  height: 90px;
+}
+
+.venue-form button {
+  backgrond: red;
 }
 
 
@@ -33,4 +39,8 @@
   text-decoration: none !important;
   color: grey;
   font-size: 18px;
+}
+
+.check_boxes {
+  height: auto!important;
 }
