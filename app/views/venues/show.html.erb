@@ -166,10 +166,9 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "HelveticaNeue-Light"}
       <% end %>
       <hr>
 
-    <h4><strong>Reviews</strong></h4>
+    <h4><strong>Reviews <br> Average Rating: <%= @average_rating.to_f %> of 5 </strong></h4>
       <% @venue_reviews.each do |review| %>
       <li><%= review.review_rating %>/5 stars -  <%= review.user.profile.first_name %>s Review: <%= review.review_text %> </li>
-
       <% end %>
 
   </div>

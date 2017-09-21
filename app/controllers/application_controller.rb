@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
   #now that' you're loggind in, can you do this things?
 
   # Pundit: white-list approach.
+
   after_action :verify_authorized, except: :index, unless: :skip_pundit?
 
   # has to be verified afterwards . 1. does it perform 2. is it conformed?
