@@ -40,7 +40,7 @@ end
 
 
 group :development, :test do
-  gem 'better_errors'
+  gem "letter_opener"
   gem 'binding_of_caller'
   gem 'pry-byebug'
   gem 'pry-rails'
