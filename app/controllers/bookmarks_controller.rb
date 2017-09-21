@@ -1,5 +1,5 @@
 class BookmarksController < ApplicationController
-before_action :set_venue
+# before_action :set_venue
 
   def index
     @bookmark = Bookmark.all
@@ -19,6 +19,7 @@ before_action :set_venue
     @bookmark.user = current_user
     authorize @bookmark
     @bookmark.save
+    redirect_to
   end
 
   # def edit

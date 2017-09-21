@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20170920131943) do
 
   # These are extensions that must be enabled in order to support this database
@@ -133,11 +132,9 @@ ActiveRecord::Schema.define(version: 20170920131943) do
     t.string "photo"
     t.string "categories", default: [], array: true
     t.string "amenities", default: [], array: true
-
-    t.string "city"
     t.float "latitude"
     t.float "longitude"
-
+    t.string "city"
     t.index ["user_id"], name: "index_venues_on_user_id"
   end
 

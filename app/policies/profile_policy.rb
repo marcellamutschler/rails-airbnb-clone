@@ -37,10 +37,8 @@ class ProfilePolicy < ApplicationPolicy
     def destroy?
       record.user == user
     end
-  end
 
     def myvenues?
       record.user == user
     end
-
 end
