@@ -12,7 +12,9 @@ class User < ApplicationRecord
   #You are calling class_name
   devise :omniauthable, omniauth_providers: [:facebook]
 
-
+  has_many :conversations, foreign_key: :owner_id, class_name: "Conversation"
+  has_many :conversations, foreign_key: :booker_id, class_name: "Conversation"
+  has_many :messages
 
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice(:provider, :uid)
@@ -33,5 +35,9 @@ class User < ApplicationRecord
     end
 
     return user
+  end
+
+  def full_name
+    profile.first_name + " " + profile.last_name
   end
 end

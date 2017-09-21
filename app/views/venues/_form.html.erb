@@ -10,15 +10,19 @@
 
   <%= f.input :description %>
 
-  <%= f.input :category, as: :string%>
+  <%= f.input :categories, collection: Venue::CATEGORIES, as: :check_boxes, class: 'checkboxes-venue' %>
 
-  <%= f.input :photo, as: :attachinary %>
+  <br>
+  <%= f.input :amenities, collection: Venue::AMENITIES, as: :check_boxes, class: 'checkboxes-venue' %>
+
+  <%= f.input :photos, as: :attachinary %>
 
   <%#= f.input :photo_cache, as: :hidden %>
 
   <%= f.input :price %>
 
   <%= f.submit class: "btn-red" %>
+
 
 <% end %>
 

@@ -4,15 +4,15 @@ class BookingsController < ApplicationController
   before_action :find_profile, only: [:index, :owner, :accept, :decline]
 
   def index
+    @bookings = policy_scope(Booking)
     @bookings = current_user.bookings
-
   end
 
   def show
   end
 
   def new
-    @booking = Booking.new
+     @booking = Booking.new
   end
 
   def create
@@ -74,6 +74,7 @@ class BookingsController < ApplicationController
 
   def set_booking
     @booking = Booking.find(params[:id])
+    authorize @booking
   end
 
   def booking_params

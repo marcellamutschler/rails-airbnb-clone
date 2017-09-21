@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170920094540) do
+
+ActiveRecord::Schema.define(version: 20170920131943) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +55,7 @@ ActiveRecord::Schema.define(version: 20170920094540) do
 
   create_table "bookmarks", force: :cascade do |t|
     t.integer "user_id"
+<<<<<<< HEAD
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "venue_id"
@@ -74,6 +76,19 @@ ActiveRecord::Schema.define(version: 20170920094540) do
     t.datetime "updated_at", null: false
     t.float "latitude"
     t.float "longitude"
+=======
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "venue_id"
+  end
+
+  create_table "conversations", force: :cascade do |t|
+    t.integer "owner_id"
+    t.integer "booker_id"
+    t.integer "venue_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+>>>>>>> 6df7f4042daf2f503c6567fa67a8a95aea98e0cb
   end
 
   create_table "messages", force: :cascade do |t|
@@ -122,8 +137,6 @@ ActiveRecord::Schema.define(version: 20170920094540) do
     t.string "provider"
     t.string "uid"
     t.string "facebook_picture_url"
-    t.string "first_name"
-    t.string "last_name"
     t.string "token"
     t.datetime "token_expiry"
     t.boolean "owner"
@@ -143,8 +156,10 @@ ActiveRecord::Schema.define(version: 20170920094540) do
     t.string "photo"
     t.float "latitude"
     t.float "longitude"
+    t.integer "wishlist_id"
     t.string "categories", default: [], array: true
     t.string "amenities", default: [], array: true
+    t.string "city"
     t.index ["user_id"], name: "index_venues_on_user_id"
   end
 

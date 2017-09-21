@@ -4,9 +4,11 @@ ruby '2.3.4'
 gem 'figaro'
 gem 'jbuilder', '~> 2.0'
 gem 'pg'
+gem 'pg_search'
 gem 'puma'
 gem 'rails', '5.1.4'
 gem 'redis'
+gem 'pundit'
 
 gem 'cloudinary', '1.1.7'
 gem 'attachinary', github: 'assembler/attachinary'
@@ -25,6 +27,12 @@ gem 'omniauth-facebook'
 
 gem 'bootstrap-datepicker-rails'
 gem "geocoder"
+
+
+gem 'faker'
+
+
+gem "coffee-rails"
 
 gem "gmaps4rails"
 

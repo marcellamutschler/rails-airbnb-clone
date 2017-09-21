@@ -23,7 +23,7 @@
 <i class="fa fa-question-circle-o"></i> Help
 <% end %>
 
-<%= link_to  "#", class: "navbar-wagon-item navbar-wagon-link " do  %>
+<%= link_to  "/conversations/", class: "navbar-wagon-item navbar-wagon-link " do  %>
 <i class="fa fa-commenting"></i> Messages
 <% end %>
 
@@ -31,28 +31,56 @@
 <!-- Avatar with dropdown menu -->
 <div class="navbar-wagon-item">
   <div class="dropdown">
-    <% avatar_url = current_user.facebook_picture_url || "https://material-components-web.appspot.com/images/animal1.svg" %>
+    <% unless current_user.profile.nil? %>
+       <% if current_user.profile.photo? %>
+          <%  avatar_url = cl_image_path current_user.profile.photo.path %>
+        <% elsif current_user.facebook_picture_url.present? %>
+          <% avatar_url = image_path  current_user.facebook_picture_url  %>
+        <% else %>
+          <% avatar_url = "https://material-components-web.appspot.com/images/animal1.svg" %>
+        <% end %>
     <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+  <% end %>
 
 
     <i class="fa fa-angle-down" aria-hidden="true"></i>
 
     <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+  <% unless current_user.profile.nil? %>
       <li>
-        <%= link_to "../profile" do %>
+        <%= link_to profile_path(current_user.profile) do %>
         <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
         <% end %>
       </li>
 
        <li>
-        <%= link_to "#" do %>
-        <i class = "fa fa-book"> </i> <%= t(".bookings", default: "Bookings") %>
+        <%= link_to profile_bookings_path(current_user.profile) do %>
+        <i class = "fa fa-book"> </i> <%= t(".bookings", default: "Manage your Bookings") %>
+        <% end %>
+      </li>
+
+      <li>
+        <%= link_to profile_myvenues_path(current_user.profile) do %>
+
+        <i class="fa fa-home"></i>  <%= t(".bookings", default: "Your Venues") %>
         <% end %>
       </li>
 
       <li>
         <%= link_to new_venue_path do %>
-        <i class="fa fa-home"></i>  <%= t(".profile", default: "List your Venue") %>
+        <i class="fa fa-plus-circle"></i>  <%= t(".profile", default: "Add your Venue") %>
+        <% end %>
+      </li>
+
+      <li>
+        <%= link_to venues_path do %>
+        <i class="fa fa-map-marker"></i>  <%= t(".venues", default: "Show locations nearby") %>
+        <% end %>
+      </li>
+
+      <li>
+        <%= link_to bookmarks_path do %>
+        <i class="fa fa-heart"></i>  <%= t(".venues", default: "Your Wishlist") %>
         <% end %>
       </li>
 
@@ -61,6 +89,7 @@
         <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
         <% end %>
       </li>
+      <% end %>
     </ul>
   </div>
 </div>

@@ -1,11 +1,13 @@
 .filter-bar {
   position: fixed;
   background-color: white;
-  z-index: 999999;
+  z-index: 100;
   width: 100%;
   top: 57px;
   border: 1px solid grey;
   height: 52px;
-  margin-bottom: 20px;
+  left: 0;
+  right: 0;
+
 }
 
