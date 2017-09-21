@@ -1,5 +1,5 @@
 <% @conversations.each do |conversation| %>
-  <%= link_to conversation_path(conversation) do %>
+  <%= link_to conversation_path(conversation), style: "text-decoration: none" do %>
   <div class="message">
       <%= image_tag get_profile_photo(convo_partner(conversation)), class: "avatar" %>
 
