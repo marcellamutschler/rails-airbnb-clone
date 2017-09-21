@@ -24,8 +24,8 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'devise'
 gem 'omniauth-facebook'
-
-gem 'bootstrap-datepicker-rails'
+gem 'bootstrap3-datetimepicker-rails'
+gem 'momentjs-rails'
 gem "geocoder"
 
 gem 'faker'

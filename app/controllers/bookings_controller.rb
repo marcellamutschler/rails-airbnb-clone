@@ -26,6 +26,8 @@ class BookingsController < ApplicationController
     @booking.user = current_user
 
     @booking.total_price = (params[:booking][:hours]).to_i*@venue.price
+     #@booking.total_price = (params[:booking.end_date] - [:booking.start_date]to_i*@venue.price
+
     authorize @booking
 
     if @venue.save &&  @booking.save
@@ -33,6 +35,9 @@ class BookingsController < ApplicationController
     else
       render :new
     end
+
+       raise
+
   end
 
   def edit
@@ -82,6 +87,6 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:status, :total_price, :user_id, :venue_id)
+    params.require(:booking).permit(:status, :total_price, :user_id, :venue_id, :start_date, :end_date, :hour)
   end
 end
