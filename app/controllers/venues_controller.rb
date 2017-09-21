@@ -55,6 +55,7 @@ class VenuesController < ApplicationController
   end
 
   def edit
+
   end
 
   def update
@@ -64,7 +65,7 @@ class VenuesController < ApplicationController
 
   def destroy
     @venue.destroy!
-    redirect_to venues_path
+    redirect_to profile_myvenues_path(current_user)
   end
 
   def find_reviews
@@ -81,9 +82,9 @@ class VenuesController < ApplicationController
   def find_reviews_average
     sum = 0
     @venue_reviews.each do |review|
-      sum = sum + review.review_rating
+      sum = sum += review.review_rating
     end
-    @average_rating = sum / @venue_reviews.length.to_f
+    @average_rating = sum /= @venue_reviews.length.to_f
   end
 
   private
