@@ -28,7 +28,6 @@ gem 'omniauth-facebook'
 gem 'bootstrap-datepicker-rails'
 gem "geocoder"
 
-
 gem 'faker'
 
 

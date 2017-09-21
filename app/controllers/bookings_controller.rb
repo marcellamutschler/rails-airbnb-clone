@@ -21,13 +21,12 @@ class BookingsController < ApplicationController
   end
 
   def create
-
     @booking = Booking.new(booking_params)
     @booking.venue = @venue
     @booking.user = current_user
 
     @booking.total_price = (params[:booking][:hours]).to_i*@venue.price
-
+    authorize @booking
 
     if @venue.save &&  @booking.save
       redirect_to profile_booking_path(@booking.user.profile, @booking)

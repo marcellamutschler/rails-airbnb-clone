@@ -53,6 +53,7 @@ stinson.save
 # new_venue.user = maria
 # new_venue.save
 
+
 # 5.times do
 #   user = User.new(email: Faker::Internet.email, password: '123456')
 #   user.save
@@ -60,3 +61,4 @@ stinson.save
 #   profile.user = user
 #   profile.save
 # end
+
