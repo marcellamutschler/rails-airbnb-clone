@@ -57,11 +57,11 @@ GEM
     bindex (0.5.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bootstrap-datepicker-rails (1.7.1.1)
-      railties (>= 3.0)
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
+    bootstrap3-datetimepicker-rails (4.17.47)
+      momentjs-rails (>= 2.8.1)
     builder (3.2.3)
     byebug (9.1.0)
     cloudinary (1.1.7)
@@ -133,6 +133,8 @@ GEM
     mime-types-data (3.2016.0521)
     mini_portile2 (2.2.0)
     minitest (5.10.3)
+    momentjs-rails (2.17.1)
+      railties (>= 3.1)
     multi_json (1.12.2)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
@@ -267,8 +269,8 @@ DEPENDENCIES
   attachinary!
   autoprefixer-rails
   binding_of_caller
-  bootstrap-datepicker-rails
   bootstrap-sass
+  bootstrap3-datetimepicker-rails
   cloudinary (= 1.1.7)
   coffee-rails
   devise
@@ -282,6 +284,7 @@ DEPENDENCIES
   jquery-rails
   letter_opener
   listen (~> 3.0.5)
+  momentjs-rails
   omniauth-facebook
   pg
   pg_search
