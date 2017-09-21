@@ -36,5 +36,9 @@ class ApplicationController < ActionController::Base
   # if you are in the device controller --> device is a whole world
   # pundit only works with controllers
 
-
+  def verify_presence_of_profile
+    if current_user.profile.nil?
+      redirect_to new_profile_path, alert: 'Please create a profile before proceeding'
+    end
+  end
 end

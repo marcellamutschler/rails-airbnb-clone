@@ -30,6 +30,7 @@ class ProfilePolicy < ApplicationPolicy
     update?
   end
 
+
   def destroy?
     record.user == user
   end
@@ -38,3 +39,4 @@ class ProfilePolicy < ApplicationPolicy
     record.user == user
   end
 end
+
