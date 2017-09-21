@@ -1,4 +1,46 @@
 
+<div class="navbar-home">
+  <%= link_to root_path, class: "navbar-wagon-brand" do %>
+  <%= image_tag "logo_white.png" %>
+  <% end %>
+  <!-- Right Navigation -->
+  <div class="navbar-home-right hidden-xs hidden-sm">
+    <% if !user_signed_in? %>
+
+    <% if policy(Venue).create? %>
+    <%= link_to "List your Venue", new_user_registration_path, class: "btn-navbar"%>
+    <% end %>
+
+    <%= link_to "Sign Up", new_user_registration_path, class: "btn-navbar"%>
+
+    <%= link_to "Log In", new_user_session_path, class: "btn-navbar"%>
+    <% else %>
+
+
+    <% if policy(Venue).create? %>
+    <%= link_to "List Your Venue", new_venue_path, class: "btn-red"%>
+    <% end %>
+
+    <% if current_user.profile %>
+
+    <%# if policy(current_user.profile).show? %>
+    <%= link_to "Go to Profile", profile_path(current_user.profile), class: "btn-navbar" %>
+
+
+    <% else %>
+
+    <%= link_to "Create Profile", new_profile_path, class: "btn-navbar" %>
+    <% end %>
+
+
+    <%= link_to destroy_user_session_path, method: :delete do %>
+
+    <p class="btn-navbar", style="text-decoration: none"> <%= t(".sign_out", default: "Log out") %></p>
+    <% end %>
+    <% end %>
+  </div>
+</div>
+
 
 
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://www.homejournal.hk/wp-content/uploads/2016/03/Issaya-Bar.jpg');">
@@ -9,49 +51,20 @@
       <span class="wrap"></span>
     </h1>
     <br>
-    <div class="home-form" >
-      <form action="#">
-
-        <select name="Category" data-placeholder ="What are you planning?" style = "border: 1px grey; padding: 7px 20px;">
-          <option value="What are you planning?">What are you planning?</option>
-          <option value="Birthday">Birthday</option>
-          <option value="Business Meeting">Business Meeting</option>
-          <option value="Concert">Concert</option>
-          <option value="Dinner">Dinner</option>
-          <option value="Exhibition">Exhibition</option>
-          <option value="Foto Shoot">Foto Shoot</option>
-          <option value="Film Shoot">Film Shoot</option>
-          <option value="Launch Event">Launch Event</option>
-          <option value="Social Event">Social Event</option>
-          <option value="Presentation">Presentation</option>
-          <option value="Conference">Conference</option>
-          <option value="Workshop">Workshop</option>
-      </select>
-<!--
-       <select>
-          <#%= f.collection_select name="Location" placeholder="Where?" style = "border: 1px grey; padding: 7px 20px;
-            city.all
-            "%>
-        </select> -->
 
 
-
-<%= form_tag(venues_path, :method => 'get') do %>
-<%= select_tag :city, options_for_select(@cities)  %>
-<% end %>
-
-        <%= link_to "Search", venues_path, class: "btn-red" %>
-
-
-<!--         <input type="submit" value="Search" style="background-color: #DE1A1A; border: 1px #DE1A1A; color: #CECECE; padding: 7px 7px; width: 100px;">
- -->      </form>
-    </div>
-    <br>
-    <br>
-    <br>
-    <br>
-  </div>
+    <%= form_tag(venues_path, method: :get) do %>
+    <%= select_tag :categories, options_for_select(@categories)  %>
+    <%= select_tag :city, options_for_select(@cities)  %>
+    <%= submit_tag "Search"  %>
+    <% end %>
 </div>
+<br>
+<br>
+<br>
+<br>
+</div>
+
 
 <div class="container">
   <h1> Popular Events</h1>
