@@ -9,7 +9,9 @@ class ApplicationController < ActionController::Base
   #now that' you're loggind in, can you do this things?
 
   # Pundit: white-list approach.
-  ## after_action :verify_authorized, except: :index, unless: :skip_pundit?
+
+  after_action :verify_authorized, except: :index, unless: :skip_pundit?
+
   # has to be verified afterwards . 1. does it perform 2. is it conformed?
   # you only deal with one item
   # exactly the same as this - after_action(:verify_authorized, { except: :index, unless: :skip_pundit? })
@@ -35,5 +37,9 @@ class ApplicationController < ActionController::Base
   # if you are in the device controller --> device is a whole world
   # pundit only works with controllers
 
-
+  def verify_presence_of_profile
+    if current_user.profile.nil?
+      redirect_to new_profile_path, alert: 'Please create a profile before proceeding'
+    end
+  end
 end

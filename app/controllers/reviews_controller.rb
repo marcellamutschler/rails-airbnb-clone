@@ -8,21 +8,22 @@ class ReviewsController < ApplicationController
   def show
   end
 
+  def new
+    @review = Review.new
+    authorize @booking
+  end
 
   def create
     @review = Review.new(review_params)
     @review.booking = @booking
     @review.user = current_user
+    authorize @booking
     if @review.save
       redirect_to venue_path(@booking.venue)
       flash.now[:notice] = 'Thank you for your review!'
     else
       render :new
     end
-  end
-
-  def new
-    @review = Review.new
   end
 
   def find_booking

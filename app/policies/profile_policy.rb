@@ -26,13 +26,10 @@ class ProfilePolicy < ApplicationPolicy
   # - user:   the `current_user` signed in with Devise.
   end
 
-  def myvenues?
-    true
-  end
-
   def edit?
     update?
   end
+
 
   def destroy?
     record.user == user
@@ -42,3 +39,4 @@ class ProfilePolicy < ApplicationPolicy
     record.user == user
   end
 end
+
