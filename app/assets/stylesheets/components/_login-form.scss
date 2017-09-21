@@ -38,3 +38,25 @@
   color: grey;
   font-size: 18px;
 }
+.checkbox_list{
+  display: flex;
+  justify-content: center;
+  flex-direction: row-reverse;
+  margin-left: -20%;
+  div {
+
+    width: 40px;
+  }
+  .label_venue{
+    // min-width: 100px;
+    padding: 0;
+  }
+}
+
+.venue-form {
+
+
+  .radio input[type="radio"], .radio-inline input[type="radio"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"] {
+      margin-left: 0px;
+  }
+}

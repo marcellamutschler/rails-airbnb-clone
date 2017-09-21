@@ -1,48 +1,4 @@
-
-<div class="navbar-home">
-  <%= link_to root_path, class: "navbar-wagon-brand" do %>
-  <%= image_tag "logo_white.png" %>
-  <% end %>
-  <!-- Right Navigation -->
-  <div class="navbar-home-right hidden-xs hidden-sm">
-    <% if !user_signed_in? %>
-
-    <% if policy(Venue).create? %>
-    <%= link_to "List your Venue", new_user_registration_path, class: "btn-navbar"%>
-    <% end %>
-
-    <%= link_to "Sign Up", new_user_registration_path, class: "btn-navbar"%>
-
-    <%= link_to "Log In", new_user_session_path, class: "btn-navbar"%>
-    <% else %>
-
-
-    <% if policy(Venue).create? %>
-    <%= link_to "List Your Venue", new_venue_path, class: "btn-red"%>
-    <% end %>
-
-    <% if current_user.profile %>
-
-    <%# if policy(current_user.profile).show? %>
-    <%= link_to "Go to Profile", profile_path(current_user.profile), class: "btn-navbar" %>
-
-
-    <% else %>
-
-    <%= link_to "Create Profile", new_profile_path, class: "btn-navbar" %>
-    <% end %>
-
-
-    <%= link_to destroy_user_session_path, method: :delete do %>
-
-    <p class="btn-navbar", style="text-decoration: none"> <%= t(".sign_out", default: "Log out") %></p>
-    <% end %>
-    <% end %>
-  </div>
-</div>
-
-
-
+<div id="home">
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://www.homejournal.hk/wp-content/uploads/2016/03/Issaya-Bar.jpg');">
 
   <div class="banner-content">
@@ -51,18 +7,19 @@
       <span class="wrap"></span>
     </h1>
     <br>
+    <br>
 
 
     <%= form_tag(venues_path, method: :get) do %>
-    <%= select_tag :categories, options_for_select(@categories)  %>
-    <%= select_tag :city, options_for_select(@cities)  %>
-    <%= submit_tag "Search"  %>
+    <%= select_tag :categories, options_for_select(@categories), style: "font-size: 25px" %>
+    <%= select_tag :city, options_for_select(@cities), style: "font-size: 25px"  %>
+    <%= submit_tag "Search", class: "btn-red", style: "padding: 0px;"  %>
     <% end %>
-</div>
-<br>
-<br>
-<br>
-<br>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
 </div>
 
 
@@ -153,9 +110,11 @@
   </div>
 </div>
 
+<%= render 'shared/footer-home-page', style: "text-decoration: none" %>
 
 
 
+</div>
 
 
 

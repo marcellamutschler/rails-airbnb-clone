@@ -29,6 +29,7 @@ class BookingsController < ApplicationController
      #@booking.total_price = (params[:booking.end_date] - [:booking.start_date]to_i*@venue.price
 
     authorize @booking
+
     if @venue.save &&  @booking.save
       redirect_to profile_booking_path(@booking.user.profile, @booking)
     else

@@ -28,7 +28,6 @@ gem 'bootstrap3-datetimepicker-rails'
 gem 'momentjs-rails'
 gem "geocoder"
 
-
 gem 'faker'
 
 
