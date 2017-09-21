@@ -4,8 +4,3 @@
 
 <%= link_to 'Go Back', venues_path, class: "btn-red" %>
 
-<% @venues.each do |venue| %>
-  <% if policy(venue).update? %>
-    <%= link_to "Update", edit_venue_path(venue) %>
-  <% end %>
-<% end %>
