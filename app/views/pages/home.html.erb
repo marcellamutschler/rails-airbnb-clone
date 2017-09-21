@@ -7,18 +7,19 @@
       <span class="wrap"></span>
     </h1>
     <br>
+    <br>
 
 
     <%= form_tag(venues_path, method: :get) do %>
-    <%= select_tag :categories, options_for_select(@categories)  %>
-    <%= select_tag :city, options_for_select(@cities)  %>
-    <%= submit_tag "Search"  %>
+    <%= select_tag :categories, options_for_select(@categories), style: "font-size: 25px"   %>
+    <%= select_tag :city, options_for_select(@cities), style: "font-size: 25px"  %>
+    <%= submit_tag "Search", class: "btn-red", style: "padding: 0px;"  %>
     <% end %>
-</div>
-<br>
-<br>
-<br>
-<br>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
 </div>
 
 
@@ -108,6 +109,8 @@
     </div>
   </div>
 </div>
+
+<%= render 'shared/footer-home-page', style: "text-decoration: none" %>
 
 
 
