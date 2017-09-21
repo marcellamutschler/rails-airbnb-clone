@@ -2,6 +2,7 @@ class VenuesController < ApplicationController
   before_action :set_venue, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:show, :index]
   before_action :find_reviews, only: [:show]
+  before_action :find_reviews_average, only: [:show]
 
   # logging in and out
 
@@ -67,14 +68,22 @@ class VenuesController < ApplicationController
   end
 
   def find_reviews
-    @bookings = @venue.bookings
-    @venue_reviews = []
-    @bookings.each do |booking|
-      @booking_review = booking.review
-      unless booking.review.nil?
-      @venue_reviews << @booking_review
+      @bookings = @venue.bookings
+      @venue_reviews = []
+      @bookings.each do |booking|
+        @booking_review = booking.review
+        unless booking.review.nil?
+        @venue_reviews << @booking_review
+        end
       end
+  end
+
+  def find_reviews_average
+    sum = 0
+    @venue_reviews.each do |review|
+      sum = sum + review.review_rating
     end
+    @average_rating = sum / @venue_reviews.length.to_f
   end
 
   private
