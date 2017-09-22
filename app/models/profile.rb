@@ -3,7 +3,7 @@ class Profile < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
   has_attachment :photo
-  after_create :send_welcome_email
+  # after_create :send_welcome_email
 
 
   private
