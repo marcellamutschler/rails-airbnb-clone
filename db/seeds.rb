@@ -1,4 +1,4 @@
-CITY_VENUE = ["Frankfurt", "Berlin", "Miilan", "Munich", "Barcelona", "Madrid", "Hamburg", "Luxemburg", "Zurich", "Paris", "London", "Marseille", "Porto", "Stockholm", "Copenhagen", "Amsterdam", "Vienna", "Marseille", "Lyon"]
+CITY_VENUE = ["Frankfurt", "Berlin", "Milan", "Munich", "Barcelona", "Madrid", "Hamburg", "Luxemburg", "Zurich", "Paris", "London", "Marseille", "Porto", "Stockholm", "Copenhagen", "Amsterdam", "Vienna", "Marseille", "Lyon"]
 ADJECTIVE_VENUE = ["modern", "romantic", "artsy", "unique", "special"]
 RAMDOM_VENUE_IMAGE = 'http://lorempixel.com/640/480/city'
 RAMDOM_PEOPLE = 'http://lorempixel.com/640/480/people'
