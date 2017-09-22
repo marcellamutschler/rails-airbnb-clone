@@ -15,9 +15,9 @@
   <%= f.label :start_date %>
   <%= f.input :start_date, as: :string, input_html: {class: 'datepicker'} %>
 
- <%= f.label :end_date %>
-<%= f.input :end_date, as: :string, input_html: {class: 'datepicker'} %>
 
+<%= f.label :end_date %>
+<%= f.input :end_date, as: :bootstrap_datetimepicker, input_html: {class: 'datempicker'} %>
   <%= f.submit %>
 <% end %>
 

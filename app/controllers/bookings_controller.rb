@@ -21,19 +21,22 @@ class BookingsController < ApplicationController
   end
 
   def create
-
     @booking = Booking.new(booking_params)
     @booking.venue = @venue
     @booking.user = current_user
+    @booking.price = @booking.venue.price
+    #@booking.total_price = (params[:booking][:hours]).to_i*@venue.price
+    @booking.total_price = ((params[:booking.end_date] - [:booking.start_date]) * @booking.venue.price
 
-    @booking.total_price = (params[:booking][:hours]).to_i*@venue.price
-
+    authorize @booking
 
     if @venue.save &&  @booking.save
       redirect_to profile_booking_path(@booking.user.profile, @booking)
     else
       render :new
     end
+
+
   end
 
   def edit
@@ -83,6 +86,6 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:status, :total_price, :user_id, :venue_id)
+    params.require(:booking).permit(:status, :total_price, :user_id, :venue_id, :start_date, :end_date, :hour)
   end
 end

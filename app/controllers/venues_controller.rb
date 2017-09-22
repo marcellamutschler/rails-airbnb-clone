@@ -8,6 +8,7 @@ class VenuesController < ApplicationController
   # logging in and out
 
   def index
+
     if params["city"] && params["categories"]
       @venues = policy_scope(Venue).where("city = ? AND ? = ANY(categories)", params["city"], params["categories"])
     else
@@ -16,6 +17,12 @@ class VenuesController < ApplicationController
 
     # si on mettait un raise ici, cela nous donnerait quand meme
     #l'accès à l'élément juste au dessus.
+
+    @city = params["city"]
+    @categ = params["categories"]
+      # si on mettait un raise ici, cela nous donnerait quand meme
+      #l'accès à l'élément juste au dessus.
+
     @venues_with_coordinates = @venues.where.not(latitude: nil, longitude: nil)
     @hash = Gmaps4rails.build_markers(@venues_with_coordinates) do |venue, marker|
       marker.lat venue.latitude
@@ -23,8 +30,10 @@ class VenuesController < ApplicationController
     end
   end
 
-  def show
 
+
+
+  def show
     @hash = [{ lat: @venue.latitude, lng: @venue.longitude }]
     @booking = Booking.new
     @message = Message.new
@@ -60,6 +69,7 @@ class VenuesController < ApplicationController
   end
 
   def edit
+
   end
 
   def update
@@ -69,7 +79,7 @@ class VenuesController < ApplicationController
 
   def destroy
     @venue.destroy!
-    redirect_to venues_path
+    redirect_to profile_myvenues_path(current_user)
   end
 
   def find_reviews
@@ -86,9 +96,9 @@ class VenuesController < ApplicationController
   def find_reviews_average
     sum = 0
     @venue_reviews.each do |review|
-      sum = sum + review.review_rating
+      sum = sum += review.review_rating
     end
-    @average_rating = sum / @venue_reviews.length.to_f
+    @average_rating = sum /= @venue_reviews.length.to_f
   end
 
   private
@@ -99,6 +109,9 @@ class VenuesController < ApplicationController
   end
 
   def venue_params
-    params.require(:venue).permit(:name, :capacity, :location, :description, :price, :user_id, :photos => [], :categories => [], :amenities => [])
+
+
+    params.require(:venue).permit(:name, :capacity, :location, :description, :price, :user_id, :city, :photos => [], :categories => [], :amenities => [])
+
   end
 end

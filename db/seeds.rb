@@ -3,6 +3,7 @@ ADJECTIVE_VENUE = ["modern", "romantic", "artsy", "unique", "special"]
 RAMDOM_VENUE_IMAGE = 'http://lorempixel.com/640/480/city'
 RAMDOM_PEOPLE = 'http://lorempixel.com/640/480/people'
 
+
 User.destroy_all
 
 25.times do

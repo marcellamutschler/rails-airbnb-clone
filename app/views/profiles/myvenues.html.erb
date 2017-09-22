@@ -4,6 +4,8 @@ Name: <%= venue.name %>,
 Location: <%= venue.location %>,
 Price: <%= venue.price %>,
 <%= cl_image_tag venue.photos.first.path %>
+<%= link_to "Edit", edit_venue_path(venue) %>
+<%= link_to "Destroy", venue_path(venue), method: :delete %>
 <p>Add here further details</p>
 <% end %>
 

@@ -11,7 +11,7 @@
 
 
     <%= form_tag(venues_path, method: :get) do %>
-    <%= select_tag :categories, options_for_select(@categories), style: "font-size: 25px"   %>
+    <%= select_tag :categories, options_for_select(@categories), style: "font-size: 25px" %>
     <%= select_tag :city, options_for_select(@cities), style: "font-size: 25px"  %>
     <%= submit_tag "Search", class: "btn-red", style: "background: #DE1A10"  %>
     <% end %>
