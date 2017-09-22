@@ -10,7 +10,7 @@ class VenuesController < ApplicationController
   def index
 
     if params["capacity"] && params["price"]
-      @venues = policy_scope(Venue).where("city = ? AND ? = ANY(categories) AND price <= ? AND capacity <= ?", params["city"], params["categories"],  params["price"],  params["capacity"])
+      @venues = policy_scope(Venue).where("city = ? AND ? = ANY(categories) AND price <= ? AND capacity >= ?", params["city"], params["categories"],  params["price"],  params["capacity"])
     elsif params["city"] && params["categories"]
       @venues = policy_scope(Venue).where("city = ? AND ? = ANY(categories)", params["city"], params["categories"])
     else
