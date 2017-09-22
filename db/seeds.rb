@@ -15,13 +15,14 @@ User.destroy_all
   profile.user = user
 
   profile.photo_url = RAMDOM_PEOPLE
-  puts 'user: #{user.full_name} created' if profile.save
+  puts "user: #{user.full_name} created" if profile.save
 
   4.times do
     category_venue = [Venue::CATEGORIES.sample]
     amenitiy_venue = [Venue::AMENITIES.sample]
+    city = CITY_VENUE.sample
     venue_name = ADJECTIVE_VENUE.sample + " " + category_venue.first + " " + "Venue"
-    venue = Venue.new(name: venue_name, categories: category_venue, amenities: amenitiy_venue, city: CITY_VENUE.sample, capacity: rand((20)+1)*10, location: "Frankfurt", description: Faker::Lorem.sentence, price: rand(20..200))
+    venue = Venue.new(name: venue_name, categories: category_venue, amenities: amenitiy_venue, city: city, capacity: rand((20)+1)*10, location: city, description: Faker::Lorem.sentence, price: rand(20..200))
 
     venue.photo_urls = [RAMDOM_VENUE_IMAGE]
     venue.user = user
