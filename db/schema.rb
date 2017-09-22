@@ -135,8 +135,6 @@ ActiveRecord::Schema.define(version: 20170920131943) do
     t.integer "wishlist_id"
     t.string "categories", default: [], array: true
     t.string "amenities", default: [], array: true
-    t.float "latitude"
-    t.float "longitude"
     t.string "city"
     t.index ["user_id"], name: "index_venues_on_user_id"
   end
