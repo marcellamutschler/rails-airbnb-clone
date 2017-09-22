@@ -1,19 +1,22 @@
 
-<h1>All your bookings </h1>
+<h1>Your bookings </h1>
 
-<h1>This is what you have booked</h1>
+<table id="t01">
 <% @bookings.each do |booking| %>
-<li>
-  <%= booking.venue.name %>
-  <%= booking.venue.location %> for a max of
-  <%= booking.venue.capacity %> people,
-  Bio: <%= booking.venue.description %>,
-  <%= booking.venue.price %> € per hour,
-  <%= booking.status %>
-  <%= booking.total_price %> (still need to do a method for total price here) <p></p>
-</li>
-<%= link_to 'Add review', new_profile_booking_review_path(@profile, booking), class: "btn-normal" %>
+<tr>
+  <td> <%= booking.venue.photo %></td>
+  <td style="padding:20px"><%= link_to booking.venue.name, venues_path, class: "venue-title" %></td>
+  <td> in <%= booking.venue.location %></td>
+  <td> Booking status: <%= booking.status %><td>
+  <td> Price: <%= booking.venue.price %> € per hour</td>
+  <td> Total price: <%= booking.total_price %> €</td>
+  <% if booking.status == "accepted" %>
+  <td> <%= link_to 'Add review', new_profile_booking_review_path(@profile, booking), class: "btn-red" %></td>
+  <% end %>
+
+</tr>
 <% end %>
+</table>
 
 
 <%= link_to 'Go Back', venues_path, class: "btn-normal" %>
