@@ -11,6 +11,8 @@ class PagesController < ApplicationController
     #AR method to guet cities frim venues that have cities, then
     # it returns us an array of cities
     @categories = ['Wedding', 'Party', 'Baptism', 'Workshop', 'Trainings', 'Social Event', 'Desk Rentals', 'Conferences', 'Launch Event', 'Business Meeting', 'Birthday', 'Photo Shoot', 'Film Shoot', 'Concert', 'Get-Together', 'Other']
+    #@city = params["city"]
+    #@categ = params["categories"]
   end
 
 
