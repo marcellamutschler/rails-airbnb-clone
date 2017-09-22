@@ -3,10 +3,10 @@
     <table style='width:100%; margin-left: 30px; margin-right: 25px'>
       <tr>
         <th rowspan="2" style="width: 25%; font-size: 12px">
-          <input class="filterdropdown" type="dropdown" name="city" min="0" value="<%=@city %>" placeholder="<%=@city %>" >
+          <input class="filterdropdown" type="dropdown" name="city" min="0" value="<%= @city %>" placeholder="<%= @city %>" >
         </th>
         <th rowspan="2" style="width: 25%; font-size: 12px">
-          <input class="filterdropdown" type="dropdown" name="category" min="0" value="<%=@categ %>" placeholder="<%=@categ %>">
+          <input class="filterdropdown" type="dropdown" name="categories" min="0" value="<%= @categ %>" placeholder="<%= @categ %>">
         <div><th style="width: 25%; font-size: 12px">Capacity</th></div>
         <div><th style="width: 25%; font-size: 12px">Max Price per hour</th></div>
       </tr>
@@ -14,13 +14,13 @@
       <tr style="padding: 100px">
 
         <td>
-          <input type="range" name="capacityInputName" id="capacityInputId" value="200" min="1" max="500" oninput="capacityOutputId.value = capacityInputId.value">
-          <output name="capacityOutputName" id="capacityOutputId">200</output>
+          <input type="range" name="capacity" id="capacityInputId" value="<%= @capacity || 1 %>" min="1" max="500" oninput="capacityOutputId.value = capacityInputId.value">
+          <output name="capacityOutputName" id="capacityOutputId"><%= @capacity || 1 %></output>
         </td>
 
         <td>
-          <input type="range" name="priceInputName" id="priceInputId" value="70" min="1" max="500" oninput="priceOutputId.value = priceInputId.value">
-          <output name="priceOutputName" id="priceOutputId"></output>
+          <input type="range" name="price" id="priceInputId" value="<%= @price || 500 %>" min="1" max="500" oninput="priceOutputId.value = priceInputId.value">
+          <output name="priceOutputName" id="priceOutputId"><%= @price || 500 %></output>
         </td>
         <td>
             <input type="submit" value="Submit">
