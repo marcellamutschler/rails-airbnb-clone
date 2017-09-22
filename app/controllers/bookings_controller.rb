@@ -24,9 +24,9 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.venue = @venue
     @booking.user = current_user
-
-    @booking.total_price = (params[:booking][:hours]).to_i*@venue.price
-     #@booking.total_price = (params[:booking.end_date] - [:booking.start_date]to_i*@venue.price
+    @booking.price = @booking.venue.price
+    #@booking.total_price = (params[:booking][:hours]).to_i*@venue.price
+    @booking.total_price = ((params[:booking.end_date] - [:booking.start_date]) * @booking.venue.price
 
     authorize @booking
 
@@ -36,7 +36,6 @@ class BookingsController < ApplicationController
       render :new
     end
 
-       raise
 
   end
 

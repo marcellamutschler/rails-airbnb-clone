@@ -1,54 +1,52 @@
+<div class="profile-header-wrapper">
+  <div class="profile-container profile-header-container">
 
-    <div class="profile">
-    <div class="profile-header-wrapper">
-      <div class="profile-container profile-header-container">
+    <div class="profile-header-infos">
 
-        <div class="profile-header-infos">
+      <% if current_user.profile.photo? %>
+      <%  avatar_url = cl_image_path current_user.profile.photo.path %>
+      <% elsif current_user.facebook_picture_url.present? %>
+      <% avatar_url = image_path  current_user.facebook_picture_url  %>
+      <% else %>
+      <% avatar_url = "https://material-components-web.appspot.com/images/animal1.svg" %>
+      <% end %>
+      <%= image_tag avatar_url  %>
 
-        <% if current_user.profile.photo? %>
-          <%  avatar_url = cl_image_path current_user.profile.photo.path %>
-        <% elsif current_user.facebook_picture_url.present? %>
-          <% avatar_url = image_path  current_user.facebook_picture_url  %>
-          <% else %>
-          <% avatar_url = "https://material-components-web.appspot.com/images/animal1.svg" %>
-          <% end %>
-           <%= image_tag avatar_url  %>
-
-          <h1><%= @profile.first_name %> <%= @profile.last_name %></h1>
+      <h1><%= @profile.first_name %> <%= @profile.last_name %></h1>
 
 
-          <h2>Bio: <%= @profile.bio %></h2>
+      <h2>Bio: <%= @profile.bio %></h2>
 
 
 
-<hr>
+      <hr>
 
-          <% if current_user == @profile.user %>
-          <%= link_to edit_profile_path do %>
-            <h2>Edit <i class="fa fa-pencil-square-o" aria-hidden="true"></i></h2>
-            <% end %>
+      <% if current_user == @profile.user %>
 
 
-        </div>
-        <div class="tabs">
-          <a class="tab active" href="#">
-            <h3>Your Bookings</h3>
-          </a>
-          <a class="tab" href="#">
-            <h3>Your Venues</h3>
-          </a>
-          <a class="tab" href="#">
-            <h3>Your Wishlist</h3>
-          </a>
-        </div>
-      </div>
+      <%= link_to "Edit", edit_profile_path(@profile), class: "btn-normal"%>
+
+
     </div>
+    <div class="tabs">
+      <a class="tab active" href="#">
+        <h3>Your Bookings</h3>
+      </a>
+      <a class="tab" href="#">
+        <h3>Your Venues</h3>
+      </a>
+      <a class="tab" href="#">
+        <h3>Your Wishlist</h3>
+      </a>
+    </div>
+  </div>
+</div>
 
 
-    <div class="profile-container">
-      <div class="booking">
-        <div class="list-inline product-controls">Date</div>
-        <!-- <img src="images/kudoz.jpg" alt="" class="venue-image"> -->
+<div class="profile-container">
+  <div class="booking">
+    <div class="list-inline product-controls">Date</div>
+    <!-- <img src="images/kudoz.jpg" alt="" class="venue-image"> -->
      <!--    <div class="product-body">
           <h3>Booking 1</h3>
           <p>Location 1</p>
@@ -81,19 +79,18 @@
         </ul>
       </div> -->
 
-  <%= link_to "Edit your Profil", edit_profile_path, class: "btn-normal"%>
+      <%= link_to "Edit your Profil", edit_profile_path, class: "btn-normal"%>
 
-  <%= link_to "Show Your Bookings", profile_bookings_path(@profile, @bookings), class: "btn-normal"%>
+      <%= link_to "Show Your Bookings", profile_bookings_path(@profile, @bookings), class: "btn-normal"%>
 
-  <%= link_to "Bookings for your places", owner_bookings_profile_bookings_path(@profile), class: "btn-normal" %>
-<hr>
-
-
+      <%= link_to "Bookings for your places", owner_bookings_profile_bookings_path(@profile), class: "btn-normal" %>
+      <hr>
 
 
-  <%= link_to "List Your Venue", new_venue_path, class: "btn-red"%>
-  +<% end %>
+
+
+      <%= link_to "List Your Venue", new_venue_path, class: "btn-red"%>
+      +<% end %>
     </div>
 
 
-  </div>

@@ -8,18 +8,32 @@ class VenuesController < ApplicationController
   # logging in and out
 
   def index
-    @venues = Venue.where("city = ? AND ? = ANY(categories)", params["city"],params["categories"])
+
+    if params["city"] && params["categories"]
+      @venues = policy_scope(Venue).where("city = ? AND ? = ANY(categories)", params["city"], params["categories"])
+    else
+      @venues = policy_scope(Venue)
+    end
+
+    # si on mettait un raise ici, cela nous donnerait quand meme
+    #l'accès à l'élément juste au dessus.
+
+    @city = params["city"]
+    @categ = params["categories"]
       # si on mettait un raise ici, cela nous donnerait quand meme
       #l'accès à l'élément juste au dessus.
+
     @venues_with_coordinates = @venues.where.not(latitude: nil, longitude: nil)
     @hash = Gmaps4rails.build_markers(@venues_with_coordinates) do |venue, marker|
       marker.lat venue.latitude
       marker.lng venue.longitude
-      end
-    @venues = policy_scope(Venue)
 
+    end
     @bookmark = Bookmark.new
-   end
+  end
+
+
+
 
   def show
     @hash = [{ lat: @venue.latitude, lng: @venue.longitude }]
@@ -96,8 +110,8 @@ class VenuesController < ApplicationController
     authorize @venue
   end
 
-
   def venue_params
+
 
     params.require(:venue).permit(:name, :capacity, :location, :description, :price, :user_id, :city, :photos => [], :categories => [], :amenities => [])
 

@@ -4,18 +4,18 @@ class User < ApplicationRecord
   after_create :send_welcome_email
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_one :profile
-  has_many :bookings
-  has_many :venues
-  has_many :reviews
-  has_many :bookmarks
-  has_many :bookmarked_venues, through: :bookmarks, source: :venue
+  has_one :profile, dependent: :destroy
+  has_many :bookings, dependent: :destroy
+  has_many :venues, dependent: :destroy
+  has_many :reviews, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy
+  has_many :bookmarked_venues, through: :bookmarks, source: :venue, dependent: :destroy
   #You are calling class_name
   devise :omniauthable, omniauth_providers: [:facebook]
 
-  has_many :conversations, foreign_key: :owner_id, class_name: "Conversation"
-  has_many :conversations, foreign_key: :booker_id, class_name: "Conversation"
-  has_many :messages
+  has_many :conversations, foreign_key: :owner_id, class_name: "Conversation", dependent: :destroy
+  has_many :conversations, foreign_key: :booker_id, class_name: "Conversation", dependent: :destroy
+  has_many :messages, dependent: :destroy
 
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice(:provider, :uid)
