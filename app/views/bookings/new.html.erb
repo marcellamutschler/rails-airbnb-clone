@@ -13,11 +13,11 @@
   <%= f.number_field :hours %>
 
   <%= f.label :start_date %>
-  <%= f.input :start_date, as: :string, input_html: {class: 'datepicker'} %>
+  <%= f.text_field :start_date, class: "consumer-request datepick request-time" %>
 
 
 <%= f.label :end_date %>
-<%= f.input :end_date, as: :bootstrap_datetimepicker, input_html: {class: 'datempicker'} %>
+<%= f.text_field :end_date, class: "timepicker-default request-time", id: "basicExample" %>
   <%= f.submit %>
 <% end %>
 
