@@ -17,6 +17,8 @@ class VenuesController < ApplicationController
       marker.lng venue.longitude
       end
     @venues = policy_scope(Venue)
+
+    @bookmark = Bookmark.new
    end
 
   def show
