@@ -9,6 +9,8 @@ class VenuesController < ApplicationController
 
   def index
     @venues = Venue.where("city = ? AND ? = ANY(categories)", params["city"],params["categories"])
+    @city = params["city"]
+    @categ = params["categories"]
       # si on mettait un raise ici, cela nous donnerait quand meme
       #l'accès à l'élément juste au dessus.
     @venues_with_coordinates = @venues.where.not(latitude: nil, longitude: nil)
@@ -18,6 +20,9 @@ class VenuesController < ApplicationController
       end
     @venues = policy_scope(Venue)
    end
+
+
+
 
   def show
     @hash = [{ lat: @venue.latitude, lng: @venue.longitude }]
