@@ -1,28 +1,24 @@
-<h1>Bookmarks#index</h1>
-<p>Find me in app/views/bookmarks/index.html.erb</p>
-
+<h1>Your Wishlist</h1>
+<br>
 <% if @bookmarks.empty? %>
-<p>
-
-  You have not added anything to your Wishlist yet.
-</p>
+<p>You have not added anything to your Wishlist yet.</p>
 
 <% else %>
-<p>You have nookmarked</p>
+<table style="width: 100%">
 <% @bookmarks.each do |bookmark| %>
-<li>
-
-<%= bookmark.venue.name %> in
-<%= bookmark.venue.location %>, by
-<%= bookmark.user.profile.first_name %>
-<%= bookmark.user.profile.last_name %>
-</li>
-  <%= link_to venue_path(bookmark.venue) do %>
-  <% if bookmark.venue.photos.first %>
-
-    <%= cl_image_tag bookmark.venue.photos.first.path %>
+  <tr>
+  <td><%= link_to venue_path(bookmark.venue) do %>
+    <% if bookmark.venue.photos.first %>
+      <%= cl_image_tag bookmark.venue.photos.first.path %></td>
+    <% end %>
   <% end %>
-  <% end %>
-  <%= link_to "Remove from your Wishlist", bookmark_path(bookmark), method: :delete %>
+  <td><strong><%= bookmark.venue.name %></strong></td>
+  <td>Location: <%= bookmark.venue.location %></td>
+  <td> Host: <%= bookmark.user.profile.first_name %>
+  <%= bookmark.user.profile.last_name %></td>
+  <td><%= link_to "Remove from your Wishlist", bookmark_path(bookmark), method: :delete, class: "btn-normal" %><br></td>
 <% end %>
+<br>
+  </tr>
+</table>
 <% end %>

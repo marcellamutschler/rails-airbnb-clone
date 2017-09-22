@@ -1,4 +1,6 @@
-Your Messages with <%= convo_partner(@conversation).full_name %>
+<div class="login_form" style="margin-top: 10px">
+<h1> <%= convo_partner(@conversation).full_name %></h1>
+
 <% @messages.each do |message| %>
 
 <% if message.user != current_user  %>
@@ -20,7 +22,6 @@ Your Messages with <%= convo_partner(@conversation).full_name %>
   aösdljfalösdfjk
 </div>
 <% end %>
-</div>
 <% end %>
 
 <div class="form-messenger">
@@ -30,5 +31,6 @@ Your Messages with <%= convo_partner(@conversation).full_name %>
   <% end %>
 </div>
 
-
+</div>
+</div>
 
