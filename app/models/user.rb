@@ -1,7 +1,11 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  after_create :send_welcome_email
+
+  # after_create :send_welcome_email
+  # temporarily commenting it out for demo daz fri 22.
+
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_one :profile, dependent: :destroy
