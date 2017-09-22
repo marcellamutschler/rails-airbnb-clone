@@ -8,6 +8,7 @@ class VenuesController < ApplicationController
   # logging in and out
 
   def index
+    raise
     @venues = Venue.where("city = ? AND ? = ANY(categories)", params["city"],params["categories"])
     @city = params["city"]
     @categ = params["categories"]
