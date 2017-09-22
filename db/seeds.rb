@@ -1,9 +1,11 @@
 CITY_VENUE = ["Frankfurt", "Berlin", "Milan", "Munich", "Barcelona", "Madrid", "Hamburg", "Luxemburg", "Zurich", "Paris", "London", "Marseille", "Porto", "Stockholm", "Copenhagen", "Amsterdam", "Vienna", "Marseille", "Lyon"]
 ADJECTIVE_VENUE = ["modern", "romantic", "artsy", "unique", "special"]
+
 RAMDOM_VENUE_IMAGE = 'http://lorempixel.com/640/480/city'
 RAMDOM_PEOPLE = 'http://lorempixel.com/640/480/people'
 
 
+puts "destroying records... please wait..."
 User.destroy_all
 
 25.times do
@@ -18,7 +20,7 @@ User.destroy_all
   4.times do
     category_venue = [Venue::CATEGORIES.sample]
     amenitiy_venue = [Venue::AMENITIES.sample]
-    venue_name = ADJECTIVE_VENUE.sample +  category_venue.first + "Venue"
+    venue_name = ADJECTIVE_VENUE.sample + " " + category_venue.first + " " + "Venue"
     venue = Venue.new(name: venue_name, categories: category_venue, amenities: amenitiy_venue, city: CITY_VENUE.sample, capacity: rand((20)+1)*10, location: "Frankfurt", description: Faker::Lorem.sentence, price: rand(20..200))
 
     venue.photo_urls = [RAMDOM_VENUE_IMAGE]
