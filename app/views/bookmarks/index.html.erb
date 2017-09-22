@@ -19,7 +19,9 @@
 </li>
 
   <%= link_to venue_path(bookmark.venue) do %>
+  <% if bookmark.venue.photos.first %>
     <%= cl_image_tag bookmark.venue.photos.first.path %>
+  <% end %>
   <% end %>
   <%= link_to "Remove from your Wishlist", bookmark_path(bookmark), method: :delete %>
 <% end %>

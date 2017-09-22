@@ -16,7 +16,6 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "HelveticaNeue-Light"}
   <div class="w3-container" id="apartment">
   <div class="w3-container w3-display-container w3-padding-16">
     <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-transparent w3-display-topright"></i>
-    <hr>
     <h3>Book this location</h3>
     <h3>for <%= @venue.price %> € <br></h3>
     <h6>per hour</h6>
@@ -26,23 +25,19 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "HelveticaNeue-Light"}
       <%=simple_form_for @booking,:url => venue_bookings_path(:venue_id => params[:id], :method => :post) do |f| %>
       <br>
       <p><label><i class="fa fa-calendar-check-o"></i> Start Date</label></p>
-      <%= f.input :start_date, as: :string, input_html: {class: 'form_datetime'} %>
+      <%= f.input :start_date, label: false, as: :string, input_html: {class: 'form_datetime'} %>
       <br>
 
-      <br>
       <p><label><i class="fa fa-calendar-check-o"></i> End Date</label></p>
-      <%= f.input :end_date, as: :string, input_html: {class: 'form_datetime'} %>
+      <%= f.input :end_date, label: false, as: :string, input_html: {class: 'form_datetime'} %>
       <br>
 
       <%= f.submit class: "btn-red w3-block" %>
       <% end %>
 
-
       <%= simple_form_for(@bookmark, url: bookmarks_path, html: {method: :post}) do |f| %>
         <%= f.hidden_field :venue_id, value: @venue.id %>
-        <div class="btn-red w3-block">
-          <%= f.submit "Add to your Wishlist" %>
-        </div>
+          <%= f.submit "Add to your Wishlist", class: "btn-red w3-block"%>
       <% end %>
       <br><%= link_to 'Back to all Venues', venues_path, class: "btn-normal w3-block" %>
 </nav>
@@ -166,9 +161,9 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "HelveticaNeue-Light"}
       <% end %>
       <hr>
 
-    <h4><strong>Reviews <br> Average Rating: <%= @average_rating.to_f %> of 5 </strong></h4>
+    <h4><strong>Reviews - Average Rating: <%= @average_rating.to_f %> of 5 </strong></h4>
       <% @venue_reviews.each do |review| %>
-      <li><%= review.review_rating %>/5 stars -  <%= review.user.profile.first_name %>s Review: <%= review.review_text %> </li>
+      <li><%= review.review_rating %>/5 stars -  <%= review.user.profile.first_name %> writes: "<%= review.review_text %>" </li>
       <% end %>
 
   </div>
@@ -176,12 +171,12 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "HelveticaNeue-Light"}
 <br>
   <!-- Contact -->
   <div class="w3-container" id="contact">
-    <h4><strong>Contact</strong></h4>
-    <p>Do you have any questions or concerns? <br>Please text the host here:</p><br>
+    <h4><strong>Contact & Questions </strong></h4>
+    <p>Do you have any questions or concerns? <br>Insert your message here:</p><br>
     <%= simple_form_for(@message, url: conversations_path, html: {method: :post}) do |f| %>
-      <%= f.input :content, class: "w3-input w3-border" %>
+      <%= f.input :content, label: false, class: "w3-input w3-border" %>
       <%= f.hidden_field :venue_id, value: @venue.id %>
-      <%= f.submit "send", class: "btn-red" %>
+      <%= f.submit "Send", class: "btn-red" %>
     <% end %>
   </div>
 
