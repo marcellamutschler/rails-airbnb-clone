@@ -27,6 +27,7 @@ class ProfilesController < ApplicationController
     # that belongs to the user with this specific ID
     # query into the profile table, through user ID
     # profl belongs to this profile
+    @bookings = current_user.bookings
    end
 
   def new
