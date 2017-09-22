@@ -9,17 +9,23 @@ class VenuesController < ApplicationController
 
   def index
 
-    if params["city"] && params["categories"]
+    if params["capacity"] && params["price"]
+      @venues = policy_scope(Venue).where("city = ? AND ? = ANY(categories) AND price <= ? AND capacity >= ?", params["city"], params["categories"],  params["price"],  params["capacity"])
+    elsif params["city"] && params["categories"]
       @venues = policy_scope(Venue).where("city = ? AND ? = ANY(categories)", params["city"], params["categories"])
     else
       @venues = policy_scope(Venue)
     end
-
     # si on mettait un raise ici, cela nous donnerait quand meme
     #l'accès à l'élément juste au dessus.
 
     @city = params["city"]
     @categ = params["categories"]
+    @capacity = params["capacity"]
+    @price = params["price"]
+
+
+
       # si on mettait un raise ici, cela nous donnerait quand meme
       #l'accès à l'élément juste au dessus.
 
@@ -27,9 +33,10 @@ class VenuesController < ApplicationController
     @hash = Gmaps4rails.build_markers(@venues_with_coordinates) do |venue, marker|
       marker.lat venue.latitude
       marker.lng venue.longitude
-
     end
     @bookmark = Bookmark.new
+
+
   end
 
 
