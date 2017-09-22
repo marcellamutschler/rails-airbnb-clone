@@ -7,7 +7,10 @@
 
   <%= f.input :location %>
 
+  <%= f.input :city %>
+
   <%= f.input :description %>
+
   <br>
 
 
@@ -24,7 +27,7 @@
           </label>
         </div>
         <div class="input_venue">
-          <input class="check_boxes required" type="checkbox" value="Wedding" name="venue[categories][]" id="venue_categories_wedding"> </input>
+          <input class="check_boxes required" type="checkbox" value="<%= venue %>" name="venue[categories][]" id="venue_categories_wedding"> </input>
         </div>
 
       </div>
@@ -37,7 +40,7 @@
 
     <div class="form-group check_boxes required venue_categories">
     <label class="control-label check_boxes required"><abbr title="required">*</abbr> Amenities</label>
-    <input type="hidden" name="venue[categories][]" value="">
+    <input type="hidden" name="venue[amenities][]" value="">
     <div class="row">
     <% Venue::AMENITIES.each do |venue| %>
     <div class="col-sm-6">
@@ -48,7 +51,7 @@
           </label>
         </div>
         <div class="input_venue">
-          <input class="check_boxes required" type="checkbox" value="Wedding" name="venue[categories][]" id="venue_categories_wedding"> </input>
+          <input class="check_boxes required" type="checkbox" value="<%= venue %>" name="venue[amenities][]" id="venue_categories_wedding"> </input>
         </div>
 
       </div>
