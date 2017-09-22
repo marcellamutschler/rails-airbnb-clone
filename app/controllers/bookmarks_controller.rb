@@ -16,8 +16,10 @@ class BookmarksController < ApplicationController
     @bookmark = Bookmark.new(bookmark_params)
     @bookmark.user = current_user
     authorize @bookmark
-    @bookmark.save
-    redirect_to bookmarks_path(current_user)
+    if @bookmark.save
+      flash[:notice] = "You have successfully bookmarked this venue!"
+    end
+    redirect_back(fallback_location: root_path)
   end
 
   # def edit

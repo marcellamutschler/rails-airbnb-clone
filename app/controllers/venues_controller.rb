@@ -27,7 +27,9 @@ class VenuesController < ApplicationController
     @hash = Gmaps4rails.build_markers(@venues_with_coordinates) do |venue, marker|
       marker.lat venue.latitude
       marker.lng venue.longitude
+
     end
+    @bookmark = Bookmark.new
   end
 
 
