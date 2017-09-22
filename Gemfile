@@ -44,6 +44,7 @@ end
 group :development, :test do
   gem "letter_opener"
   gem 'binding_of_caller'
+  gem 'better_errors'
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'web-console', '>= 3.3.0'

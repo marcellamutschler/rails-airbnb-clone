@@ -22,10 +22,10 @@ class Venue < ApplicationRecord
   AMENITIES = ['Kitchen', 'Tables', 'Wifi', 'TV', 'Elevator', 'Catering', 'Mics', 'Whiteboard', 'Sound System', 'Flipchart', 'Stage', 'Green Screen', 'Coffee', 'Parking Space', 'Rest Rooms', 'Printer', 'Rooftop', 'Balcony', 'Garden', 'Dressing Room', 'Natural Light']
 
   belongs_to :user
-  has_many :bookmarks
+  has_many :bookmarks, dependent: :destroy
   has_many :bookmarked_users, through: :bookmarks, source: :user
-  has_many :bookings
-  has_many :availabilities
+  has_many :bookings, dependent: :destroy
+  has_many :availabilities, dependent: :destroy
   # has_many :reviews
   has_many :conversations
   # relation different models
