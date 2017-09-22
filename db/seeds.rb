@@ -1,14 +1,13 @@
-CITY_VENUE = ["Frankfurt", "Berlin", "Milan", "Munich", "Barcelona", "Madrid", "Hamburg", "Luxemburg", "Zurich", "Paris", "London", "Marseille", "Porto", "Stockholm", "Copenhagen", "Amsterdam", "Vienna", "Marseille", "Lyon"]
+CITY_VENUE = ["Frankfurt", "Berlin", "Milan", "Munich", "Barcelona", "Madrid", "Hamburg", "Luxemburg", "Zurich", "Paris", "London", "Marseille", "Porto", "Stockholm"]
 ADJECTIVE_VENUE = ["modern", "romantic", "artsy", "unique", "special"]
 
 RAMDOM_VENUE_IMAGE = 'http://lorempixel.com/640/480/city'
 RAMDOM_PEOPLE = 'http://lorempixel.com/640/480/people'
 
+# puts "destroying records... please wait..."
+# User.destroy_all
 
-puts "destroying records... please wait..."
-User.destroy_all
-
-25.times do
+100.times do
   user = User.new(email: Faker::Internet.email, password: '12345678')
   user.save
   profile = Profile.new(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name)
@@ -17,7 +16,7 @@ User.destroy_all
   profile.photo_url = RAMDOM_PEOPLE
   puts "user: #{user.full_name} created" if profile.save
 
-  4.times do
+  20.times do
     category_venue = [Venue::CATEGORIES.sample]
     amenitiy_venue = [Venue::AMENITIES.sample]
     city = CITY_VENUE.sample
