@@ -1,16 +1,12 @@
-<%#= form_tag(venues_path, method: :get) do %>
-    <%#= select_tag :categories, options_for_select(@categ), style: "font-size: 25px"%>
-    <%### end %>
-
+<form action="/venues" method="get">
 
     <table style='width:100%; margin-left: 30px; margin-right: 25px'>
       <tr>
-        <th rowspan="2" style="width: 25%; font-size: 12px"><form class="filterform">
-          <input class="filterdropdown" type="dropdown" name="city" min="0" placeholder= <%=@city %>>
-        </form></th>
-        <div><th rowspan="2" style="width: 25%; font-size: 12px"><form>
-          <input class="filterdropdown" type="dropdown" name="category" min="0" placeholder=<%=@categ %>>
-        </form></div>
+        <th rowspan="2" style="width: 25%; font-size: 12px">
+          <input class="filterdropdown" type="dropdown" name="city" min="0" value="<%=@city %>" placeholder="<%=@city %>" >
+        </th>
+        <th rowspan="2" style="width: 25%; font-size: 12px">
+          <input class="filterdropdown" type="dropdown" name="category" min="0" value="<%=@categ %>" placeholder="<%=@categ %>">
         <div><th style="width: 25%; font-size: 12px">Capacity</th></div>
         <div><th style="width: 25%; font-size: 12px">Max Price per hour</th></div>
       </tr>
@@ -26,12 +22,14 @@
           <input type="range" name="priceInputName" id="priceInputId" value="70" min="1" max="500" oninput="priceOutputId.value = priceInputId.value">
           <output name="priceOutputName" id="priceOutputId"></output>
         </td>
-        </form>
+        <td>
+            <input type="submit" value="Submit">
+        </td>
 
       </tr>
     </table>
 
-
+</form>
 
 
 
