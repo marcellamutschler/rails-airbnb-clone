@@ -1,9 +1,26 @@
-    <table>
+    <table style='width:100%; margin-left: 30px; margin-right: 25px'>
       <tr>
-        <div><th style="width: 65%, border-collapse: collapse;">Capacity</th></div>
-        <div><th style="width: 65%">Price</th></div>
-        <div><th style="width: 35%">Category</th></div>
-        <div><th style="width: 35%">City</th></div>
+        <th rowspan="2" style="width: 25%; font-size: 12px"><form class="filterform">
+          <input class="filterdropdown" type="dropdown" name="city" min="0" placeholder="City">
+        </form></th>
+        <div><th rowspan="2" style="width: 25%; font-size: 12px"><form>
+          <input class="filterdropdown" type="dropdown" name="category" min="0" placeholder="What kind of event?">
+        </form></div>
+        <div><th style="width: 25%; font-size: 12px">Capacity</th></div>
+        <div><th style="width: 25%; font-size: 12px">Max Price per hour</th></div>
+
+      </tr>
+      <tr style="padding: 100px">
+
+
+        <td>
+          <input type="range" name="capacity" min="0" max="200" step="1">
+          <output for="capacity" onforminput="value = capacity.valueAsNumber;"></output>
+        </form></td>
+        <td>
+          <input type="range" name="price" min="0" max="1000" step="1">
+        </form></td>
+
       </tr>
     </table>
 
