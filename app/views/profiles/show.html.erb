@@ -1,22 +1,62 @@
+ <div class="profile">
+    <div class="profile-header-wrapper">
+      <div class="profile-container profile-header-container">
+        <div class="profile-header-infos">
+        <% if current_user.profile.photo? %>
+          <%  avatar_url = cl_image_path current_user.profile.photo.path %>
+        <% elsif current_user.facebook_picture_url.present? %>
+          <% avatar_url = image_path  current_user.facebook_picture_url  %>
+          <% else %>
+          <% avatar_url = "https://material-components-web.appspot.com/images/animal1.svg" %>
+          <% end %>
+           <%= image_tag avatar_url  %>
+          <h1><%= @profile.first_name %> <%= @profile.last_name %></h1>
+          <h2>Bio: <%= @profile.bio %></h2>
+<hr>
+          <% if current_user == @profile.user %>
 
-<h1>Your bookings </h1>
-
-<table id="t01">
-<% @bookings.each do |booking| %>
-<tr>
-  <td> <%= booking.venue.photo %></td>
-  <td style="padding:20px"><%= link_to booking.venue.name, venues_path, class: "venue-title" %></td>
-  <td> in <%= booking.venue.location %></td>
-  <td> Booking status: <%= booking.status %><td>
-  <td> Price: <%= booking.venue.price %> € per hour</td>
-  <td> Total price: <%= booking.total_price %> €</td>
-  <% if booking.status == "accepted" %>
-  <td> <%= link_to 'Add review', new_profile_booking_review_path(@profile, booking), class: "btn-red" %></td>
-  <% end %>
-
-</tr>
-<% end %>
-</table>
-
-
+        </div>
+      </div>
+    </div>
+    <div class="profile-container">
+      <div class="booking">
+        <!-- <img src="images/kudoz.jpg" alt="" class="venue-image"> -->
+     <!--    <div class="product-body">
+          <h3>Booking 1</h3>
+          <p>Location 1</p>
+        </div>
+          <ul class="list-inline product-controls">
+          <a href="">Show</a>
+        </ul>
+      </div>
+      <div class="booking">
+        <div class="list-inline product-controls">Date</div>
+        <!-- <img src="images/uslide.jp" alt="" class="venue-image"> -->
+        <!-- <div class="product-body">
+          <h3>Booking 2</h3>
+          <p>Location 2</p>
+        </div>
+         <ul class="list-inline product-controls">
+          <a href="">Show</a>
+        </ul>
+      </div>
+      <div class="booking">
+        <div class="list-inline product-controls">Date</div>
+        <!-- <img src="images/roadstr.jpg" alt="" class="venue-image"> -->
+        <!-- <div class="product-body">
+          <h3>Booking 3</h3>
+          <p>Location 3</p>
+        </div>
+        <ul class="list-inline product-controls">
+          <a href="">Show</a>
+        </ul>
+      </div> -->
+  <%= link_to "Edit your Profil", edit_profile_path, class: "btn-normal"%>
+  <%= link_to "Show Your Bookings", profile_bookings_path(@profile, @bookings), class: "btn-normal"%>
+  <%= link_to "Bookings for your places", owner_bookings_profile_bookings_path(@profile), class: "btn-normal" %>
+<hr>
+  <%= link_to "List Your Venue", new_venue_path, class: "btn-red"%>
+  +<% end %>
+    </div>
+  </div>
 <%= link_to 'Go Back', venues_path, class: "btn-normal" %>
