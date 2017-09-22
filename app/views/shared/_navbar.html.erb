@@ -39,11 +39,10 @@
         <% else %>
           <% avatar_url = "https://material-components-web.appspot.com/images/animal1.svg" %>
         <% end %>
-    <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+    <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown"  %>
   <% end %>
 
 
-    <i class="fa fa-angle-down" aria-hidden="true"></i>
 
     <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
   <% unless current_user.profile.nil? %>
