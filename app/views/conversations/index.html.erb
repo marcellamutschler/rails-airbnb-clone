@@ -1,5 +1,5 @@
-<h1> Your Messages</h1>
-<div class="message-container">
+<h1 style="font-size: 30px; padding: 5px; margin-left: 10px">Inbox</h1>
+<div style= "border: 1px solid #E0E0E0">
 <% @conversations.each do |conversation| %>
   <%= link_to conversation_path(conversation), style: "text-decoration: none" do %>
   <div class="message">
@@ -7,15 +7,18 @@
 
     <div class="message-name">
       <h3><%= convo_partner(conversation).full_name %></h3>
-      <p><%= conversation.most_recent_message.created_at %></p>
-    </div>
-    <div class="message-body">
-    <p><strong> <%= conversation.venue.name %></strong></p>
-      <p>
-        <%= conversation.most_recent_message.content %>
-      </p>
+      <p><%= conversation.most_recent_message.created_at.strftime("%b %d") %></p>
     </div>
   </div>
+
+    <div class="message-body">
+    <p><strong> <%= conversation.venue.name %></strong></p>
+      <p><%= conversation.most_recent_message.content %></p>
+    </div>
+
+    <div class="message-status">
+    <p><strong>Pending</strong></p>
+    </div>
   <% end %>
 <% end %>
 </div>
