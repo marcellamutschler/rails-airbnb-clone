@@ -18,5 +18,7 @@ class Booking < ApplicationRecord
 
 #Booking.owner marche
 #Booking.user marche pas car pas de méthode user dans le model.
-
+  def hours
+    (end_date.to_datetime - start_date.to_datetime).to_f * 24
+  end
 end

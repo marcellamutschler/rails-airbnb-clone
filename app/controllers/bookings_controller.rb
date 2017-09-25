@@ -28,12 +28,18 @@ class BookingsController < ApplicationController
     #@booking.total_price = (params[:booking][:hours]).to_i*@venue.price
     # @booking.total_price = (params[:booking.end_date] - [:booking.start_date]) * @booking.venue.price
 
+    total_price = @booking.hours * @venue.price
+
+    @booking.total_price = total_price
+
     authorize @booking
 
-    if @venue.save &&  @booking.save
+    if @booking.save
+       flash[:notice] = "You have successfully booked this venue!"
       redirect_to profile_booking_path(@booking.user.profile, @booking)
     else
-      render :new
+      redirect_back(fallback_location: root_path)
+      flash[:alert] = 'could not create booking!'
     end
 
     end
