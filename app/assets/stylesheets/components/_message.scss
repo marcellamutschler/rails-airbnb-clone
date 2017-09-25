@@ -14,6 +14,7 @@
 .message-name {
   padding-left: 10px;
   min-width: 100px;
+  margin-left: 10px;
 }
 .message-name h3 {
   font-size: 13px;
@@ -29,24 +30,30 @@
   color: black;
 }
 .message-body {
-  padding-left: 10px;
   font-size: 13px;
   color: rgba(0,0,0,0.7);
-}
-.message-body {
-  padding-left: 150px;
+  padding-left: 350px;
   color: rgba(0,0,0,0.4);
+  position: absolute;
+  margin-top: -85px;
+  max-width: 850px;
+
 }
+
 .message-body strong{
   color: rgba(0,0,0,0.9);
   color: rgba(0,0,0,0.9);
 }
 .message-body p {
-  margin: 6px 0;
+  margin: 5px 0;
 }
 .message-status {
-  font-size: 14px;
-  font-weight: bold;
+  font-size: 13px;
+  color: rgba(0,0,0,0.7);
+  padding-left: 900px;
+  color: rgba(0,0,0,0.4);
+  position: absolute;
+  margin-top: -75px;
 }
 .status.accepted {
   color: #04A366;
