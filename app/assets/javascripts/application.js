@@ -4,10 +4,12 @@
 //= require cloudinary/jquery.cloudinary
 //= require attachinary
 //= require bootstrap-sprockets
-//= require bootstrap-datetimepicker
+
+//= require init_datypicker.js
 //= require underscore
 //= require gmaps/google
 //= require_tree .
+
 
 
 

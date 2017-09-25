@@ -64,8 +64,6 @@ GEM
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
-    bootstrap3-datetimepicker-rails (4.17.47)
-      momentjs-rails (>= 2.8.1)
     builder (3.2.3)
     byebug (9.1.0)
     cloudinary (1.1.7)
@@ -248,6 +246,9 @@ GEM
     thor (0.20.0)
     thread_safe (0.3.6)
     tilt (2.0.8)
+    time_diff (0.3.0)
+      activesupport
+      i18n
     tzinfo (1.2.3)
       thread_safe (~> 0.1)
     uglifier (3.2.0)
@@ -275,7 +276,6 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap-sass
-  bootstrap3-datetimepicker-rails
   cloudinary (= 1.1.7)
   coffee-rails
   devise
@@ -304,6 +304,7 @@ DEPENDENCIES
   simple_form
   spring
   spring-watcher-listen (~> 2.0.0)
+  time_diff
   uglifier
   web-console (>= 3.3.0)
 

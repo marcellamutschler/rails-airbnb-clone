@@ -28,7 +28,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "HelveticaNeue-Light"}
       <p><label><i class="fa fa-calendar-check-o"></i> End Date</label></p>
       <%= f.input :end_date, label: false, as: :string, input_html: {class: 'form_datetime'}, placeholder: "DD MM YYYY" %>
       <br>
-      <%= f.submit class: "btn-red", style: "width: 210px" %>
+      <%= f.submit class: "btn-red", style: "width: 210px" %>   
       <% end %>
 
       <%= simple_form_for(@bookmark, url: bookmarks_path, html: {method: :post}) do |f| %>
@@ -100,6 +100,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "HelveticaNeue-Light"}
       <hr>
 
       <h4><strong>Location <%= @venue.location %></strong></h4>
+
 
       <div id="map" style="width: 100%; height: 600px;"></div>
 

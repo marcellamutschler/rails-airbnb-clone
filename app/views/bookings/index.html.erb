@@ -1,22 +1,40 @@
 
-<h1>Your bookings </h1>
+<hr>
+<h1 style= "font-size: 30px; margin-left: 30px">Your bookings </h1>
+<div class="container">
+    <div class="row">
+  <% @bookings.each do |booking| %>
+      <div class="col-xs-12 col-sm-4">
+        <div class="booking-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+          url('<%= cl_image_path booking.venue.photos.first.path if booking.venue.photos.first %>')">
+          <% if booking.venue.owner.profile.photo? %>
+          <% avatar_url = cl_image_path booking.venue.owner.profile.photo.path %>
+          <% else %>
+          <% avatar_url = "https://material-components-web.appspot.com/images/animal1.svg" %>
+          <% end %>
+          <div class="card-user"> <%= image_tag avatar_url %></div>
 
-<table id="t01">
-<% @bookings.each do |booking| %>
-<tr>
-  <td> <%= booking.venue.photo %></td>
-  <td style="padding:20px"><%= link_to booking.venue.name, venues_path, class: "venue-title" %></td>
-  <td> in <%= booking.venue.location %></td>
-  <td> Booking status: <%= booking.status %><td>
-  <td> Price: <%= booking.venue.price %> € per hour</td>
-  <td> Total price: <%= booking.total_price %> €</td>
-  <% if booking.status == "accepted" %>
-  <td> <%= link_to 'Add review', new_profile_booking_review_path(@profile, booking), class: "btn-red" %></td>
+          <div class="card-description">
+              <h2><%= booking.venue.location %></h2>
+              <p class="description-2"><%= booking.venue.name %></p>
+              <p class="description-2" style="font-size: 15px">
+              <%= booking.start_date.strftime("%b %d") if booking.start_date %> - <%= booking.end_date.strftime("%b %d") if booking.end_date %><br>
+              Number of hours: <%= booking.hours %><br>
+              <strong>Total price: <%= booking.total_price.to_i %> €</strong></p>
+              <p class="description-2" style="font-size: 15px">Booking status: <%= booking.status %></p>
+              <% if booking.status == "accepted" %>
+              <div style="margin-top: 20px"><%= link_to 'Add review', new_profile_booking_review_path(@profile, booking), class: "btn-red" %></div>
+              <% end %>
+          </div>
+
+
+ <a> <%= link_to booking.venue.name, venue_path(booking.venue), class: "card-link" %></a>
+
+        </div>
+      </div>
   <% end %>
-
-</tr>
-<% end %>
-</table>
+    </div>
+</div>
 
 
-<%= link_to 'Go Back', venues_path, class: "btn-normal" %>
+

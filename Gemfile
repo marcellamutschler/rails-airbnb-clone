@@ -24,7 +24,11 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'devise'
 gem 'omniauth-facebook'
-gem 'bootstrap3-datetimepicker-rails'
+gem 'time_diff'
+
+# gem 'bootstrap-timepicker-rails'
+# gem 'bootstrap-datepicker-rails'
+# gem 'jquery-timepicker-rails'
 gem 'momentjs-rails'
 gem "geocoder"
 
