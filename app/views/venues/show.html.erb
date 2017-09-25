@@ -6,181 +6,194 @@
 body,h1,h2,h3,h4,h5,h6 {font-family: "HelveticaNeue-Light"}
 .mySlides {display:none}
 </style>
+
 <div class="w3-content w3-border-left w3-border-right">
 
-<!-- Sidebar/menu -->
-<nav class="w3-sidebar w3-light-grey w3-collapse" style="z-index:3;width:260px" id="mySidebar">
+  <!-- Sidebar/menu -->
+  <nav class="w3-sidebar w3-light-grey w3-collapse" style="z-index:3;width:260px" id="mySidebar">
 
-
-
-  <div class="w3-container" id="apartment">
-  <div class="w3-container w3-display-container w3-padding-16">
-    <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-transparent w3-display-topright"></i>
-    <h3>Book this location</h3>
-    <h3>for <%= @venue.price %> € <br></h3>
-    <h6>per hour</h6>
-    <hr>
-
+    <div class="w3-container w3-display-container w3-padding-16">
+      <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-transparent w3-display-topright"></i>
+      <h3>Book this Location</h3>
+      <h3><%= @venue.price %> €</h3>
+      <h6>per hour</h6>
+      <hr>
 
       <%=simple_form_for @booking,:url => venue_bookings_path(:venue_id => params[:id], :method => :post) do |f| %>
       <br>
-      <p><label><i class="fa fa-calendar-check-o"></i> Start Date</label></p>
-      <%= f.input :start_date, label: false, as: :string, input_html: {class: 'form_datetime'} %>
+      <p><label><i class="fa fa-calendar-check-o" ></i> Start Date</label></p>
+      <%= f.input :start_date, label: false, as: :string, input_html: {class: 'form_datetime', placeholder: "DD MM YYYY"} %>
       <br>
 
       <p><label><i class="fa fa-calendar-check-o"></i> End Date</label></p>
-      <%= f.input :end_date, label: false, as: :string, input_html: {class: 'form_datetime'} %>
+      <%= f.input :end_date, label: false, as: :string, input_html: {class: 'form_datetime'}, placeholder: "DD MM YYYY" %>
       <br>
-
-      <%= f.submit class: "btn-red w3-block" %>
+      <%= f.submit class: "btn-red", style: "width: 210px" %>
       <% end %>
 
       <%= simple_form_for(@bookmark, url: bookmarks_path, html: {method: :post}) do |f| %>
-        <%= f.hidden_field :venue_id, value: @venue.id %>
-          <%= f.submit "Add to your Wishlist", class: "btn-red w3-block"%>
+      <%= f.hidden_field :venue_id, value: @venue.id %>
+      <%= f.submit "Add to your Wishlist", class: "btn-red", style: "width: 210px"%>
       <% end %>
-      <br><%= link_to 'Back to all Venues', venues_path, class: "btn-normal w3-block" %>
-</nav>
 
-<!-- Top menu on small screens -->
-<header class="w3-bar w3-top w3-hide-large w3-black w3-xlarge">
-  <span class="w3-bar-item">Rental</span>
-  <a href="javascript:void(0)" class="w3-right w3-bar-item w3-button" onclick="w3_open()"><i class="fa fa-bars"></i></a>
-</header>
+      <br><%= link_to ' < Back to all Venues', venues_path, class: "btn-normal" %>
+    </div>
+  </nav>
 
-<!-- Overlay effect when opening sidebar on small screens -->
-<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+  <!-- !PAGE CONTENT! -->
+  <div class="w3-main w3-white" style="margin-left:260px">
 
-<!-- !PAGE CONTENT! -->
-<div class="w3-main w3-white" style="margin-left:260px">
+    <!-- Push down content on small screens -->
+    <div class="w3-hide-large" style="margin-top:80px"></div>
 
-  <!-- Push down content on small screens -->
-  <div class="w3-hide-large" style="margin-top:80px"></div>
-
-  <!-- Slideshow Header -->
-<hr>
-    <div class="w3-display-container">
-    <h2><%= @venue.name %></h2>
-
-    <img style="width: 1000px margin-bottom:-6px">
-    <% unless @venue.photos.empty? %>
-      <%= cl_image_tag @venue.photos.first.path, width: 719%>
-    <% end %>
-    </img>
-      <div class="w3-display-bottomleft w3-container" style="background-color: #DE1A1A; opacity: 0.9; color: white; width: 500px">
+    <!-- Slideshow Header -->
+    <div class="w3-container" id="apartment">
+      <h2> <%= @venue.name %> </h2>
+      <% @venue.photos.each do |photo| %>
+      <div class="w3-display-container mySlides">
+        <%= cl_image_tag photo.path, style: "width: 100%; margin-bottom: 10px;" %>
       </div>
-    </div>
-    <br>
-
-    <% @venue.photos.each do |photo| %>
-      <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
       <% end %>
+    </div>
 
-  <div class="w3-container">
-    <h4><strong>Availability</strong></h4>
-    <div class="w3-row w3-large">
-      <div class="w3-col s6">
-        <p><i class="fa fa-fw fa-male"></i> Max Capacity: <%= @venue.capacity %></p>
-        <p><i class="fa fa-fw fa-home"></i> Size: 2</p>
+    <div class="w3-row-padding s3-section">
+      <% @venue.photos.each_with_index do |p, index| %>
+      <div class = "w3-col s3">
+        <div onclick="currentDiv(<%= index + 1 %>)">
+          <%= cl_image_tag p.path, class: "demo w3-opacity w3-hover-opacity-off", style: "width: 100%; cursor: pointer; margin-bottom: 20px" %>
+        </div>
       </div>
-
-    </div>
-    <hr>
-
-    <h4><strong>The following Amenities are available at the location:</strong></h4>
-    <div class="w3-row w3-large">
-      <div class="w3-col s6">
-      <% @new_array_amenities.each do |amenity| %>
-        <p><i class="fa fa-dot-circle-o"></i> <%= amenity %></p>
       <% end %>
-        <!-- <p><i class="fa fa-circle"></i> WiFi</p>
-        <p><i class="fa fa-fw fa-tv"></i> TV</p>
+    </div>
+
+
+    <div class="w3-container">
+      <h4><strong>Description</strong></h4>
+      <div class="w3-row w3-large">
+        <div class="w3-col s6">
+          <p><i class="fa fa-fw fa-male"></i> Max Capacity: <%= @venue.capacity %></p>
+          <p style="padding-left: 30px;"><%= @venue.description %></p>
+        </div>
+
       </div>
-      <div class="w3-col s6">
-        <p><i class="fa fa-fw fa-cutlery"></i> Kitchen</p>
-        <p><i class="fa fa-fw fa-wheelchair"></i> Accessible</p>
-      </div> -->
-    </div>
-    </div>
-    <p>Please contact the host to ask for additional amenities.</p>
-    <hr>
+      <hr>
 
-    <h4><strong>This event is perfect for a...</strong></h4>
-    <div class="w3-row w3-large">
-      <div class="w3-col s6">
-      <% @new_array_categories.each do |category| %>
-        <p><i class="fa fa-dot-circle-o"></i> <%= category %></p>
-      <% end %>
+      <h4><strong>Available Amenities</strong></h4>
+      <div class="w3-row w3-large">
+        <div class="w3-col s6">
+          <% @new_array_amenities.each do |amenity| %>
+          <p><i class="fa fa-dot-circle-o"></i> <%= amenity %></p>
+          <% end %>
+        </div>
+      </div>
+      <p>Contact the host to ask for additional amenities.</p>
+      <hr>
 
-<!--         <p><i class="fa fa-circle"></i> Wedding </p>
- -->      </div>
-     <!--  <div class="w3-col s6">
-        <p><i class="fa fa-circle"></i> Birthday </p>
-        <p><i class="fa fa-circle"></i> Get-Together</p>
-      </div> -->
-    </div>
-    <hr>
+      <h4><strong>This event is perfect for a...</strong></h4>
+      <div class="w3-row w3-large">
+        <div class="w3-col s6">
+          <% @new_array_categories.each do |category| %>
+          <p><i class="fa fa-dot-circle-o"></i> <%= category %></p>
+          <% end %>
+        </div>
+      </div>
+      <hr>
 
-
-    <h4><strong>Description</strong></h4>
-    <p><%= @venue.description %></p>
-
-    <hr>
-
-
-
-    <h4><strong>Location: <%= @venue.location %></strong></h4>
+      <h4><strong>Location <%= @venue.location %></strong></h4>
 
       <div id="map" style="width: 100%; height: 600px;"></div>
 
       <% content_for(:after_js) do %>
-        <%= javascript_tag do %>
-          $(document).ready(function() {
+      <%= javascript_tag do %>
+      $(document).ready(function() {
 
-            var handler = Gmaps.build('Google');
-            handler.buildMap({
-            provider: {},
-            internal: { id: 'map' } }, function() {
-              markers = handler.addMarkers(<%= raw @hash.to_json %>);
-              handler.bounds.extendWith(markers);
-              handler.fitMapToBounds();
-              if (markers.length == 0) {
-                handler.getMap().setZoom(2);
-              } else if (markers.length == 1) {
-                handler.getMap().setZoom(14);
-              }
-            });
-          });
-        <% end %>
-      <% end %>
-      <hr>
+      var handler = Gmaps.build('Google');
+      handler.buildMap({
+      provider: {},
+      internal: { id: 'map' } }, function() {
+      markers = handler.addMarkers(<%= raw @hash.to_json %>);
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+      if (markers.length == 0) {
+      handler.getMap().setZoom(2);
+    } else if (markers.length == 1) {
+    handler.getMap().setZoom(14);
+  }
+});
+});
+<% end %>
+<% end %>
+<hr>
 
-    <h4><strong>Reviews - Average Rating: <%= @average_rating.to_f %> of 5 </strong></h4>
-      <% @venue_reviews.each do |review| %>
-      <li><%= review.review_rating %>/5 stars -  <%= review.user.profile.first_name %> writes: "<%= review.review_text %>" </li>
-      <% end %>
+<% unless @review_rating.nil? %>
+<h4> <strong> Reviews </strong>  <%= " - Average Rating: " + @average_rating.to_f + "of 5"%>  </h4>
+<% @venue_reviews.each do |review| %>
+<li><%= review.review_rating %>/5 stars -  <%= review.user.profile.first_name %> writes: "<%= review.review_text %>" </li>
+<% end %>
 
-  </div>
+</div>
+<% end %>
 
 <br>
-  <!-- Contact -->
-  <div class="w3-container" id="contact">
-    <h4><strong>Contact & Questions </strong></h4>
-    <p>Do you have any questions or concerns? <br>Insert your message here:</p><br>
-    <%= simple_form_for(@message, url: conversations_path, html: {method: :post}) do |f| %>
-      <%= f.input :content, label: false, class: "w3-input w3-border" %>
-      <%= f.hidden_field :venue_id, value: @venue.id %>
-      <%= f.submit "Send", class: "btn-red" %>
-    <% end %>
-  </div>
+<!-- Contact -->
+<div class="w3-container" id="contact">
+  <h4><strong>Contact & Questions </strong></h4>
+  <p>Do you have any questions or concerns? <br>Insert your message here:</p><br>
+  <%= simple_form_for(@message, url: conversations_path, html: {method: :post}) do |f| %>
+  <%= f.input :content, label: false, class: "w3-input w3-border" %>
+  <%= f.hidden_field :venue_id, value: @venue.id %>
+  <%= f.submit "Send", class: "btn-red" %>
+  <% end %>
+</div>
 
 
 <!-- End page content -->
 </div>
 
+</div>
 
 
-</body>
+
+<script>
+// Script to open and close sidebar when on tablets and phones
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+
+// Slideshow Apartment Images
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function currentDiv(n) {
+  showDivs(slideIndex = n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  if (n > x.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = x.length}
+      for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";
+     }
+     for (i = 0; i < dots.length; i++) {
+       dots[i].className = dots[i].className.replace(" w3-opacity-off", "");
+     }
+     x[slideIndex-1].style.display = "block";
+     dots[slideIndex-1].className += " w3-opacity-off";
+   }
+ </script>
 
 
 

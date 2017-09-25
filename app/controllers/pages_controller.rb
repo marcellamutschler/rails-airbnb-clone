@@ -10,7 +10,7 @@ class PagesController < ApplicationController
     @cities = Venue.where.not(city: nil).to_a.map{|b| b.city}
     #AR method to guet cities frim venues that have cities, then
     # it returns us an array of cities
-    @categories = ['Wedding', 'Party', 'Baptism', 'Workshop', 'Trainings', 'Social Event', 'Desk Rentals', 'Conferences', 'Launch Event', 'Business Meeting', 'Birthday', 'Photo Shoot', 'Film Shoot', 'Concert', 'Get-Together', 'Other']
+    @categories = ['Wedding', 'Party', 'Baptism', 'Workshop', 'Training', 'Social Event', 'Desk Rental', 'Conference', 'Launch Event', 'Business Meeting', 'Birthday', 'Photo Shoot', 'Film Shoot', 'Concert', 'Get-Together']
     #@city = params["city"]
     #@categ = params["categories"]
   end
