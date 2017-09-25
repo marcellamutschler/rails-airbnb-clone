@@ -1,24 +1,36 @@
-<h1>Your Wishlist</h1>
-<br>
-<% if @bookmarks.empty? %>
-<p>You have not added anything to your Wishlist yet.</p>
+<h1 style="text-align: center">Your Wishlist</h1>
 
-<% else %>
-<table style="width: 100%">
-<% @bookmarks.each do |bookmark| %>
-  <tr>
-  <td><%= link_to venue_path(bookmark.venue) do %>
-    <% if bookmark.venue.photos.first %>
-      <%= cl_image_tag bookmark.venue.photos.first.path %></td>
+<div class="bookmark-container">
+  <% if @bookmarks.empty? %>
+  <p>You have not added anything to your Wishlist yet.</p>
+
+  <% else %>
+
+  <div class="row">
+    <% @bookmarks.each do |bookmark| %>
+    <div class="col-xs-12 col-sm-4">
+      <div class="card_2" style="height: 440px; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path bookmark.venue.photos.first.path if bookmark.venue.photos.first %>');">
+        <div class="card-category-2">
+          <%= bookmark.venue.location %>
+        </div>
+        <%= cl_image_tag bookmark.venue.user.profile.photo.path, class: 'card-user' if bookmark.venue.user.profile.photo %>
+        <div class="card-description-title" style="padding-top: 40px; padding-bottom: 192px; text-align: center;">
+          <div style="font-size: 30px;">
+            <%= bookmark.venue.name %>
+          </div>
+          Hosted by <%= bookmark.venue.user.profile.first_name %> <%= bookmark.venue.user.profile.last_name %>
+          <br>
+          <div class="btn-normal">
+            <%= link_to "Remove from your Wishlist", bookmark_path(bookmark), method: :delete, style: "text-decoration: none !important; color: black"%>
+          </div>
+          <div class="btn-red" style="height: 43px;">
+            <%= link_to "Book Venue", venue_path(bookmark.venue), style: "text-decoration: none !important; color: white"%>
+          </div>
+
+        </div>
+      </div>
+    </div>
     <% end %>
+  </div>
   <% end %>
-  <td><strong><%= bookmark.venue.name %></strong></td>
-  <td>Location: <%= bookmark.venue.location %></td>
-  <td> Host: <%= bookmark.user.profile.first_name %>
-  <%= bookmark.user.profile.last_name %></td>
-  <td><%= link_to "Remove from your Wishlist", bookmark_path(bookmark), method: :delete, class: "btn-normal" %><br></td>
-<% end %>
-<br>
-  </tr>
-</table>
-<% end %>
+</div>

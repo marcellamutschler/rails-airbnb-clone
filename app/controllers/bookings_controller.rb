@@ -22,21 +22,32 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
+    @booking.start_date = params[:booking][:start_date].to_datetime
+    @booking.end_date = params[:booking][:end_date].to_datetime
     @booking.venue = @venue
     @booking.user = current_user
+
     # @booking.price = @booking.venue.price
     #@booking.total_price = (params[:booking][:hours]).to_i*@venue.price
-    # @booking.total_price = (params[:booking.end_date] - [:booking.start_date]) * @booking.venue.price
+     @booking.hours = Time.diff(@booking.end_date , @booking.start_date)[:hour]
+     @booking.total_price = @booking.hours * @booking.venue.price
+    # need to find how to convert array into number
+
+
+    total_price = @booking.hours * @venue.price
+
+    @booking.total_price = total_price
 
     authorize @booking
 
-    if @venue.save &&  @booking.save
+    if @booking.save
+       flash[:notice] = "You have successfully booked this venue!"
       redirect_to profile_booking_path(@booking.user.profile, @booking)
     else
-      render :new
+      redirect_back(fallback_location: root_path)
+      flash[:alert] = 'could not create booking!'
     end
-
-    end
+  end
 
   def edit
 
