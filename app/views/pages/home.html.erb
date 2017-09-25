@@ -10,10 +10,10 @@
     <br>
 
     <%= form_tag(venues_path, method: :get) do %>
-    <%= select_tag :categories, options_for_select(@categories), style: "font-size: 25px" %>
+    <%= select_tag :categories, options_for_select(@categories), :include_blank => "What are you planning?", style: "font-size: 25px; background-color:rgba(0, 0, 0, 0.5)" %>
     <%#= here your specify that your browser will clal the params %>
-    <%= select_tag :city, options_for_select(@cities), style: "font-size: 25px"  %>
-    <%= submit_tag "Search", class: "btn-red", style: "background: #DE1A10"  %>
+    <%= select_tag :city, options_for_select(@cities), :include_blank => "Where?", style: "font-size: 25px; background-color:rgba(0, 0, 0, 0.5)" %>
+    <%= submit_tag "Search", class: "btn-red", style: "background: #DE1A10; width: 150px; padding:2px; font-size:25px"  %>
     <% end %>
   </div>
   <br>
