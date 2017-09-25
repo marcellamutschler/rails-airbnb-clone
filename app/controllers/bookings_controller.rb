@@ -34,12 +34,18 @@ class BookingsController < ApplicationController
     # need to find how to convert array into number
 
 
+    total_price = @booking.hours * @venue.price
+
+    @booking.total_price = total_price
+
     authorize @booking
 
     if @booking.save
+       flash[:notice] = "You have successfully booked this venue!"
       redirect_to profile_booking_path(@booking.user.profile, @booking)
     else
-      render :new
+      redirect_back(fallback_location: root_path)
+      flash[:alert] = 'could not create booking!'
     end
   end
 
