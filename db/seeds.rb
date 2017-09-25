@@ -1,4 +1,4 @@
-CITY_VENUE = ["Frankfurt", "Berlin", "Milan", "Munich", "Barcelona", "Madrid", "Hamburg", "Luxemburg", "Zurich", "Paris", "London", "Marseille", "Porto", "Stockholm"]
+CITY_VENUE = ["Frankfurt", "Berlin", "Milan", "Munich", "Barcelona" ]
 ADJECTIVE_VENUE = ["modern", "romantic", "artsy", "unique", "special"]
 
 RAMDOM_VENUE_IMAGE = 'http://lorempixel.com/640/480/city'
@@ -6,6 +6,7 @@ RAMDOM_PEOPLE = 'http://lorempixel.com/640/480/people'
 
 # puts "destroying records... please wait..."
 # User.destroy_all
+
 
 # 100.times do
 #   user = User.new(email: Faker::Internet.email, password: '12345678')
@@ -39,6 +40,7 @@ streets = ["carrer d'Aldana", "carrer de Balmas", "carrer del Bruc", "carrer de 
 
   profile.photo_url = RAMDOM_PEOPLE
   puts "user: #{user.full_name} created" if profile.save
+
 
   50.times do
     category_venue = ["Wedding"]
