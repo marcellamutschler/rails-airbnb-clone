@@ -7,6 +7,16 @@
   <%= csrf_meta_tags %>
   <%= action_cable_meta_tag %>
   <%= stylesheet_link_tag 'application', media: 'all' %>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+  body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
+  .mySlides {display:none}
+</style>
+
   <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.4/jquery.datetimepicker.min.css' %>
 
 </head>
@@ -14,19 +24,19 @@
 
 <body>
   <% if current_page?('/')  %>
-    <%= render 'shared/navbar_home'   %>
+  <%= render 'shared/navbar_home'   %>
   <% else %>
-    <%= render 'shared/navbar'   %>
+  <%= render 'shared/navbar'   %>
   <%  end %>
 
   <%= render 'shared/flashes' %>
 
   <% if current_page?('/') %>
-    <%= yield %>
+  <%= yield %>
   <% else %>
-    <div class="page-container">
-      <%= yield %>
-    </div>
+  <div class="page-container">
+    <%= yield %>
+  </div>
   <% end %>
 
   <!--  ici on appelle tout le HTML de nos views -->
@@ -44,6 +54,6 @@
 
   <%= cloudinary_js_config %> <!-- Append this after the main `javascript_include_tag`. -->
   <%#<render 'shared/footer' %>
-</body>
-<%= render 'shared/footer' unless current_page?('/') %>
-</html>
+  </body>
+  <%= render 'shared/footer' unless current_page?('/') %>
+  </html>
