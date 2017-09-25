@@ -5,9 +5,10 @@ was successful</h2>
 <p> Booking overview:</p>
 <li style="color:black"> Name: <%= @booking.venue.name %></li>
 <li> Location: <%= @booking.venue.location %></li>
-<li> Price per Hour: <%=@booking.price%></li>
+<li> Price per Hour: <%= @booking.venue.price %>€</li>
 <li> Total numbers of hours: <%= @booking.hours %></li>
-<li> Total price: <%= @booking.total_price %></li>
+<li> Hours booked: <%= @booking.hours %></li>
+<li> Total price: <%= @booking.total_price %>€</li>
 <li> Status: <%= @booking.status %></li>
 <hr>
 
