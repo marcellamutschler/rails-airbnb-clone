@@ -16,10 +16,9 @@
 <% else  %>
 <div class="dialog-right">
   <%= image_tag get_profile_photo(current_user), class: "avatar" %>
-  <%= message.created_at %>
+  <%= message.created_at.to_time.strftime('%B %e at %l:%M %p') %>
   Me:
   <%= message.content %>
-  aösdljfalösdfjk
 </div>
 <% end %>
 <% end %>

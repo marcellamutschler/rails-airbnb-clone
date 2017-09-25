@@ -29,7 +29,7 @@ RAMDOM_PEOPLE = 'http://lorempixel.com/640/480/people'
 #   end
 # end
 
-
+streets = ["carrer d'Aldana", "carrer de Balmas", "carrer del Bruc", "carrer de Buenos Aires", "carrer de Corsega", "carrer de Nicaragua", "placa de la Universitat"]
 
 5.times do
   user = User.new(email: Faker::Internet.email, password: '12345678')
@@ -43,7 +43,7 @@ RAMDOM_PEOPLE = 'http://lorempixel.com/640/480/people'
   50.times do
     category_venue = ["Wedding"]
     amenitiy_venue = [Venue::AMENITIES.sample]
-    city = "Barcelona"
+    location = streets.sample + ' ' + rand(1..100).to_s + ', Barcelona'
     venue_name = ADJECTIVE_VENUE.sample + " " + category_venue.first + " " + "Venue"
     venue = Venue.new(name: venue_name, categories: category_venue, amenities: amenitiy_venue, city: city, capacity: rand(20..500), location: city, description: Faker::Lorem.sentence, price: rand(20..500))
 
@@ -56,3 +56,9 @@ RAMDOM_PEOPLE = 'http://lorempixel.com/640/480/people'
     end
   end
 end
+
+
+
+
+
+
