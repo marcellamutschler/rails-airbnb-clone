@@ -1,3 +1,10 @@
+.container-message {
+  align-items: center;
+  position: relative;
+  margin: 100px;
+}
+
+
 .message {
   display: flex;
   align-items: center;
@@ -55,6 +62,16 @@
   position: absolute;
   margin-top: -75px;
 }
+
+.message-venue {
+  padding-left: 1100px;
+  color: rgba(0,0,0,0.4);
+  position: absolute;
+  margin-top: -75px;
+}
+
+
+
 .status.accepted {
   color: #04A366;
 }

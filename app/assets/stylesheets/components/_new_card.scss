@@ -24,14 +24,40 @@
 
 .card-user-wishlist {
  position: absolute;
- top: 170px;
- width: 70px;
- height: 70px;
+ margin-left: 130px;
+ margin-top: -30px;
+ width: 50px;
+ height: 50px;
  border-radius: 50%;
+ border: 1px solid white;
  z-index: 1;
 
  background-size: cover;
  background-position: center;
+}
+
+.card-link-wishlist {
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  position: absolute;
+  height: 300px;
+  z-index: 2;
+  background: black;
+  opacity: 0;
+}
+
+.card-link-wishlist:hover {
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  position: absolute;
+  height: 300px;
+  z-index: 2;
+  background: black;
+  opacity: 0.1;
 }
 
 .card-description-title {
