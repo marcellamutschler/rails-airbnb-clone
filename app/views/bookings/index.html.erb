@@ -1,5 +1,3 @@
-
-
 <hr>
 <h1 style= "font-size: 30px; margin-left: 40px">Your Bookings </h1>
 <div class="container">
@@ -21,7 +19,7 @@
               <div style="margin-top: 15px"><%= link_to 'Add review', new_profile_booking_review_path(@profile, booking), class: "btn-red" %></div>
               <% end %>
           </div>
-        <%= link_to booking.venue.name, venue_path(booking.venue), class: "card-link" %>
+          <%= link_to booking.venue.name, venue_path(booking.venue), class: "card-link" %>
         </div>
       </div>
   <% end %>
