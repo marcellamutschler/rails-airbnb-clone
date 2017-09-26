@@ -1,6 +1,6 @@
 
 <hr>
-<h1 style= "font-size: 30px; margin-left: 30px">Your bookings </h1>
+<h1 style= "font-size: 30px; margin-left: 40px">Your Bookings </h1>
 <div class="container">
     <div class="row">
   <% @bookings.each do |booking| %>
@@ -14,7 +14,7 @@
           <% end %>
           <div class="card-user"> <%= image_tag avatar_url %></div>
 
-          <div class="card-description">
+          <div class="booking-card-description">
               <h2><%= booking.venue.location %></h2>
               <p class="description-2"><%= booking.venue.name %></p>
               <p class="description-2" style="font-size: 15px">
@@ -23,10 +23,9 @@
               <strong>Total price: <%= booking.total_price.to_i %> €</strong></p>
               <p class="description-2" style="font-size: 15px">Booking status: <%= booking.status %></p>
               <% if booking.status == "accepted" %>
-              <div style="margin-top: 20px"><%= link_to 'Add review', new_profile_booking_review_path(@profile, booking), class: "btn-red" %></div>
+              <div style="margin-top: 15px"><%= link_to 'Add review', new_profile_booking_review_path(@profile, booking), class: "btn-red" %></div>
               <% end %>
           </div>
-
 
  <a> <%= link_to booking.venue.name, venue_path(booking.venue), class: "card-link" %></a>
 
