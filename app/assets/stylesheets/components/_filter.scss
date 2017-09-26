@@ -13,7 +13,9 @@ input[type=range] {
   margin-top: -15px;
 
 }
-
+.d-flex {
+  display: flex;
+}
 output[type=range]{
   position: absolute;
   background-image: linear-gradient(top, #444444, #999999);
