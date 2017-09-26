@@ -28,6 +28,7 @@ class ConversationsController < ApplicationController
 
   def show
     @conversation = Conversation.find(params[:id])
+    @venue = @conversation.venue
     @messages = @conversation.messages
     @message = Message.new
     authorize @conversation
@@ -37,5 +38,10 @@ class ConversationsController < ApplicationController
 
   def message_and_conversation_params
     params.require(:message).permit(:content, :venue_id)
+    params.require(:conversation).permit(:venue_id)
   end
+
+  # def find_venue
+  #   @venue = Venue.find(params[:id])
+  # end
 end
