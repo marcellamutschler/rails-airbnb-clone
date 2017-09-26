@@ -7,6 +7,7 @@
         <div class="booking-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
           url('<%= cl_image_path booking.venue.photos.first.path if booking.venue.photos.first %>')">
           <%= cl_image_tag booking.venue.owner.profile.photo.path, class: 'card-user' if booking.venue.owner.profile.photo %>
+
           <div class="booking-card-description">
               <h2><%= booking.venue.location %></h2>
               <p class="description-2"><%= booking.venue.name %></p>
