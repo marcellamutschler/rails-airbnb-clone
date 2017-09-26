@@ -88,13 +88,17 @@
   left: 10px;
   margin-bottom: 5px;
 }
-.card-name h1 {
-  color: white;
-  opacity: 0.9;
-  font-size: 24px;
-  margin-top: 210px;
-  position: absolute;
-  margin-left: 10px;
+.card-name {
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  h1 {
+    color: white;
+    opacity: 0.9;
+    font-size: 24px;
+    font-weight: bolder;
+    margin-top: 187px;
+  }
 }
 .card-description-2 p {
   font-size: 14px;
