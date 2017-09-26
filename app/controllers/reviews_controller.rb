@@ -2,7 +2,6 @@ class ReviewsController < ApplicationController
   before_action :find_booking, only:[:new, :create, :edit, :update]
 
   def index
-
   end
 
   def show

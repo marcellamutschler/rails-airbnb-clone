@@ -22,6 +22,11 @@ class BookingPolicy < ApplicationPolicy
     def owner?
       true
     end
+
+    def edit?
+      user = record.user
+    end
+
     def update?
       return false
     # - record: the venue passed to the `authorize` method in controller
