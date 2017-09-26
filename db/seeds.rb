@@ -1,5 +1,5 @@
 CITY_VENUE = ["Frankfurt", "Berlin", "Milan", "Munich", "Barcelona" ]
-ADJECTIVE_VENUE = ["modern", "romantic", "artsy", "unique", "special"]
+ADJECTIVE_VENUE = ["Modern", "Romantic", "Unique", "Special"]
 
 RAMDOM_VENUE_IMAGE = 'http://lorempixel.com/640/480/city'
 RAMDOM_PEOPLE = 'http://lorempixel.com/640/480/people'
@@ -43,7 +43,7 @@ streets = ["carrer d'Aldana", "carrer de Balmas", "carrer del Bruc", "carrer de 
 
 
   50.times do
-    category_venue = ["Wedding"]
+    category_venue = ["Party"]
     amenitiy_venue = [Venue::AMENITIES.sample]
     location = streets.sample + ' ' + rand(1..100).to_s + ', Barcelona'
     venue_name = ADJECTIVE_VENUE.sample + " " + category_venue.first + " " + "Venue"

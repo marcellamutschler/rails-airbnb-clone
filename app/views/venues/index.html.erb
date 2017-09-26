@@ -2,7 +2,7 @@
   <%= render 'filter' %>
 </div>
 <br>
-<div class="container" style="margin-left: 70px; margin-top: 40px;">
+<div class="container" style="margin-left: 70px; margin-top: 40px">
   <div class="col-sm-8">
     <div style="margin-top: 50px;">
       <div class="row">
@@ -22,8 +22,7 @@
             </h1>
           </div>
           <div class="card-description" >
-            <i class="fa fa-user" aria-hidden="true" style="color: gray; margin-top: 88px; margin-left: -10px; font-size: 17px"></i>
-            <h4><%=venue.capacity%></h4>
+            <div class="fa fa-users" aria-hidden="true" style="color: gray; margin-top: 88px; margin-left: -10px; font-size: 17px">  <%=venue.capacity%></div>
               <div>
                 <%= simple_form_for(@bookmark, url: bookmarks_path, html: {method: :post}) do |f| %>
                 <%= f.hidden_field :venue_id, value: venue.id %>
