@@ -6,18 +6,6 @@ class Venue < ApplicationRecord
     :categories => 'B',
   }
 
-  def self.text_search(query)
-    if query.present?
-      search(query)
-    else
-      scoped
-    end
-
-  end
-
-
-
-
   CATEGORIES =  ['Wedding', 'Party', 'Baptism', 'Workshop', 'Training', 'Social Event', 'Desk Rental', 'Conference', 'Launch Event', 'Business Meeting', 'Birthday', 'Photo Shoot', 'Film Shoot', 'Concert', 'Get-Together']
   AMENITIES = ['Kitchen', 'Tables', 'Wifi', 'TV', 'Elevator', 'Catering', 'Mics', 'Whiteboard', 'Sound System', 'Flipchart', 'Stage', 'Green Screen', 'Coffee', 'Parking Space', 'Rest Rooms', 'Printer', 'Rooftop', 'Balcony', 'Garden', 'Dressing Room', 'Natural Light']
 
@@ -26,7 +14,7 @@ class Venue < ApplicationRecord
   has_many :bookmarked_users, through: :bookmarks, source: :user
   has_many :bookings, dependent: :destroy
   has_many :availabilities, dependent: :destroy
-  # has_many :reviews
+  has_many :reviews, through: :bookings
   has_many :conversations
   # relation different models
 
@@ -60,5 +48,13 @@ class Venue < ApplicationRecord
       bookmarked_users << bookmark.venue
     end
     bookmarked_users
+  end
+
+  def self.text_search(query)
+    if query.present?
+      search(query)
+    else
+      scoped
+    end
   end
 end

@@ -31,8 +31,8 @@
 
   <%= render 'shared/flashes' %>
 
-  <% if current_page?('/') %>
-  <%= yield %>
+  <% if current_page?('/') || (action_name == 'index' && controller_name = 'venues') %>
+    <%= yield %>
   <% else %>
   <div class="page-container">
     <%= yield %>

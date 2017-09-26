@@ -2,7 +2,7 @@
   <%= render 'filter' %>
 </div>
 <br>
-<div class="container" style="margin-left: -70px">
+<div class="container" style="margin-left: 70px; margin-top: 40px">
   <div class="col-sm-8">
     <div style="margin-top: 50px;">
       <div class="row">
@@ -22,7 +22,6 @@
             </h1>
           </div>
           <div class="card-description" >
-
             <div class="fa fa-users" aria-hidden="true" style="color: gray; margin-top: 88px; margin-left: -10px; font-size: 17px">  <%=venue.capacity%></div>
               <div>
                 <%= simple_form_for(@bookmark, url: bookmarks_path, html: {method: :post}) do |f| %>
@@ -32,7 +31,6 @@
                 </button>
                 <% end %>
               </div>
-
           </div>
           <br>
           <a> <%= link_to venue.name, venue_path(venue), class: "card-link-2" %></a>
@@ -50,8 +48,6 @@
 </div>
 </div>
 </div>
-
-
 <% content_for(:after_js) do %>
 <%= javascript_tag do %>
 $(document).ready(function() {
@@ -71,3 +67,4 @@ handler.getMap().setZoom(14);
 });
 <% end %>
 <% end %>
+
