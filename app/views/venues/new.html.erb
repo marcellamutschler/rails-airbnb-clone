@@ -1,10 +1,9 @@
 <div class="login_form">
 
-<h1>List your new Venue</h1>
-
+<h1 style="font-size: 50px">List your Venue</h1>
+<br>
 <%= render 'form' %>
 
-<%= link_to 'Go Back', venues_path, class: "btn-normal" %>
 
 <% if policy(Venue).create? %>
   <% new_venue_path %>

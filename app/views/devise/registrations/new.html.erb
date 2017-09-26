@@ -1,5 +1,5 @@
 <div class="login_form", style="text-align: center">
-  <h2 style="font-family: HelveticaNeue-Light; font-size: 50px;" >Sign Up</h2>
+  <h1 style = "font-size: 50px;" >Sign Up</h1>
   <br>
   <div class="btn-blue" style="color: white;">
   <%- if devise_mapping.omniauthable? %>
@@ -8,14 +8,18 @@
   <% end -%>
 <% end -%>
 </div>
+<br>
 
    <%= simple_form_for(resource, as: resource_name, url: user_registration_path) do |f| %>
     <%= f.error_notification %>
 
     <div class="login-form">
-      <%= f.input :email, required: true, autofocus: true%>
-      <%= f.input :password, required: true, hint: ("(min. characters #{@minimum_password_length}) " if @minimum_password_length)  %>
-      <%= f.input :password_confirmation, required: true %>
+      <p style="font-size: 20px">E-Mail</p>
+      <%= f.input :email, label: false, required: true, autofocus: true, placeholder: "email@email.com"%>
+      <p style="font-size: 20px">Password</p>
+      <%= f.input :password, label: false, required: true, hint: ("(min. characters #{@minimum_password_length}) " if @minimum_password_length), placeholder: "·············"  %>
+      <p style="font-size: 20px">Password Confirmation</p>
+      <%= f.input :password_confirmation, label: false, required: true, placeholder: "·············" %>
     </div>
 
     <div>

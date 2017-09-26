@@ -10,7 +10,9 @@
    <%= link_to "List your Venue", new_user_registration_path, class: "btn-navbar"%>
   <% end %>
 
+
     <%= link_to "Sign Up", new_user_registration_path, class: "btn-navbar"%>
+
 
     <%= link_to "Log In", new_user_session_path, class: "btn-navbar"%>
       <% else %>
@@ -32,9 +34,13 @@
     <% end %>
 
 
-      <%= link_to destroy_user_session_path, method: :delete do %>
+      <%= link_to destroy_user_session_path, method: :delete, style: "text-decoration: none !important" do %>
         <p class="btn-navbar", style="text-decoration: none !important; "> <%= t(".sign_out", default: "Log out") %></p>
       <% end %>
     <% end %>
   </div>
 </div>
+
+
+
+

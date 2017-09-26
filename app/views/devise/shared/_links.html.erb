@@ -1,15 +1,17 @@
-<div> Already have an account?
 <%- if controller_name != 'sessions' %>
-  <%= link_to "Log In", new_session_path(resource_name), class: "link_log_in"%><br />
+ Already have an Account?
+  <%= link_to "Log In", new_session_path(resource_name), style: "text-decoration: none !important; color: #DE1A1A;"%><br />
 <% end -%>
-</div>
+
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <%= link_to "Sign Up", new_registration_path(resource_name) %><br />
+Create a new Account
+  <%= link_to "Sign Up", new_registration_path(resource_name), style: "text-decoration: none !important; color: #DE1A1A;" %><br />
 <% end -%>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-  <%= link_to "Forgot your Password?", new_password_path(resource_name) %><br />
+Forgot your Password?
+  <%= link_to "Get a new Password.", new_password_path(resource_name), style: "text-decoration: none !important; color: #DE1A1A;" %><br />
 <% end -%>
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>

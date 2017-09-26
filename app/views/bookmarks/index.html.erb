@@ -13,7 +13,9 @@
         <div class="card-category-2">
           <%= bookmark.venue.location %>
         </div>
-        <%= cl_image_tag bookmark.venue.user.profile.photo.path, class: 'card-user' if bookmark.venue.user.profile.photo %>
+        <div class="d-flex justify-center">
+          <%= cl_image_tag bookmark.venue.user.profile.photo.path, class: 'card-user-wishlist' if bookmark.venue.user.profile.photo %>
+        </div>
         <div class="card-description-title" style="padding-top: 40px; padding-bottom: 192px; text-align: center;">
           <div style="font-size: 30px;">
             <%= bookmark.venue.name %>
@@ -34,3 +36,4 @@
   </div>
   <% end %>
 </div>
+
