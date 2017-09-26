@@ -10,14 +10,25 @@
 
 }
 
-.card-user {
+// .card-user {
+//  position: absolute;
+//  top: 170px;
+//  width: 70px;
+//  height: 70px;
+//  border-radius: 50%;
+//  z-index: 1;
+//  background-size: cover;
+//  background-position: center;
+// }
+
+.card-user-wishlist {
  position: absolute;
  top: 170px;
  width: 70px;
  height: 70px;
  border-radius: 50%;
  z-index: 1;
- left: 137px;
+
  background-size: cover;
  background-position: center;
 }
