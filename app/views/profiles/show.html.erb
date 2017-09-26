@@ -1,8 +1,11 @@
 
 <div class="profile-container">
-  <h1><strong>Profile</strong></h1>
+  <h1><strong> Profile Section </strong></h1>
+  <!--   < % =  means you're now able to print some RUBY -->
+  <!--< % = current_user.profile.first_name % >
+
   <br>
-  <h2>Profile Photo</h2>
+<!--   <h2>Profile Photo</h2> -->
   <br>
     <% if current_user.profile.photo? %>
             <%  avatar_url = cl_image_path current_user.profile.photo.path %>
