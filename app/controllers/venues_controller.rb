@@ -16,6 +16,7 @@ class VenuesController < ApplicationController
     else
       @venues = policy_scope(Venue)
     end
+
     # si on mettait un raise ici, cela nous donnerait quand meme
     #l'accès à l'élément juste au dessus.
 
@@ -24,12 +25,13 @@ class VenuesController < ApplicationController
     @capacity = params["capacity"]
     @price = params["price"]
 
-
+    @venues_with_coordinates = @venues.where.not(latitude: nil, longitude: nil)
+    @venues_with_coordinates = @venues_with_coordinates.sort { |a,b| a.price <=> b.price }
 
       # si on mettait un raise ici, cela nous donnerait quand meme
       #l'accès à l'élément juste au dessus.
 
-    @venues_with_coordinates = @venues.where.not(latitude: nil, longitude: nil)
+
     @hash = Gmaps4rails.build_markers(@venues_with_coordinates) do |venue, marker|
       marker.lat venue.latitude
       marker.lng venue.longitude
