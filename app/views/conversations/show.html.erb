@@ -9,7 +9,7 @@
 <div class="dialog-left">
  <%= image_tag get_profile_photo(convo_partner(@conversation)), class: "avatar" %>
 
-<div style="text-align: left; border: 1px solid #E0E0E0; padding: 10px; width: 500px; margin-top: -60px; margin-bottom: 40px; margin-left: 40px">
+<div style="text-align: left; border: 1px solid #E0E0E0; padding: 10px; width: 500px; margin-top: -60px; margin-bottom: 40px; margin-left: 70px">
   <strong><%= convo_partner(@conversation).full_name %>:</strong> <%= message.content %><br><br>
 <%= message.created_at.strftime("%b %d, %I:%M %p") %>
 </div>
@@ -20,13 +20,17 @@
 
 
 
+
+
 <% else  %>
 <div class="dialog-right">
   <%= image_tag get_profile_photo(current_user), class: "avatar" %></div>
 
+
 <div style="text-align: right; border: 1px solid #E0E0E0; padding: 10px; width: 500px; margin-top: -60px; margin-left: 520px; margin-bottom: 40px">
 <strong>Me:</strong> <%= message.content %><br><br>
 <%= message.created_at.strftime("%b %d, %I:%M %p") %>
+
 </div>
 <% end %>
 <% end %>
@@ -39,5 +43,3 @@
 </div>
 
 </div>
-
-

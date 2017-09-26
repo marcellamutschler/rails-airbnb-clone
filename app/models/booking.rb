@@ -5,7 +5,7 @@ class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :venue
   has_one :review, dependent: :delete
-
+  #has_many :reviews, dependent: :destroy
   validates :status, presence: true
   validates :total_price, presence: true
 
