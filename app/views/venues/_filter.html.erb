@@ -11,13 +11,13 @@
         <div>
           <td style="width: 20%; font-size: 14px">Capacity<br><br>
             <input type="range" name="capacity" id="capacityInputId" value="<%= @capacity || 1 %>" min="1" max="500" oninput="capacityOutputId.value = capacityInputId.value">
-            <output name="capacityOutputName" id="capacityOutputId" style= "margin-left: 240px; margin-top: -26px; font-size: 15px; font-family: Raleway"><%= @capacity || 1 %></output>
+            <output name="capacityOutputName" id="capacityOutputId" style= "margin-left: 85%; margin-top: -26px; font-size: 15px; font-family: Raleway"><%= @capacity || 1 %></output>
           </td>
         </div>
         <div>
           <td style="width: 20%; font-size: 14px">Max Price per hour<br><br>
             <input type="range" name="price" id="priceInputId" value="<%= @price || 500 %>" min="1" max="500" oninput="priceOutputId.value = priceInputId.value">
-            <output name="priceOutputName" id="priceOutputId" style= "margin-left: 240px; margin-top: -26px; font-size: 15px; font-family: Raleway"><%= @price || 500 %></output>
+            <output name="priceOutputName" id="priceOutputId" style= "margin-left: 85%; margin-top: -26px; font-size: 15px; font-family: Raleway"><%= @price || 500 %></output>
           </td>
         </div>
         <td><input type="submit" value="Search" class="btn-normal" style="background-color: white; border: 1px solid gray">
