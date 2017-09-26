@@ -14,4 +14,28 @@ was successful</h2>
   <%= link_to "Edit your booking",  edit_profile_booking_path(@booking), class: "btn-red w3-block"%>
   <%= link_to "Look for other venues", venues_path, class: "btn-red w3-block" %>
 
+<div class="booking-request"> Your booking request for <%= @booking.venue.name %> was successful. We contacet the host - you will get the confirmation within the next three days!</div>
 
+<div class="booking-card-new" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+  url('<%= cl_image_path booking.venue.photos.first.path if booking.venue.photos.first %>')">
+  <% if booking.venue.owner.profile.photo? %>
+  <% avatar_url = cl_image_path booking.venue.owner.profile.photo.path %>
+  <% else %>
+  <% avatar_url = "https://material-components-web.appspot.com/images/animal1.svg" %>
+  <% end %>
+  <div class="booking-owner-photo"> <%= image_tag avatar_url %></div>
+
+  <div class="card-description">
+      <h2><%= @booking.venue.location %></h2>
+      <p class="description-2"><%= @booking.venue.name %></p>
+      <p class="description-2" style="font-size: 15px">
+      <%= booking.start_date.strftime("%b %d") if @booking.start_date %> - <%= @booking.end_date.strftime("%b %d") if booking.end_date %><br>
+      Number of hours: <%= @booking.hours %><br>
+      <strong>Total price: <%= @booking.total_price.to_i %> €</strong></p>
+      <p class="description-2" style="font-size: 15px">Booking status: <%= booking.status %></p>
+      <div style="margin-top: 20px"><%= link_to 'Edit Booking', edit_profile_booking_path(@booking), class: "btn-red w3-block" %></div>
+  </div>
+<a> <%= link_to booking.venue.name, venue_path(booking.venue), class: "card-link" %></a>
+
+</div>
+</div>
