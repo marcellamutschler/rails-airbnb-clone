@@ -18,11 +18,11 @@
 
 <%= f.label :end_date %>
 <%= f.text_field :end_date, class: "timepicker-default request-time", id: "basicExample" %>
-  <%= f.submit %>
+  <%= f.submit class: "btn-red" %>
 <% end %>
 
 
- <%= link_to 'Go Back', venues_path, class: "btn btn-danger" %>
+ <%= link_to 'Go Back', venues_path, class: "btn btn-normal" %>
 
 <% if policy(Booking).create? %>
   <%= new_venue_booking_path %>
