@@ -2,6 +2,9 @@
 <h1 style="font-size: 30px; padding: 5px; margin-left: 10px"> <%= convo_partner(@conversation).full_name %></h1>
 <hr>
 
+<%= link_to 'Go to Venue', venue_path(@venue), class: "btn-red" %>
+
+
 <% @messages.each do |message| %>
 
 <% if message.user != current_user  %>
