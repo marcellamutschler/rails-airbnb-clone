@@ -69,12 +69,13 @@ class VenuesController < ApplicationController
   def create
     @venue = Venue.new(venue_params)
     @venue.user = current_user
+    authorize @venue
+
     if @venue.save
       redirect_to venue_path(@venue)
     else
       render :new
     end
-    authorize @venue
   end
 
   def edit

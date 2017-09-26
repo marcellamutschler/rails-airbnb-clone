@@ -18,6 +18,8 @@ class ApplicationController < ActionController::Base
   # method + argument +
   after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
   # you deal with all the restaurants
+  before_action :better_errors_hack, if: -> { Rails.env.development? }
+
 
 
   # Uncomment when you *really understand* Pundit!
@@ -41,5 +43,9 @@ class ApplicationController < ActionController::Base
     if current_user.profile.nil?
       redirect_to new_profile_path, alert: 'Please create a profile before proceeding'
     end
+  end
+
+  def better_errors_hack
+  request.env['puma.config'].options.user_options.delete :app
   end
 end
