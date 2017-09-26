@@ -7,7 +7,7 @@ class PagesController < ApplicationController
   def home
     # the name of the method has to do with our routes
     # rails.routes --> show#home
-    @cities = Venue.where.not(city: nil).to_a.map{|b| b.city}
+    @cities = Venue.where.not(city: nil).to_a.map{|b| b.city}.uniq
     #AR method to guet cities frim venues that have cities, then
     # it returns us an array of cities
     @categories = ['Wedding', 'Party', 'Baptism', 'Workshop', 'Training', 'Social Event', 'Desk Rental', 'Conference', 'Launch Event', 'Business Meeting', 'Birthday', 'Photo Shoot', 'Film Shoot', 'Concert', 'Get-Together']
