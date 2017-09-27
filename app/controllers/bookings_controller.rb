@@ -11,6 +11,7 @@ class BookingsController < ApplicationController
   def index
     @bookings = policy_scope(Booking)
     @bookings = current_user.bookings
+    @venue = Venue.new
   end
 
   def show
