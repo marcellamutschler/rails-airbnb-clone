@@ -36,6 +36,7 @@ class VenuesController < ApplicationController
       marker.lng venue.longitude
     end
     @bookmark = Bookmark.new
+    @venue = Venue.new
 
 
   end

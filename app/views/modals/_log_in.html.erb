@@ -1,0 +1,59 @@
+<div class="modal fade" id="log_in_modal" tabindex="-1" role="dialog" aria-labelledby="log_in_modalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <div class="login_form" >
+        <h1 style="font-size: 50px; font-family: HelveticaNeue-Light"> Welcome back </h1>
+        <h2 style="font-size: 15px; font-family: HelveticaNeue-Light"> Please Log In </h2>
+
+        <div class="btn-blue" style="color: white; margin-right: 40px; margin-left: 40px">
+          <%- if devise_mapping.omniauthable? %>
+          <%- resource_class.omniauth_providers.each do |provider| %>
+          <%= link_to "Connect with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), class: "fb_link" %><br />
+          <% end -%>
+          <% end -%>
+        </div>
+        <hr style= "border-top: 0.5px solid lightgrey; margin-right: 40px; margin-left: 40px;"/>
+
+        <%= simple_form_for(resource, as: resource_name, url: user_session_path) do |f| %>
+        <div class="login-form" style= "padding-right: 40px; padding-left: 40px">
+
+          <p style="font-size: 20px">E-Mail</p>
+          <%= f.input :email, required: false, label: false, autofocus: true, placeholder: "email@email.com" %>
+          <p style="font-size: 20px">Password</p>
+          <%= f.input :password, required: false, label: false, placeholder: "·············" %>
+        </div>
+        <div class="form-inputs">
+          <%= f.input :remember_me,  as: :boolean if devise_mapping.rememberable? %>
+        </div>
+
+        <div>
+          <%= f.button :submit, "Log in", style: "font-size: 22px; padding: 10px; padding-left: 142px; padding-right: 142px";%>
+        </div>
+        <% end %>
+
+        Create a new Account.
+        <%# link_to "Log In", new_session_path(resource_name), style: "text-decoration: none !important; color: #DE1A1A;"%>
+        <button type="button" style="background: transparent; border: none; color: #DE1A1A" data-toggle="modal" data-target="#sign_up_modal" data-dismiss="modal">
+          Sign Up
+        </button>
+        <div>
+        Forgot your password?
+        <%# link_to "Log In", new_session_path(resource_name), style: "text-decoration: none !important; color: #DE1A1A;"%>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+

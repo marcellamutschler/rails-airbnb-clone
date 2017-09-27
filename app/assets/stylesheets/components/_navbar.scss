@@ -12,6 +12,7 @@
   top:0;
   width: 100%;
   z-index: 9999;
+  font-family: "Helvetica Neue";
 }
 
 /* Logo */
@@ -79,6 +80,16 @@
   transform: rotate(45deg);
   border-left: 1px solid #E6E6E6;
   border-top: 1px solid #E6E6E6;
+}
+
+.add-venue-modal {
+  font-family: HelveticaNeue-Thin; font-size: 15px; transition: color 0.3s ease; font-weight: lighter !important; color: #999999 !important; font-size: 15px !important; line-height: 22px !important; padding: 10px 20px;
+}
+
+.add-venue-modal:hover {
+  text-decoration: none !important;
+  color: #DE1A1A !important;
+
 }
 
 
