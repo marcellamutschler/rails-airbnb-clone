@@ -36,9 +36,6 @@ class VenuesController < ApplicationController
       marker.lng venue.longitude
     end
     @bookmark = Bookmark.new
-    @venue = Venue.new
-
-
   end
 
   def show
@@ -61,12 +58,12 @@ class VenuesController < ApplicationController
   end
 
   def new
-    @venue = Venue.new
+    @new_venue = Venue.new
     authorize @venue
   end
 
   def create
-    @venue = Venue.new(venue_params)
+    @new_venue = Venue.new(venue_params)
     @venue.user = current_user
     authorize @venue
 

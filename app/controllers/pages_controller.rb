@@ -14,7 +14,6 @@ class PagesController < ApplicationController
     @categories = ['Wedding', 'Party', 'Baptism', 'Workshop', 'Training', 'Social Event', 'Desk Rental', 'Conference', 'Launch Event', 'Business Meeting', 'Birthday', 'Photo Shoot', 'Film Shoot', 'Concert', 'Get-Together']
     #@city = params["city"]
     #@categ = params["categories"]
-    @venue = Venue.new
   end
 
 
