@@ -23,23 +23,28 @@
 
 
 <body>
+
   <% if current_page?('/')  %>
   <%= render 'shared/navbar_home'   %>
   <% else %>
   <%= render 'shared/navbar'   %>
   <%  end %>
-
+  <!--  si c'est la home page, montre moi la navbar homepage,
+  autrement montre moi la navbar shared par toutes les autres pages -->
   <%= render 'shared/flashes' %>
 
   <% if current_page?('/') || (action_name == 'index' && controller_name = 'venues') %>
     <%= yield %>
   <% else %>
   <div class="page-container">
+ <!--  ici on wrap tout dans une classe à styliser dans le css pour que
+ toutes les pages aient une marge -->
     <%= yield %>
+     <!--  ici on appelle tout le HTML de nos views -->
   </div>
   <% end %>
 
-  <!--  ici on appelle tout le HTML de nos views -->
+
 
   <%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.0/moment.js" %>
 

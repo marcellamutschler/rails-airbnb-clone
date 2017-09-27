@@ -1,66 +1,91 @@
 
-<div class="profile-container">
-  <h1><strong> Profile Section </strong></h1>
+
   <!--   < % =  means you're now able to print some RUBY -->
   <!--< % = current_user.profile.first_name % >
 
   <br>
 <!--   <h2>Profile Photo</h2> -->
-  <br>
-    <% if current_user.profile.photo? %>
-            <%  avatar_url = cl_image_path current_user.profile.photo.path %>
-    <% elsif current_user.facebook_picture_url.present? %>
-      <% avatar_url = image_path  current_user.facebook_picture_url  %>
-    <% else %>
-      <% avatar_url = "https://material-components-web.appspot.com/images/animal1.svg" %>
-    <% end %>
-    <div class="profile-header-container"
-      <img><%= image_tag avatar_url %></img>
-</div>
-<hr>
-<h2>Basic Information</h2>
-  <table class="profile-table">
-    <tr>
-      <td><strong>First Name</strong></td>
-      <td><%= @profile.first_name %></td>
-    </tr>
-    <br>
-    <tr>
-      <td><strong>Last Name</strong></td>
-      <td><%= @profile.last_name %></td>
-    </tr>
-    <br>
-    <tr>
-      <td><strong>Description</strong></td>
-      <td><%= @profile.bio %></td>
-    </tr>
-  </table>
-</div>
 
-<% if current_user == @profile.user %>
-  <div class="profile-container-2">
-  <%= link_to "Edit your Profil", edit_profile_path, class: "btn-normal"%>
-  <hr>
-
-  <%= link_to "Show Your Bookings", profile_bookings_path(@profile, @bookings), class: "btn-red"%>
-  <%= link_to "Bookings for your places", owner_bookings_profile_bookings_path(@profile), class: "btn-red" %>
-  <%= link_to "List Your Venue", new_venue_path, class: "btn-red"%>
-<% end %>
-    </div>
+<div class="container">
+<div class="row">
+  <div class="col-md-12">
+    <h1><strong> Profile Section </strong></h1>
   </div>
-
 </div>
 
+<div class="row">
+  <div class="col-md-6">
+      <h2>Basic Information</h2>
+      <br>
+      <div class="profile-header-container">
+      <% if current_user.profile.photo? %>
+              <%  avatar_url = cl_image_path current_user.profile.photo.path %>
+      <% elsif current_user.facebook_picture_url.present? %>
+        <% avatar_url = image_path  current_user.facebook_picture_url  %>
+      <% else %>
+        <% avatar_url = "https://material-components-web.appspot.com/images/animal1.svg" %>
+      <% end %>
+        <img><%= image_tag avatar_url %></img>
+      </div>
+     <table class="profile-table">
+            <tr>
+              <td><strong>First Name</strong></td>
+              <td><%= @profile.first_name %></td>
+            </tr>
+            <br>
+            <tr>
+              <td><strong>Last Name</strong></td>
+              <td><%= @profile.last_name %></td>
+            </tr>
+            <br>
+            <tr>
+              <td><strong>Description</strong></td>
+              <td><%= @profile.bio %></td>
+            </tr>
+      <br>
+      </table>
+      <br>
+      <br>
+      <% if current_user == @profile.user %>
+      <%= link_to "Edit your Profil", edit_profile_path, class: "btn-normal"%>
+      <% end %>
+    <!-- column 1 stuff here -->
+
+    </div>
 
 
+ <div class="col-md-6">
+    <!-- column 2 stuff here -->
+   <h2>Your Dashboard</h2>
+   <br>
+   <div>
+     <ul>
+      <li>
+       <div class="dashboard">
+        <i class="fa fa-check" aria-hidden="true"></i>
+        See all your past and further bookings
+        <%= link_to "Show Bookings", profile_bookings_path(@profile, @bookings), class: "btn-red"%>
+      </div>
+     </li>
+     <li>
+      <div class="dashboard">
+      <i class="fa fa-list" aria-hidden="true"></i>
+         See the bookings made on your venues
+        <%= link_to "Show Requests", owner_bookings_profile_bookings_path(@profile), class: "btn-red" %>
+      </div>
+      </li>
+      <li>
+        <div class="dashboard">
+        <i class="fa fa-upload" aria-hidden="true"></i>
+        List a new venue
+        <%= link_to "Register Venue", new_venue_path, class: "btn-red"%>
+        </div>
+      </li>
 
+     </ul>
+   </div>
 
-
-
-
-
-
-
-
-
+</div>
+</div>
+</div>
 
