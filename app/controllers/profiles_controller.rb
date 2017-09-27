@@ -28,6 +28,7 @@ class ProfilesController < ApplicationController
     # query into the profile table, through user ID
     # profl belongs to this profile
     @bookings = current_user.bookings
+    @venue = Venue.new
    end
 
   def new
@@ -75,6 +76,7 @@ class ProfilesController < ApplicationController
   def myvenues
     @profile = current_user.profile
     authorize @profile
+    @venue = Venue.new
   end
 
   def destroy
