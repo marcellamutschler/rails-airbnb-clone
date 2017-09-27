@@ -9,7 +9,7 @@
 <div class="container">
 <div class="row">
   <div class="col-md-12">
-    <h1><strong> Profile Section </strong></h1>
+    <h1><strong> My Profile </strong></h1>
   </div>
 </div>
 
@@ -56,36 +56,34 @@
 
  <div class="col-md-6">
     <!-- column 2 stuff here -->
-   <h2>Your Dashboard</h2>
+   <h2>My Dashboard</h2>
    <br>
-   <div>
-     <ul>
+     <ul class="widget">
       <li>
        <div class="dashboard">
         <i class="fa fa-check" aria-hidden="true"></i>
         See all your past and further bookings
-        <%= link_to "Show Bookings", profile_bookings_path(@profile, @bookings), class: "btn-red"%>
+        <%= link_to "Show Bookings", profile_bookings_path(@profile, @bookings), class: "btn-pourpre"%>
       </div>
      </li>
      <li>
       <div class="dashboard">
       <i class="fa fa-list" aria-hidden="true"></i>
          See the bookings made on your venues
-        <%= link_to "Show Requests", owner_bookings_profile_bookings_path(@profile), class: "btn-red" %>
+        <%= link_to "Show Requests", owner_bookings_profile_bookings_path(@profile), class: "btn-pourpre" %>
       </div>
       </li>
       <li>
         <div class="dashboard">
         <i class="fa fa-upload" aria-hidden="true"></i>
-        List a new venue
-        <%= link_to "Register Venue", new_venue_path, class: "btn-red"%>
+        List a new venue on your account
+        <%= link_to "Register Venue", new_venue_path, class: "btn-pourpre"%>
         </div>
       </li>
 
      </ul>
-   </div>
+  </div>
 
-</div>
 </div>
 </div>
 

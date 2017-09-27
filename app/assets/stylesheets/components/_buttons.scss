@@ -21,6 +21,17 @@
   text-decoration: none;
 }
 
+.btn-pourpre {
+  color:#DE1A1A; ;
+  border: 1px solid #DE1A1A;
+  border-radius: 50px;
+  padding: 7px 20px;
+  font-weight: lighter;
+  margin: 10px;
+  text-decoration: none;
+}
+
+
 .btn-blue {
   color: white;
   background-color: #3b5998 ;
@@ -80,3 +91,12 @@
   text-decoration: none !important;
 }
 
+.btn-pourpre:hover, .btn-navbar:active, .btn-navbar:focus  {
+  color:red; ;
+  border: 1px solid red;
+  border-radius: 50px;
+  padding: 7px 20px;
+  font-weight: lighter;
+  margin: 10px;
+  text-decoration: none;
+}
