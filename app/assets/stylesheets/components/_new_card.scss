@@ -9,8 +9,6 @@
   background-size: 330px 250px;
   background-repeat: no-repeat;
 }
-
-
 // .card-user {
 //  position: absolute;
 //  top: 170px;
@@ -21,7 +19,6 @@
 //  background-size: cover;
 //  background-position: center;
 // }
-
 .card-user-wishlist {
  position: absolute;
  margin-left: 130px;
@@ -31,11 +28,9 @@
  border-radius: 50%;
  border: 1px solid white;
  z-index: 1;
-
  background-size: cover;
  background-position: center;
 }
-
 .card-link-wishlist {
   top: 0;
   bottom: 0;
@@ -47,7 +42,6 @@
   background: black;
   opacity: 0;
 }
-
 .card-link-wishlist:hover {
   top: 0;
   bottom: 0;
@@ -59,12 +53,10 @@
   background: black;
   opacity: 0.1;
 }
-
 .card-description-title {
   width: 100%;
   height: 120px;
 }
-
 .card-description {
   color: black;
   position: absolute;
@@ -88,17 +80,13 @@
   left: 10px;
   margin-bottom: 5px;
 }
-.card-name {
-  height: 250px;
-  display: flex;
-  justify-content: center;
-  h1 {
-    color: white;
-    opacity: 0.9;
-    font-size: 24px;
-    font-weight: bolder;
-    margin-top: 187px;
-  }
+.card-name h1 {
+  color: white;
+  opacity: 0.9;
+  font-size: 24px;
+  margin-top: 210px;
+  position: absolute;
+  margin-left: 10px;
 }
 .card-description-2 p {
   font-size: 14px;
