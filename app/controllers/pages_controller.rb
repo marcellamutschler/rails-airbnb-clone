@@ -2,7 +2,8 @@ class PagesController < ApplicationController
   # controller qui renvoit à la view - home
   # si on utitlise une variable @pomme ds view HTML home, c'est ici
   # qu'on devrait la définir
-  skip_before_action :authenticate_user!, only: :home
+  skip_before_action :authenticate_user!, only: [:home, :test_page]
+  layout 'test_layout', only: :test_page
 
   def home
     # the name of the method has to do with our routes
@@ -13,10 +14,13 @@ class PagesController < ApplicationController
     @categories = ['Wedding', 'Party', 'Baptism', 'Workshop', 'Training', 'Social Event', 'Desk Rental', 'Conference', 'Launch Event', 'Business Meeting', 'Birthday', 'Photo Shoot', 'Film Shoot', 'Concert', 'Get-Together']
     #@city = params["city"]
     #@categ = params["categories"]
+    @venue = Venue.new
   end
 
 
 
+  def test_page
 
+  end
 end
 

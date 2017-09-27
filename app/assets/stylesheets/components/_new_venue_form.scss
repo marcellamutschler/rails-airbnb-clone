@@ -1,3 +1,10 @@
+
+.venue-form-container {
+  text-align: center;
+  width: 800px;
+  margin: auto;
+  background-color: darken(#eee, 1%);
+}
 .venue-form {
   text-align: center;
   text-decoration: none;
@@ -19,9 +26,8 @@
 }
 
 .venue-form button {
-  backgrond: red;
+  background: red;
 }
-
 
 .link_log_in {
   color: #DE1A1A;
@@ -42,5 +48,35 @@
 }
 
 .check_boxes {
-  height: auto!important;
+  height: auto !important;
 }
+
+.venue-form-text-input {
+  font-size:17px;
+  @extend .venue-form;
+  padding-left: 80px;
+  padding-right: 80px;
+}
+.venue-form-check-boxes {
+  @extend .venue-form;
+  text-align: left;
+  padding: 0 80px;
+  .radio label, .checkbox label {
+      font-family: "HelveticaNeue-Thin";
+      font-size: 15px;
+      min-height: 20px;
+      padding-left: 0px;
+      font-weight: lighter;
+      cursor: pointer;
+  }
+}
+
+.venues-photo-upload {
+  .upload_button_holder input[type=submit] {
+    background-color: red;
+  }
+}
+
+
+
+
