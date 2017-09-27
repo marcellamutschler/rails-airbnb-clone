@@ -4,6 +4,7 @@ class BookmarksController < ApplicationController
   def index
     @bookmarks = Bookmark.all
     @bookmarks = policy_scope(Bookmark)
+    @venue = Venue.new
   end
 
   # def show
