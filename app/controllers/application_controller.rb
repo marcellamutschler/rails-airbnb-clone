@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  before_action :authenticate_user!
+  before_action :authenticate_user!, :venue_everywhere
 
   include Pundit
   # give you a whole new bunch of methods - "include" means include the module
@@ -46,6 +46,10 @@ class ApplicationController < ActionController::Base
   end
 
   def better_errors_hack
-  request.env['puma.config'].options.user_options.delete :app
+    request.env['puma.config'].options.user_options.delete :app
+  end
+
+  def venue_everywhere
+    @new_venue = Venue.new
   end
 end
