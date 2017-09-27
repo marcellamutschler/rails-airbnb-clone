@@ -1,11 +1,10 @@
-<% content_for :title, @convo_partner(@conversation).full_name %>
+<% content_for :title, convo_partner(@conversation).full_name %>
 
 
 <div style="margin-top: 10px">
 <h1 style="font-size: 30px; padding: 5px; margin-left: 10px"> <%= convo_partner(@conversation).full_name %></h1>
 <hr>
 
-<%= link_to 'Go to Venue', venue_path(@venue), class: "btn-red" %>
 
 
 <% @messages.each do |message| %>
@@ -13,7 +12,7 @@
 <% if message.user != current_user  %>
 
 <div class="dialog-left">
- <%= image_tag get_profile_photo(convo_partner(@conversation)), class: "avatar" %>
+ <%= image_tag get_profile_photo(convo_partner(@conversation)), class: "avatar", style:"width:60px; height:60px" %>
 
 <div style="text-align: left; border: 1px solid #E0E0E0; padding: 10px; width: 500px; margin-top: -60px; margin-bottom: 40px; margin-left: 70px">
   <strong><%= convo_partner(@conversation).full_name %>:</strong> <%= message.content %><br><br>
@@ -30,7 +29,7 @@
 
 <% else  %>
 <div class="dialog-right">
-  <%= image_tag get_profile_photo(current_user), class: "avatar" %></div>
+  <%= image_tag get_profile_photo(current_user), class: "avatar", style:"width:60px; height:60px" %></div>
 
 
 <div style="text-align: right; border: 1px solid #E0E0E0; padding: 10px; width: 500px; margin-top: -60px; margin-left: 520px; margin-bottom: 40px">
@@ -44,7 +43,8 @@
 <div class="form-messenger dialog-right" style="width: 580px; margin-left: 520px">
   <%= simple_form_for(@message, url: conversation_messages_path(@conversation), html: {method: :post}) do |f| %>
   <%= f.input :content, label: false, class: "w3-input w3-border"%>
-  <%= f.submit "Send Message", class: "btn-red" %>
+  <%= link_to "Go to #{convo_partner(@conversation).full_name}s venue", venue_path(@venue), class: "btn-normal" %>
+  <%= f.submit "Send Message", class: "btn-red", style: "height:35px" %>
   <% end %>
 </div>
 
