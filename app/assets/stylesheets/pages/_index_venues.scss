@@ -1,0 +1,12 @@
+.cards_wrapper {
+    margin-left: 20px;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: row;
+    .cards_list{
+      flex: 1;
+    }
+    .map{
+      flex: 0 0 450px;
+    }
+}
