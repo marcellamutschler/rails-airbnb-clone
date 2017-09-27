@@ -74,10 +74,12 @@
 
         <div style="font-size: 22px; text-align: center">Photos</div>
 
-        <div class="venues-photo-upload">
-          <%= f.input :photos, as: :attachinary, label: false%>
+        <div class="venues-photo-upload-button-container">
+          <!-- <div class="venues-photo-upload-fake btn-normal">Upload Photo</div> -->
+          <div class="venues-photo-upload">
+            <%= f.input :photos, as: :attachinary, label: false%>
+          </div>
         </div>
-
         <%#= f.input :photo_cache, as: :hidden %>
         <div style="font-size: 22px; text-align: center">
           Price

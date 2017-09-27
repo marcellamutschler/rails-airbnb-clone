@@ -1,7 +1,11 @@
 // UTILITIES to be used in different places
+.position-relative {
+  position: relative;
+}
 
-
-
+.transparent {
+  opacity: 0;
+}
 
 .center-text {
   text-align: center;
