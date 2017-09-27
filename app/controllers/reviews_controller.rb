@@ -17,6 +17,7 @@ class ReviewsController < ApplicationController
     @review.booking = @booking
     @review.user = current_user
     authorize @booking
+
     if @review.save
       flash[:notice] = 'Thank you for your review!'
     else
@@ -25,17 +26,13 @@ class ReviewsController < ApplicationController
     redirect_back(fallback_location: root_path)
   end
 
+  private
+
   def find_booking
     @booking = Booking.find(params[:booking_id])
   end
 
-  private
-
   def review_params
-
     params.require(:review).permit(:review_text, :review_rating)
-
   end
-
-
 end

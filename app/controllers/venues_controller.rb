@@ -58,12 +58,11 @@ class VenuesController < ApplicationController
   end
 
   def new
-    @new_venue = Venue.new
-    authorize @venue
+    authorize @new_venue
   end
 
   def create
-    @new_venue = Venue.new(venue_params)
+    @venue = Venue.new(venue_params)
     @venue.user = current_user
     authorize @venue
 
