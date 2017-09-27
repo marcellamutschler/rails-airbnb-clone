@@ -37,8 +37,9 @@ streets = ["carrer d'Aldana", "carrer de Balmas", "carrer del Bruc", "carrer de 
   user.save
   profile = Profile.new(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name)
   profile.user = user
+  profile.photo = Cloudinary::Uploader.upload("https://unsplash.it/200/300")
 
-  profile.photo_url = RAMDOM_PEOPLE
+  #profile.photo_url = RAMDOM_PEOPLE
   puts "user: #{user.full_name} created" if profile.save
 
   50.times do
@@ -48,7 +49,8 @@ streets = ["carrer d'Aldana", "carrer de Balmas", "carrer del Bruc", "carrer de 
     venue_name = ADJECTIVE_VENUE.sample + " " + category_venue.first + " " + "Venue"
     city = "Barcelona"
     venue = Venue.new(name: venue_name, categories: category_venue, amenities: amenitiy_venue, city: city, capacity: rand(20..500), location: location, description: Faker::Lorem.sentence, price: rand(20..500))
-    venue.photo_urls = [RAMDOM_VENUE_IMAGE]
+    #venue.photo_urls = [RAMDOM_VENUE_IMAGE]
+    venue.photo = Cloudinary::Uploader.upload("https://unsplash.it/200/300")
     venue.user = user
     if venue.save
       puts "venue: #{venue.name} created"
@@ -57,6 +59,56 @@ streets = ["carrer d'Aldana", "carrer de Balmas", "carrer del Bruc", "carrer de 
     end
   end
 end
+
+
+  user = User.new(email: "neil@gmail.com", password: "123456")
+  user.save
+  profile = Profile.new(first_name: "Neil Patrick", last_name: "Harris" )
+  profile.user = user
+  profile.photo = Cloudinary::Uploader.upload("https://static.comicvine.com/uploads/original/10/104544/4243824-3482981410-936fu.jpg")
+
+  5.times do
+    category_venue = ["Party"]
+    3.times do
+      amenitiy_venue = [Venue::AMENITIES.sample]
+    end
+    location = streets.sample + ' ' + rand(1..100).to_s + ', Barcelona'
+    city = "Barcelona"
+
+
+  end
+
+
+
+  user = User.new(email: "mark@gmail.com", password: 'dasso007')
+  user.save
+  profile = Profile.new(first_name: "Mark", last_name: "Terenz" )
+  profile.user = user
+
+
+
+names = ['name1', 'name2', 'name3']
+pics = ['pic1', 'pic2', 'pic3']
+
+names.each_with_index do |name, index|
+
+  puts name
+  url(pics[index])
+
+
+end
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
