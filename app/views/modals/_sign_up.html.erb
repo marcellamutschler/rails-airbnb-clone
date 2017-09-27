@@ -1,0 +1,43 @@
+<div class="modal fade" id="sign_up_modal" tabindex="-1" role="dialog" aria-labelledby="sign_up_modalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <div class="login_form", style="text-align: center">
+        <h1 style = "font-size: 50px; font-family: HelveticaNeue-Light" >Join Elvenue</h1>
+        <h2 style="font-size: 15px; font-family: HelveticaNeue-Light"> Find the perfect venue for unique events. </h2>
+        <br>
+        <div class="btn-blue" style="color: white; margin-right: 40px; margin-left: 40px">
+          <%- if devise_mapping.omniauthable? %>
+          <%- resource_class.omniauth_providers.each do |provider| %>
+          <%= link_to "Connect with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), class: "fb_link" %><br />
+          <% end -%>
+          <% end -%>
+        </div>
+        <div style = "font-size: 13px"> We won't post anything without your permission. </div>
+        <hr style= "border-top: 0.5px solid lightgrey; margin-right: 40px; margin-left: 40px;"/>
+
+        <%= simple_form_for(resource, as: resource_name, url: user_registration_path) do |f| %>
+        <%= f.error_notification %>
+        <div class="login-form" style= "padding-right: 40px; padding-left: 40px">
+          <p style="font-size: 20px">E-Mail</p>
+          <%= f.input :email, label: false, required: true, autofocus: true, placeholder: "email@email.com"%>
+          <p style="font-size: 20px">Password</p>
+          <%= f.input :password, label: false, required: true, hint: ("(min. characters #{@minimum_password_length}) " if @minimum_password_length), placeholder: "·············"  %>
+          <p style="font-size: 20px">Password Confirmation</p>
+          <%= f.input :password_confirmation, label: false, required: true, placeholder: "·············" %>
+        </div>
+        <div>
+          <%= f.button :submit, "Sign Up", style: "font-size: 22px; padding: 10px; padding-left: 142px; padding-right: 142px;"; %>
+        </div>
+        <% end %>
+      Already have an Account?
+        <%# link_to "Log In", new_session_path(resource_name), style: "text-decoration: none !important; color: #DE1A1A;"%>
+        <button type="button" style="background: transparent; border: none; color: #DE1A1A" data-toggle="modal" data-target="#log_in_modal" data-dismiss="modal">
+          Log in
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

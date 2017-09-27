@@ -13,35 +13,16 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style>
-  body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
-  .mySlides {display:none}
-</style>
+    body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
+    .mySlides {display:none}
+  </style>
 
   <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.4/jquery.datetimepicker.min.css' %>
-
 </head>
-
-
 <body>
-  <%= render 'modals/sign_up' %>
-  <%= render 'modals/log_in' %>
-  <%= render 'modals/list_venue' %>
 
-  <% if current_page?('/')  %>
-  <%= render 'shared/navbar_home'   %>
-  <% else %>
-  <%= render 'shared/navbar'   %>
-  <%  end %>
-
-  <%= render 'shared/flashes' %>
-
-  <% if current_page?('/') %>
   <%= yield %>
-  <% else %>
-  <div class="page-container">
-    <%= yield %>
-  </div>
-  <% end %>
+
 
   <!--  ici on appelle tout le HTML de nos views -->
 
@@ -53,11 +34,10 @@
   <%= javascript_include_tag "https://cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js" %>
   <%= javascript_include_tag 'application' %>
   <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.4/build/jquery.datetimepicker.full.min.js' %>
-  <%= yield(:after_js) %>
+
   <!--  appelle juste le JS de notre map -->
 
   <%= cloudinary_js_config %> <!-- Append this after the main `javascript_include_tag`. -->
   <%#<render 'shared/footer' %>
   </body>
-  <%= render 'shared/footer' unless current_page?('/') %>
   </html>

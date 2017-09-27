@@ -1,0 +1,108 @@
+<div class="modal fade" id="list_venue_modal" tabindex="-1" role="dialog" aria-labelledby="list_venue_modalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <div class="venue-form-text-input">
+        <div style="font-size: 50px; ">List your Venue</div>
+        <h2 style="font-size: 15px; font-family: HelveticaNeue-Thin"> Register your unique locations. </h2>
+
+        <hr style= "border-top: 0.5px solid lightgrey; margin-right: 10px; margin-left: 10px;"/>
+
+        <%= simple_form_for(@venue) do |f| %>
+        <p>Name</p>
+        <%= f.input :name, label: false  %>
+
+        <p >Capacity</p>
+        <%= f.input :capacity, label: false %>
+
+        <p >Address</p>
+        <%= f.input :location, label: false%>
+
+        <p >City</p>
+        <%= f.input :city, label: false %>
+
+        <p >Description</p>
+        <%= f.input :description, label: false %>
+      </div>
+
+      <div class="venue-form-check-boxes" style= "margin-bottom: 20px;">
+        <div class="form-group check_boxes required venue_categories">
+          <div style="font-size: 22px; text-align: center">Categories</div>
+
+          <input type="hidden" name="venue[categories][]" value="">
+          <div class="row">
+            <% Venue::CATEGORIES.each do |venue| %>
+            <div class="col-sm-4">
+              <div class="checkbox checkbox_list">
+                <div class="label_venue" >
+                  <label class="venue-checkboxes-label" for="venue_categories_wedding">
+                    <%= venue %>
+                  </label>
+                </div>
+                <div class="input_venue">
+                  <input class="check_boxes required" type="checkbox" value="<%= venue %>" name="venue[categories][]" id="venue_categories_wedding"> </input>
+                </div>
+              </div>
+            </div>
+            <% end %>
+          </div>
+        </div>
+
+
+        <div class="form-group check_boxes required venue_categories">
+          <div style="font-size: 22px; text-align: center">Amenities</div>
+          <input type="hidden" name="venue[amenities][]" value="">
+          <div class="row">
+            <% Venue::AMENITIES.each do |venue| %>
+            <div class="col-sm-4">
+              <div class="checkbox checkbox_list">
+                <div class="label_venue">
+                  <label class="venue-checkboxes-label" for="venue_categories_wedding">
+                    <%= venue %>
+                  </label>
+                </div>
+                <div class="input_venue">
+                  <input class="check_boxes required" type="checkbox" value="<%= venue %>" name="venue[amenities][]" id="venue_categories_wedding"> </input>
+                </div>
+              </div>
+            </div>
+            <% end %>
+          </div>
+        </div>
+
+        <div style="font-size: 22px; text-align: center">Photos</div>
+
+        <div class="venues-photo-upload">
+          <%= f.input :photos, as: :attachinary, label: false%>
+        </div>
+
+        <%#= f.input :photo_cache, as: :hidden %>
+        <div style="font-size: 22px; text-align: center">
+          Price
+          <%= f.input :price, label: false %>
+        </div>
+
+      </div>
+      <%= f.submit class: "btn-red", style: "background: #DE1A1A; padding-top: 4px; padding-bottom: 4px; margin-left: 25%; font-size: 22px;"  %>
+      <%= link_to '< Go Back', venues_path, class: "btn-normal", style: "font-size: 22px" %>
+      <% end %>
+
+
+    </div>
+    <% if policy(Venue).create? %>
+    <% new_venue_path %>
+    <% end %>
+  </div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
