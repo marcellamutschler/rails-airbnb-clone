@@ -11,10 +11,13 @@ class BookingsController < ApplicationController
   def index
     @bookings = policy_scope(Booking)
     @bookings = current_user.bookings
+
     @venue = Venue.new
+    @review = Review.new
   end
 
   def show
+    @venue = Venue.new
   end
 
   def new
@@ -67,6 +70,7 @@ class BookingsController < ApplicationController
 
   def owner
     authorize Booking
+    @venue = Venue.new
   end
 
   def accept

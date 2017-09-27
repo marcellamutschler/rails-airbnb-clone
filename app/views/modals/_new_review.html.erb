@@ -1,0 +1,28 @@
+<div class="modal fade" id="new_review_modal<%= index %>" tabindex="-1" role="dialog" aria-labelledby="new_review_modalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+
+      <hr>
+      <h1>Add a review for <%= booking.venue.name %> in <%= booking.venue.location %></h1>
+
+      <%= simple_form_for [current_user.profile, booking, review] do |f| %>
+      <div class="venue-form ">
+
+        <%= f.input :review_text %>
+
+        <%= f.input :review_rating, collection: [1, 2, 3, 4, 5] %>
+
+        <%= f.submit class: "btn-red"  %>
+
+
+      </div>
+
+
+      <% end %>
+
+    </div>
+  </div>
+</div>

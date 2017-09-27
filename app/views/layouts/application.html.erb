@@ -21,6 +21,7 @@
 
   <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.4/jquery.datetimepicker.min.css' %>
   <%= favicon_link_tag 'logo_v.png' %>
+
 </head>
 
 
@@ -41,7 +42,7 @@
   <%= render 'shared/flashes' %>
 
   <% if current_page?('/') || (action_name == 'index' && controller_name = 'venues') %>
-    <%= yield %>
+  <%= yield %>
   <% else %>
   <div class="page-container">
     <%= yield %>

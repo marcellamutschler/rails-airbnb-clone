@@ -71,12 +71,21 @@
   }
 }
 
-.venues-photo-upload {
-  .upload_button_holder input[type=submit] {
-    background-color: red;
-  }
+.venues-photo-upload-button-container {
+  position: relative;
+  height: 80px;
 }
-
-
+.venues-photo-upload {
+  position: absolute;
+  left: 184px;
+  top: 26px;
+}
+.venues-photo-upload-fake {
+  position: absolute;
+  left: 160px;
+  top: 20px;
+  margin: 0;
+  font-size: 18px;
+}
 
 
