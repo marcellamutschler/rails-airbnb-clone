@@ -28,7 +28,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "HelveticaNeue-Light"}
       <p><label><i class="fa fa-calendar-check-o"></i> End Date</label></p>
       <%= f.input :end_date, label: false, as: :string, input_html: {class: 'form_datetime'}, placeholder: "DD MM YYYY" %>
       <br>
-      <%= f.submit class: "btn-red", style: "width: 210px" %>   
+      <%= f.submit class: "btn-red", style: "width: 210px" %>
       <% end %>
 
       <%= simple_form_for(@bookmark, url: bookmarks_path, html: {method: :post}) do |f| %>
@@ -70,10 +70,8 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "HelveticaNeue-Light"}
     <div class="w3-container">
       <h4><strong>Description</strong></h4>
       <div class="w3-row w3-large">
-        <div class="w3-col s6">
           <p><i class="fa fa-fw fa-male"></i> Max Capacity: <%= @venue.capacity %></p>
           <p style="padding-left: 30px;"><%= @venue.description %></p>
-        </div>
 
       </div>
       <hr>
@@ -100,58 +98,61 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "HelveticaNeue-Light"}
       <hr>
 
       <h4><strong>Location <%= @venue.location %></strong></h4>
+    </div>
 
 
-      <div id="map" style="width: 100%; height: 600px;"></div>
+    <div id="map" style="width: 100%; height: 600px;"></div>
 
       <% content_for(:after_js) do %>
-      <%= javascript_tag do %>
-      $(document).ready(function() {
+        <%= javascript_tag do %>
+          $(document).ready(function() {
 
-      var handler = Gmaps.build('Google');
-      handler.buildMap({
-      provider: {},
-      internal: { id: 'map' } }, function() {
-      markers = handler.addMarkers(<%= raw @hash.to_json %>);
-      handler.bounds.extendWith(markers);
-      handler.fitMapToBounds();
-      if (markers.length == 0) {
-      handler.getMap().setZoom(2);
-    } else if (markers.length == 1) {
-    handler.getMap().setZoom(14);
-  }
-});
-});
-<% end %>
-<% end %>
-<hr>
+          var handler = Gmaps.build('Google');
+          handler.buildMap({
+            provider: {},
+            internal: { id: 'map' } }, function() {
+              markers = handler.addMarkers(<%= raw @hash.to_json %>);
+              handler.bounds.extendWith(markers);
+              handler.fitMapToBounds();
+              if (markers.length == 0) {
+                handler.getMap().setZoom(2);
+              } else if (markers.length == 1) {
+                handler.getMap().setZoom(14);
+              }
+            });
+          });
+        <% end %>
+      <% end %>
 
-<% unless @review_rating.nil? %>
-<h4> <strong> Reviews </strong>  <%= " - Average Rating: " + @average_rating.to_f + "of 5"%>  </h4>
-<% @venue_reviews.each do |review| %>
-<li><%= review.review_rating %>/5 stars -  <%= review.user.profile.first_name %> writes: "<%= review.review_text %>" </li>
-<% end %>
+  <hr>
 
-</div>
-<% end %>
-
-<br>
-<!-- Contact -->
-<div class="w3-container" id="contact">
-  <h4><strong>Contact & Questions </strong></h4>
-  <p>Do you have any questions or concerns? <br>Insert your message here:</p><br>
-  <%= simple_form_for(@message, url: conversations_path, html: {method: :post}) do |f| %>
-  <%= f.input :content, label: false, class: "w3-input w3-border" %>
-  <%= f.hidden_field :venue_id, value: @venue.id %>
-  <%= f.submit "Send", class: "btn-red" %>
+  <% if @venue_reviews.present? %>
+    <h4><strong>Reviews </strong><%= " - Average Rating: " + @average_rating.to_s.first(3) + "/5"%> </h4>
+    <% @venue_reviews.each do |review| %>
+      <li><%= review.review_rating %>/5 stars -  <%= review.user.profile.first_name.capitalize %> writes: "<%= review.review_text %>" </li>
+    <% end %>
+    <% else %>
+    <h4><strong>No reviews yet </strong> </h4>
   <% end %>
-</div>
+
+  <br>
+<!-- Contact -->
+    <div class="w3-container" id="contact">
+      <h4><strong>Contact & Questions </strong></h4>
+      <p>Do you have any questions or concerns? <br>Insert your message here:</p><br>
+      <%= simple_form_for(@message, url: conversations_path, html: {method: :post}) do |f| %>
+      <%= f.input :content, label: false, class: "w3-input w3-border" %>
+      <%= f.hidden_field :venue_id, value: @venue.id %>
+      <%= f.submit "Send", class: "btn-red" %>
+      <% end %>
+    </div>
 
 
+    </div>
+  </div>
 <!-- End page content -->
-</div>
 
-</div>
+
 
 
 

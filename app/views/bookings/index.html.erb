@@ -1,20 +1,16 @@
-
 <hr>
-<h1 style= "font-size: 30px; margin-left: 30px">Your bookings </h1>
+
 <div class="container">
+  <div class="container-index-booking">
+    <h1 style= "font-size: 30px; margin-left: 40px">Your Bookings </h1>
     <div class="row">
   <% @bookings.each do |booking| %>
       <div class="col-xs-12 col-sm-4">
         <div class="booking-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
           url('<%= cl_image_path booking.venue.photos.first.path if booking.venue.photos.first %>')">
-          <% if booking.venue.owner.profile.photo? %>
-          <% avatar_url = cl_image_path booking.venue.owner.profile.photo.path %>
-          <% else %>
-          <% avatar_url = "https://material-components-web.appspot.com/images/animal1.svg" %>
-          <% end %>
-          <div class="card-user"> <%= image_tag avatar_url %></div>
+          <%= cl_image_tag booking.venue.owner.profile.photo.path, class: 'card-user' if booking.venue.owner.profile.photo %>
 
-          <div class="card-description">
+          <div class="booking-card-description">
               <h2><%= booking.venue.location %></h2>
               <p class="description-2"><%= booking.venue.name %></p>
               <p class="description-2" style="font-size: 15px">
@@ -23,18 +19,15 @@
               <strong>Total price: <%= booking.total_price.to_i %> €</strong></p>
               <p class="description-2" style="font-size: 15px">Booking status: <%= booking.status %></p>
               <% if booking.status == "accepted" %>
-              <div style="margin-top: 20px"><%= link_to 'Add review', new_profile_booking_review_path(@profile, booking), class: "btn-red" %></div>
+              <div style="margin-top: 15px"><%= link_to 'Add review', new_profile_booking_review_path(@profile, booking), class: "btn-red" %></div>
               <% end %>
           </div>
-
-
- <a> <%= link_to booking.venue.name, venue_path(booking.venue), class: "card-link" %></a>
-
+          <%= link_to booking.venue.name, venue_path(booking.venue), class: "card-link" %>
         </div>
       </div>
   <% end %>
     </div>
 </div>
-
+</div>
 
 

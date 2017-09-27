@@ -2,7 +2,6 @@ class VenuesController < ApplicationController
   before_action :set_venue, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:show, :index]
   before_action :find_reviews, only: [:show]
-  before_action :find_reviews_average, only: [:show]
   before_action :verify_presence_of_profile, only: [:new, :create]
 
   # logging in and out
@@ -16,6 +15,7 @@ class VenuesController < ApplicationController
     else
       @venues = policy_scope(Venue)
     end
+
     # si on mettait un raise ici, cela nous donnerait quand meme
     #l'accès à l'élément juste au dessus.
 
@@ -24,12 +24,13 @@ class VenuesController < ApplicationController
     @capacity = params["capacity"]
     @price = params["price"]
 
-
+    @venues_with_coordinates = @venues.where.not(latitude: nil, longitude: nil)
+    @venues_with_coordinates = @venues_with_coordinates.sort { |a,b| a.price <=> b.price }
 
       # si on mettait un raise ici, cela nous donnerait quand meme
       #l'accès à l'élément juste au dessus.
 
-    @venues_with_coordinates = @venues.where.not(latitude: nil, longitude: nil)
+
     @hash = Gmaps4rails.build_markers(@venues_with_coordinates) do |venue, marker|
       marker.lat venue.latitude
       marker.lng venue.longitude
@@ -40,10 +41,8 @@ class VenuesController < ApplicationController
 
   end
 
-
-
-
   def show
+
     @hash = [{ lat: @venue.latitude, lng: @venue.longitude }]
     @booking = Booking.new
     @message = Message.new
@@ -54,12 +53,11 @@ class VenuesController < ApplicationController
     @new_array_amenities = @venue.amenities
 
     if @venue.geocoded?
-     @hash = Gmaps4rails.build_markers(@venue) do |venue, marker|
+      @hash = Gmaps4rails.build_markers(@venue) do |venue, marker|
         marker.lat venue.latitude
         marker.lng venue.longitude
       end.flatten
     end
-
   end
 
   def new
@@ -93,26 +91,17 @@ class VenuesController < ApplicationController
     redirect_to profile_myvenues_path(current_user)
   end
 
-  def find_reviews
-      @bookings = @venue.bookings
-      @venue_reviews = []
-      @bookings.each do |booking|
-        @booking_review = booking.review
-        unless booking.review.nil?
-        @venue_reviews << @booking_review
-        end
-      end
-  end
+  private
 
-  def find_reviews_average
+  def find_reviews
+    @venue_reviews = Review.where(booking_id: Booking.where(venue_id: @venue.id))
     sum = 0
     @venue_reviews.each do |review|
-      sum = sum += review.review_rating
+      sum += review.review_rating
     end
-    @average_rating = sum /= @venue_reviews.length.to_f
+    sum /= @venue_reviews.length.to_f
+    @average_rating = sum
   end
-
-  private
 
   def set_venue
     @venue = Venue.find(params[:id])

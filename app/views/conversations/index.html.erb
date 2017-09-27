@@ -1,5 +1,7 @@
+<div class="container-message">
+
 <h1 style="font-size: 30px; padding: 5px; margin-left: 10px">Inbox</h1>
-<div style= "border: 1px solid #E0E0E0">
+<div style= "border: 1px solid #E0E0E0; align-items: center">
 <% @conversations.each do |conversation| %>
   <%= link_to conversation_path(conversation), style: "text-decoration: none" do %>
   <div class="message">
@@ -19,7 +21,13 @@
     <div class="message-status">
     <p><strong>Pending</strong></p>
     </div>
+
+    <div class="message-venue">
+    <% if @venue %>
+    <p><%= link_to 'Go to Venue', venue_path(@venue), class: "btn-red" %></p>
+    <% end %>
+    </div>
   <% end %>
 <% end %>
 </div>
-
+</div>

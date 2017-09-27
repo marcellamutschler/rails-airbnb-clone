@@ -1,14 +1,15 @@
 .card_2 {
-  height: 350px;
-  width: 100%;
-  color: white;
+  height: 330px;
+  width: 330px;
   position: relative;
-  background-color: lightgrey;
+  background-color: white;
   margin: 15px;
-  background-position: center;
-  background-size: cover;
-
+  border: 1px solid #E0E0E0;
+  background-position: relative;
+  background-size: 330px 250px;
+  background-repeat: no-repeat;
 }
+
 
 // .card-user {
 //  position: absolute;
@@ -23,70 +24,102 @@
 
 .card-user-wishlist {
  position: absolute;
- top: 170px;
- width: 70px;
- height: 70px;
+ margin-left: 130px;
+ margin-top: -30px;
+ width: 50px;
+ height: 50px;
  border-radius: 50%;
+ border: 1px solid white;
  z-index: 1;
 
  background-size: cover;
  background-position: center;
 }
 
+.card-link-wishlist {
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  position: absolute;
+  height: 300px;
+  z-index: 2;
+  background: black;
+  opacity: 0;
+}
+
+.card-link-wishlist:hover {
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  position: absolute;
+  height: 300px;
+  z-index: 2;
+  background: black;
+  opacity: 0.1;
+}
+
 .card-description-title {
   width: 100%;
   height: 120px;
+}
+
+.card-description {
   color: black;
   position: absolute;
-  bottom: 0;
+  margin-bottom: 20px;
   padding: 5px;
   font-size: 15px;
   text-align: left;
-  background-color: white;
-
 }
-
-.card-category-2 {
+.card-city {
   position: absolute;
   top: 10px;
   left: 10px;
   font-size: 15px;
   text-transform: uppercase;
-
-}
-.card-description-2 {
   color: white;
+}
+.card-price {
+  color: gray;
   position: absolute;
-  bottom: 20px;
+  bottom: 5px;
   left: 10px;
-  margin-bottom: 100px;
+  margin-bottom: 5px;
 }
-.card-description-2 h1 {
-  color: white;
-  font-size: 24px;
-  margin-bottom: 25px;
+.card-name {
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  h1 {
+    color: white;
+    opacity: 0.9;
+    font-size: 24px;
+    font-weight: bolder;
+    margin-top: 187px;
+  }
 }
 .card-description-2 p {
   font-size: 14px;
   opacity: 0.7;
   font-weight: lighter;
   color: black;
-
+  margin-bottom: 10px;
 }
 .card-link-2 {
-  position: absolute;
   top: 0;
   bottom: 0;
   right: 0;
   width: 100%;
+  position: absolute;
+  height: 250px;
   z-index: 2;
   background: black;
   opacity: 0;
 }
-
 .btn-description {
   margin-bottom: 10px;
   position: relative;
   top: -16px;
 }
-

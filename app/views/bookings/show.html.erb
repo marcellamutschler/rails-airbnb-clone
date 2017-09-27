@@ -1,18 +1,23 @@
 
-<h2>Your booking request for <%= @booking.venue.name %>
-was successful</h2>
-<p> We contacted the host. You should get the booking confirmation within the next three days!</p>
-<p> Booking overview:</p>
-<li style="color:black"> Name: <%= @booking.venue.name %></li>
-<li> Location: <%= @booking.venue.location %></li>
-<li> Price per Hour: <%=@booking.venue.price%></li>
-<li> Total numbers of hours: <%=@booking.hours %></li>
-<li> Total price: <%= @booking.total_price%></li>
-
-<li> Status: <%= @booking.status %></li>
 <hr>
+<div class="booking-request"> <strong>Thank you!</strong> Your booking request for <%= @booking.venue.name %> was successful. We contacet the host - you will get the confirmation within the next three days!</div>
 
-  <%= link_to "Edit your booking",  edit_profile_booking_path(@booking), class: "btn-red w3-block"%>
-  <%= link_to "Look for other venues", venues_path, class: "btn-red w3-block" %>
+<div class="booking-card-new" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+  url('<%= cl_image_path @booking.venue.photos.first.path if @booking.venue.photos.first %>')">
 
+  <div> <%= cl_image_tag @booking.venue.user.profile.photo.path, class: 'booking-owner-photo' if @booking.venue.user.profile.photo %></div>
 
+  <div class="card-description-booking">
+      <h2><%= @booking.venue.location %></h2>
+      <p class="description-2" style="font-size: 25px"><%= @booking.venue.name %></p>
+      <p class="description-2" style="font-size: 20px">
+      <%= @booking.start_date.strftime("%b %d") if @booking.start_date %> - <%= @booking.end_date.strftime("%b %d") if @booking.end_date %><br>
+      Number of hours: <%= @booking.hours %><br>
+      <strong>Total price: <%= @booking.total_price.to_i %> €</strong></p>
+      <p class="description-2" style="font-size: 20px">Booking status: <%= @booking.status %></p>
+      <div style="margin-top: 20px"><%= link_to 'Edit Booking', edit_profile_booking_path(@booking), class: "btn-normal" %></div>
+  </div>
+<a> <%= link_to @booking.venue.name, venue_path(@booking.venue), class: "card-link-booking" %></a>
+
+</div>
+</div>

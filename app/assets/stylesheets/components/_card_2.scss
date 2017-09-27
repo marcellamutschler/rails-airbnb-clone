@@ -85,9 +85,9 @@
   color: #444;
   transition: all 0.5s ease;
 }
-  .card__article a:hover {
-    color: #2980b9;
-  }
+.card__article a:hover {
+  color: #2980b9;
+}
 
 /* card action */
 .card__action {
@@ -99,13 +99,13 @@
 
 .card__author {}
 
-  .card__author img,
-  .card__author-content {
-    display: inline-block;
-    vertical-align: middle;
-  }
+.card__author img,
+.card__author-content {
+  display: inline-block;
+  vertical-align: middle;
+}
 
-  .card__author img{
-    border-radius: 50%;
-    margin-right: 0.6em;
-  }
+.card__author img{
+  border-radius: 50%;
+  margin-right: 0.6em;
+}

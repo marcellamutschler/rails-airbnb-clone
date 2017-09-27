@@ -9,25 +9,24 @@
   <div class="row">
     <% @bookmarks.each do |bookmark| %>
     <div class="col-xs-12 col-sm-4">
-      <div class="card_2" style="height: 440px; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path bookmark.venue.photos.first.path if bookmark.venue.photos.first %>');">
-        <div class="card-category-2">
+      <div class="card_2" style="height: 390px; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path bookmark.venue.photos.first.path if bookmark.venue.photos.first %>');">
+        <div class="card-category-2" style="color: white; text-transform: uppercase; padding: 10px">
           <%= bookmark.venue.location %>
         </div>
         <div class="d-flex justify-center">
           <%= cl_image_tag bookmark.venue.user.profile.photo.path, class: 'card-user-wishlist' if bookmark.venue.user.profile.photo %>
         </div>
         <div class="card-description-title" style="padding-top: 40px; padding-bottom: 192px; text-align: center;">
-          <div style="font-size: 30px;">
+          <div style="font-size: 30px; margin-top: 175px">
             <%= bookmark.venue.name %>
           </div>
-          Hosted by <%= bookmark.venue.user.profile.first_name %> <%= bookmark.venue.user.profile.last_name %>
+          Price: <%= bookmark.venue.price.to_i %> € per hour | Max. <%= bookmark.venue.capacity %> people
           <br>
           <div class="btn-normal">
             <%= link_to "Remove from your Wishlist", bookmark_path(bookmark), method: :delete, style: "text-decoration: none !important; color: black"%>
           </div>
-          <div class="btn-red" style="height: 43px;">
-            <%= link_to "Book Venue", venue_path(bookmark.venue), style: "text-decoration: none !important; color: white"%>
-          </div>
+
+          <%= link_to bookmark.venue.name, venue_path(bookmark.venue), class: "card-link-wishlist" %>
 
         </div>
       </div>

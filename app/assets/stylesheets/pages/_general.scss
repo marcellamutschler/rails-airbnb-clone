@@ -14,9 +14,9 @@ a {
   text-decoration: none;
   color: #3498db;
 }
-  a:hover {
-    color: #2980b9;
-  }
+a:hover {
+  color: #2980b9;
+}
 
 h2 {
   line-height: 1.2;
@@ -30,4 +30,11 @@ body {
 h1, h2, h3 {
   font-family: "HelveticaNeue-Thin", sans-serif;
   letter-spacing: 1.5px;
+}
+
+.container-index-booking{
+  height: 100%;
+  h1{
+    margin-top: 60px;
+  }
 }
