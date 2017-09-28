@@ -1,14 +1,14 @@
 <% content_for :title, "Manage Bookings" %>
 
-
 <hr>
 <h1 style="text-align: center">Manage the bookings for your venues</h1>
 <br>
-<% if current_user.bookings.present? %>
+<% if @bookings.any? %>
 
   <div class="row">
 
-    <% current_user.bookings.each do |booking| %>
+    <% @bookings.each do |booking| %>
+    <% venue = booking.venue %>
     <div class="col-xs-12 col-sm-4">
       <div class="card_2" style="height: 440px; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path venue.photos.first.path if venue.photos.first %>');">
         <div class="card-category-2" style="color: white; text-transform: uppercase; padding: 10px">
