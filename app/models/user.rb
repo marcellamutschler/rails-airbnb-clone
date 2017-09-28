@@ -21,6 +21,10 @@ class User < ApplicationRecord
   has_many :conversations, foreign_key: :booker_id, class_name: "Conversation", dependent: :destroy
   has_many :messages, dependent: :destroy
 
+  def bookings_where_user_is_owner
+    Booking.where()
+  end
+
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice(:provider, :uid)
     user_params.merge! auth.info.slice(:email, :first_name, :last_name)

@@ -1,19 +1,15 @@
 <% content_for :title, "Edit Booking" %>
 
-<%= simple_form_for([@venue, @booking]) do |f| %>
+<%= simple_form_for([current_user.profile, @booking]) do |f| %>
   <%= f.label :status %>
   <%= f.text_field :status %>
 
   <%= f.label :hours %>
-  <%= f.numeric :hours %>
-
-
-
-
+  <%= f.input :hours %>
 
   <%= f.submit %>
 <% end %>
 
-  <%= link_to 'Delete!', venue_path(venue), method: :delete , data: {confirm: 'Are you sure??'}%>
+  <%= link_to 'Delete!', venue_path(@venue), method: :delete , data: {confirm: 'Are you sure??'}%>
 
  <%= link_to 'Go Back', venues_path, class: "btn btn-danger" %>

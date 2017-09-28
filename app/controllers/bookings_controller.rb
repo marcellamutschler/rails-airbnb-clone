@@ -10,7 +10,6 @@ class BookingsController < ApplicationController
 
   def index
     @bookings = policy_scope(Booking)
-    @bookings = current_user.bookings
 
     @review = Review.new
   end
@@ -53,13 +52,12 @@ class BookingsController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
     @profile = current_user.profile
     @booking.update(booking_params)
-    redirect_to venue_booking_path(@venue)
+    redirect_to profile_booking_path(@profile, @booking)
   end
 
   def destroy
@@ -69,6 +67,7 @@ class BookingsController < ApplicationController
 
   def owner
     authorize Booking
+    @bookings = current_user.bookings_where_user_is_owner
     @new_venue = Venue.new
   end
 
@@ -91,7 +90,7 @@ class BookingsController < ApplicationController
   end
 
   def find_venue
-    @venue = Venue.find(params[:venue_id])
+    @venue = @booking.venue
   end
 
   def set_booking
