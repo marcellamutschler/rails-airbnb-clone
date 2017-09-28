@@ -43,7 +43,6 @@ class BookingsController < ApplicationController
     authorize @booking
 
     if @booking.save
-       flash[:notice] = "You have successfully booked this venue!"
       redirect_to profile_booking_path(@booking.user.profile, @booking)
     else
       redirect_back(fallback_location: root_path)
