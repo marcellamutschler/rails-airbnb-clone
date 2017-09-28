@@ -39,7 +39,6 @@ class VenuesController < ApplicationController
   end
 
   def show
-
     @hash = [{ lat: @venue.latitude, lng: @venue.longitude }]
     @booking = Booking.new
     @message = Message.new
@@ -67,6 +66,19 @@ class VenuesController < ApplicationController
 
   def create
     @venue = Venue.new(venue_params)
+    city = @venue.city.downcase.capitalize
+    @venue.city = city
+    # capitalizing the city name
+
+    location = @venue.location
+    
+    # combining city and address incase user dowesn't type in full address
+    unless (location.include? city.downcase) || (location.include? city.capitalize)
+      location = location + ", " + city
+    end
+
+    @venue.location = location
+
     @venue.user = current_user
     authorize @venue
     if @venue.save
