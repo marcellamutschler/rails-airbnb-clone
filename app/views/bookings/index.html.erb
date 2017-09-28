@@ -27,7 +27,7 @@
               <% if booking.status == "accepted" %>
 
 
-              <% if policy(@review).create? %>
+              <% if booking.user == current_user && booking.review.nil? %>
                 <button type="button" class="btn-normal" style= "background: transparent;" data-toggle="modal" data-target="#new_review_modal<%= index %>">
                   Add Review
                 </button>

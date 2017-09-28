@@ -7,7 +7,7 @@ class ReviewPolicy < ApplicationPolicy
 
     # Only venue creator can update it, and they can only review once
    def create?
-    record.user == user && record.reviews.empty?
+    record.user == user && record.review.nil?
    end
 
     def update?
