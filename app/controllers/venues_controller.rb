@@ -48,6 +48,7 @@ class VenuesController < ApplicationController
     @venue.amenities.delete_at(0)
     @new_array_categories = @venue.categories
     @new_array_amenities = @venue.amenities
+    @user = current_user
 
     if @venue.geocoded?
       @hash = Gmaps4rails.build_markers(@venue) do |venue, marker|
