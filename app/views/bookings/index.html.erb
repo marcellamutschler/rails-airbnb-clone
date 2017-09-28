@@ -21,7 +21,7 @@
               <p class="description-2"><%= booking.venue.name %></p>
               <p class="description-2" style="font-size: 15px">
               <%= booking.start_date.strftime("%b %d") if booking.start_date %> - <%= booking.end_date.strftime("%b %d") if booking.end_date %><br>
-              Number of hours: <%= booking.hours %><br>
+              <strong>Duration: <%= booking.hours.to_i %> hours<br></strong>
               <strong>Total price: <%= booking.total_price.to_i %> €</strong></p>
               <p class="description-2" style="font-size: 15px">Booking status: <%= booking.status %></p>
               <% if booking.status == "accepted" %>
