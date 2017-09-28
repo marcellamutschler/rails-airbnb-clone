@@ -9,7 +9,7 @@
   <div class="row">
     <% @bookmarks.each do |bookmark| %>
     <div class="col-xs-12 col-sm-6 col-md-4">
-      <div class="card_2_wishlist" style="height: 460px; padding: 5px; margin-bottom: 40px; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path bookmark.venue.photos.first.path if bookmark.venue.photos.first %>');">
+      <div class="card_2_wishlist" style="height: 460px; padding: 5px; position: relative;margin-bottom: 40px; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path bookmark.venue.photos.first.path if bookmark.venue.photos.first %>');">
         <div class="card-category-2" style="color: white; text-transform: uppercase; padding: 10px">
           <%= bookmark.venue.city %>
         </div>
@@ -22,7 +22,7 @@
           </div>
           Price: <%= bookmark.venue.price.to_i %> € per hour | Max. <%= bookmark.venue.capacity %> people
           <br>
-          <div class="btn-normal" style="position: relative; align-items: bottom">
+          <div class="btn-normal" style="position: absolute; bottom: 10px; right:67px">
             <%= link_to "Remove from Wishlist", bookmark_path(bookmark), method: :delete, style: "text-decoration: none !important; color: black"%>
           </div>
           <%= link_to bookmark.venue.name, venue_path(bookmark.venue), class: "card-link-wishlist" %>
