@@ -22,7 +22,7 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
 
   def bookings_where_user_is_owner
-    Booking.where()
+    Booking.joins(:venue).where("venues.user_id = ?", self)
   end
 
   def self.find_for_facebook_oauth(auth)
