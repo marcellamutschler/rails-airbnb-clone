@@ -1,13 +1,33 @@
-<h1>All your listings</h1>
-<% @profile.user.venues.each do |venue| %>
-Name: <%= venue.name %>,
-Location: <%= venue.location %>,
-Price: <%= venue.price %>,
-<% unless venue.photos.first.nil? %>
-<%= cl_image_tag venue.photos.first.path %>
-<%= link_to "Edit", edit_venue_path(venue) %>
-<%= link_to "Destroy", venue_path(venue), method: :delete %>
-<p>Add here further details</p>
-<% end %>
-<% end %>
+<% content_for :title, "Your Venues" %>
 
+<hr>
+<h1 style="text-align: center">Your Venues</h1>
+<br>
+  <div class="row">
+    <% @profile.user.venues.each do |venue| %>
+    <div class="col-xs-12 col-sm-4">
+      <div class="card_2" style="height: 390px; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path venue.photos.first.path if venue.photos.first %>');">
+        <div class="card-category-2" style="color: white; text-transform: uppercase; padding: 10px">
+          <%= venue.location %>
+        </div>
+        <div class="d-flex justify-center">
+          <%= cl_image_tag venue.user.profile.photo.path, class: 'card-user-wishlist' if venue.user.profile.photo %>
+        </div>
+        <div class="card-description-title" style="padding-top: 40px; padding-bottom: 192px; text-align: center;">
+          <div style="font-size: 30px; margin-top: 175px">
+            <%= venue.name %>
+          </div>
+          Price: <%= venue.price.to_i %> € per hour | Max. <%= venue.capacity %> people
+          <br>
+          <div class="btn-normal", style="width: 120px; margin-left: 35px">
+            <%= link_to "Edit", edit_venue_path(venue), style: "text-decoration: none !important; color: black"%>
+          </div>
+          <div class="btn-normal", style="width: 120px; margin-left: 175px; margin-top: -47px">
+            <%= link_to "Delete", venue_path(venue), method: :delete, style: "text-decoration: none !important; color: black"%>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>

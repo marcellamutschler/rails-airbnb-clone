@@ -5,12 +5,12 @@
   text-align: center;
   color: white;
   left: 0px;
-  z-index: 1000;
+  z-index: 10000000;
   width: 100%;
 }
 .alert-warning {
   background: #D5100D;
-  top: 0;
+  // top: 0;
 }
 .notice {
   position: fixed;
@@ -23,9 +23,5 @@
 }
 .alert-info {
   background: $green;
-  top: 0;
+  // top: 0;
 }
-
-
-
-

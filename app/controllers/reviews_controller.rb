@@ -18,11 +18,11 @@ class ReviewsController < ApplicationController
     @review.user = current_user
     authorize @booking
     if @review.save
-      redirect_to venue_path(@booking.venue)
-      flash.now[:notice] = 'Thank you for your review!'
+      flash[:notice] = 'Thank you for your review!'
     else
-      render :new
+      flash[:alert] = "Couldn't leave review!"
     end
+    redirect_back(fallback_location: root_path)
   end
 
   def find_booking

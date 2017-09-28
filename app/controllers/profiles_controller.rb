@@ -75,6 +75,7 @@ class ProfilesController < ApplicationController
   def myvenues
     @profile = current_user.profile
     authorize @profile
+    @new_venue = Venue.new
   end
 
   def destroy

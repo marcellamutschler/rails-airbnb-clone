@@ -1,3 +1,5 @@
+<% content_for :title, "Your Wishlist" %>
+<div style="margin-left: 200px; margin-right: 200px">
 <hr>
 <hr>
 <<h1 style="text-align: center">Your Wishlist</h1>
@@ -8,9 +10,9 @@
   <div class="row">
     <% @bookmarks.each do |bookmark| %>
     <div class="col-xs-12 col-sm-4">
-      <div class="card_2" style="height: 460px; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path bookmark.venue.photos.first.path if bookmark.venue.photos.first %>');">
+      <div class="card_2" style="height: 460px; padding: 5px; margin-bottom: 40px; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path bookmark.venue.photos.first.path if bookmark.venue.photos.first %>');">
         <div class="card-category-2" style="color: white; text-transform: uppercase; padding: 10px">
-          <%= bookmark.venue.location %>
+          <%= bookmark.venue.city %>
         </div>
         <div class="d-flex justify-center">
           <%= cl_image_tag bookmark.venue.user.profile.photo.path, class: 'card-user-wishlist' if bookmark.venue.user.profile.photo %>
@@ -32,4 +34,4 @@
   </div>
   <% end %>
 </div>
-
+</div>

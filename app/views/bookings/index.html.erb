@@ -1,10 +1,14 @@
+<% content_for :title, "Your Bookings" %>
+
 <hr>
 
 <div class="container">
   <div class="container-index-booking">
     <h1 style= "font-size: 30px; margin-left: 40px">Your Bookings </h1>
     <div class="row">
-  <% @bookings.each do |booking| %>
+  <% @bookings.each_with_index do |booking, index| %>
+    <%= render 'modals/new_review', review: @review, booking: booking, index: index %>
+
       <div class="col-xs-12 col-sm-4">
         <div class="booking-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
           url('<%= cl_image_path booking.venue.photos.first.path if booking.venue.photos.first %>')">
@@ -19,7 +23,16 @@
               <strong>Total price: <%= booking.total_price.to_i %> €</strong></p>
               <p class="description-2" style="font-size: 15px">Booking status: <%= booking.status %></p>
               <% if booking.status == "accepted" %>
-              <div style="margin-top: 15px"><%= link_to 'Add review', new_profile_booking_review_path(@profile, booking), class: "btn-red" %></div>
+
+
+              <% if policy(@review).create? %>
+                <button type="button" class="btn-normal" style= "background: transparent;" data-toggle="modal" data-target="#new_review_modal<%= index %>">
+                  Add Review
+                </button>
+              <% else %>
+                You've already left a review for <%= booking.venue.name %>
+              <% end %>
+
               <% end %>
           </div>
           <%= link_to booking.venue.name, venue_path(booking.venue), class: "card-link" %>

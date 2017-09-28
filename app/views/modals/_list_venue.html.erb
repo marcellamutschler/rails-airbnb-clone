@@ -10,7 +10,7 @@
 
         <hr style= "border-top: 0.5px solid lightgrey; margin-right: 10px; margin-left: 10px;"/>
 
-        <%= simple_form_for(@venue) do |f| %>
+        <%= simple_form_for(@new_venue) do |f| %>
         <p>Name</p>
         <%= f.input :name, label: false  %>
 
@@ -74,10 +74,12 @@
 
         <div style="font-size: 22px; text-align: center">Photos</div>
 
-        <div class="venues-photo-upload">
-          <%= f.input :photos, as: :attachinary, label: false%>
+        <div class="venues-photo-upload-button-container">
+          <!-- <div class="venues-photo-upload-fake btn-normal">Upload Photo</div> -->
+          <div class="venues-photo-upload">
+            <%= f.input :photos, as: :attachinary, label: false%>
+          </div>
         </div>
-
         <%#= f.input :photo_cache, as: :hidden %>
         <div style="font-size: 22px; text-align: center">
           Price
