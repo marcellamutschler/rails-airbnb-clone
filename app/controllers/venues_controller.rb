@@ -8,14 +8,13 @@ class VenuesController < ApplicationController
 
   def index
 
-    if params["capacity"] && params["price"]
+    if params["capacity"].present? && params["price"].present?
       @venues = policy_scope(Venue).where("city = ? AND ? = ANY(categories) AND price <= ? AND capacity >= ?", params["city"], params["categories"],  params["price"],  params["capacity"])
-    elsif params["city"] && params["categories"]
+    elsif params["city"].present? && params["categories"].present?
       @venues = policy_scope(Venue).where("city = ? AND ? = ANY(categories)", params["city"], params["categories"])
     else
       @venues = policy_scope(Venue)
     end
-
     # si on mettait un raise ici, cela nous donnerait quand meme
     #l'accès à l'élément juste au dessus.
 
@@ -71,7 +70,7 @@ class VenuesController < ApplicationController
     # capitalizing the city name
 
     location = @venue.location
-    
+
     # combining city and address incase user dowesn't type in full address
     unless (location.include? city.downcase) || (location.include? city.capitalize)
       location = location + ", " + city
