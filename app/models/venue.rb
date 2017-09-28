@@ -15,7 +15,7 @@ class Venue < ApplicationRecord
   has_many :bookings, dependent: :destroy
   has_many :availabilities, dependent: :destroy
   has_many :reviews, through: :bookings
-  has_many :conversations
+  has_many :conversations, dependent: :destroy
   # relation different models
 
   geocoded_by :location
