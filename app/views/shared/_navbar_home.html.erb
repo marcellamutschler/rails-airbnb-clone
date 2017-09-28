@@ -20,9 +20,9 @@
     <% else %>
 
       <% if policy(Venue).create? %>
-       <button type="button" class="btn-red" data-toggle="modal" data-target="#list_venue_modal">
-        List Your Venue
-       </button>
+
+<%= link_to "List Your Venue", {:action => "new", :controller => "venues"}, {class: 'btn-red'} %>
+
       <% end %>
 
       <% if current_user.profile %>
