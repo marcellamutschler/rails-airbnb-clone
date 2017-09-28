@@ -1,0 +1,83 @@
+<div class="venue-form-text-input">
+  <%= simple_form_for(@venue) do |f| %>
+  <p style="font-size: 20px">Name</p>
+  <%= f.input :name, label: false  %>
+
+  <p style="font-size: 20px">Capacity</p>
+  <%= f.input :capacity, label: false %>
+
+  <p style="font-size: 20px">Address</p>
+  <%= f.input :location, label: false%>
+
+  <p style="font-size: 20px">City</p>
+  <%= f.input :city, label: false %>
+
+  <p style="font-size: 20px">Description</p>
+  <%= f.input :description, label: false %>
+
+  <br>
+
+
+  <div class="form-group check_boxes required venue_categories">
+    <label class="control-label check_boxes required"> Categories</label>
+    <input type="hidden" name="venue[categories][]" value="">
+    <div class="row">
+      <% Venue::CATEGORIES.each do |venue| %>
+      <div class="col-sm-6">
+        <div class="checkbox checkbox_list">
+          <div class="label_venue">
+            <label for="venue_categories_wedding">
+              <%= venue %>
+            </label>
+          </div>
+          <div class="input_venue">
+            <input class="check_boxes required" type="checkbox" value="<%= venue %>" name="venue[categories][]" id="venue_categories_wedding"> </input>
+          </div>
+
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="form-group check_boxes required venue_categories">
+    <label class="control-label check_boxes required"> Amenities</label>
+    <input type="hidden" name="venue[amenities][]" value="">
+    <div class="row">
+      <% Venue::AMENITIES.each do |venue| %>
+      <div class="col-sm-6">
+        <div class="checkbox checkbox_list">
+          <div class="label_venue">
+            <label for="venue_categories_wedding">
+              <%= venue %>
+            </label>
+          </div>
+          <div class="input_venue">
+            <input class="check_boxes required" type="checkbox" value="<%= venue %>" name="venue[amenities][]" id="venue_categories_wedding"> </input>
+          </div>
+
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+
+  <br>
+
+  <p style="font-size: 20px; font-weight: bold">Photos</p>
+  <%= f.input :photos, as: :attachinary, label: false%>
+
+  <%#= f.input :photo_cache, as: :hidden %>
+  <p style="font-size: 20px; font-weight: bold">Price</p>
+  <%= f.input :price, label: false %>
+
+  <%= f.submit class: "btn-red", style: "background: #DE1A1A"  %>
+  <%= link_to '< Go Back', venues_path, class: "btn-normal" %>
+  <% end %>
+
+
+</div>
+</div>
+
