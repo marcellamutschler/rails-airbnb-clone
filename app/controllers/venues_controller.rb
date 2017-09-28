@@ -64,7 +64,7 @@ class VenuesController < ApplicationController
 
   def create
     @new_venue = Venue.new(venue_params)
-    @venue.user = current_user
+    @new_venue.user = current_user
     authorize @venue
 
     if @venue.save
