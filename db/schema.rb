@@ -129,10 +129,10 @@ ActiveRecord::Schema.define(version: 20170928100003) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
-    t.string "categories", default: [], array: true
-    t.string "amenities", default: [], array: true
     t.float "latitude"
     t.float "longitude"
+    t.string "categories", default: [], array: true
+    t.string "amenities", default: [], array: true
     t.string "city"
     t.string "photos", default: [], array: true
     t.index ["user_id"], name: "index_venues_on_user_id"
