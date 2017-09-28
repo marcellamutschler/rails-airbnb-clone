@@ -2,9 +2,9 @@
 
 <hr>
 
-<div class="container">
+<div class="page-container">
   <div class="container-index-booking">
-    <h1 style= "font-size: 30px; margin-left: 40px">Your Bookings </h1>
+    <h1 style= "font-size: 30px; text-align: center">Your Bookings </h1>
     <div class="row">
   <% @bookings.each_with_index do |booking, index| %>
     <%= render 'modals/new_review', review: @review, booking: booking, index: index %>
