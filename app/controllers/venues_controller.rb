@@ -47,6 +47,7 @@ class VenuesController < ApplicationController
     @venue.amenities.delete_at(0)
     @new_array_categories = @venue.categories
     @new_array_amenities = @venue.amenities
+    @user = current_user
 
     if @venue.geocoded?
       @hash = Gmaps4rails.build_markers(@venue) do |venue, marker|
@@ -57,7 +58,10 @@ class VenuesController < ApplicationController
   end
 
   def new
-    authorize @new_venue
+
+    @venue = Venue.new
+    authorize @venue
+
   end
 
   def create
@@ -67,7 +71,8 @@ class VenuesController < ApplicationController
     # capitalizing the city name
 
     location = @venue.location
-
+    
+    # combining city and address incase user dowesn't type in full address
     unless (location.include? city.downcase) || (location.include? city.capitalize)
       location = location + ", " + city
     end
@@ -76,7 +81,6 @@ class VenuesController < ApplicationController
 
     @venue.user = current_user
     authorize @venue
-
     if @venue.save
       redirect_to venue_path(@venue)
     else
@@ -118,7 +122,7 @@ class VenuesController < ApplicationController
   def venue_params
 
 
-    params.require(:venue).permit(:name, :capacity, :location, :description, :price, :user_id, :city, :photos => [], :categories => [], :amenities => [])
+    params.require(:venue).permit(:name, :capacity, :location, :description, :price, :user_id, :city, :categories => [], :amenities => [], :photos => [])
 
   end
 end

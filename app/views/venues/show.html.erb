@@ -131,6 +131,8 @@
 
   <br>
 <!-- Contact -->
+<% if user_signed_in? %>
+
     <div class="w3-container" id="contact">
       <h4><strong>Contact & Questions </strong></h4>
       <p>Do you have any questions or concerns? <br>Insert your message here:</p><br>
@@ -141,6 +143,7 @@
       <% end %>
     </div>
 
+<% end %>
 
     </div>
   </div>

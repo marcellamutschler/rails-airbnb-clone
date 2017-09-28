@@ -1,30 +1,30 @@
 <% content_for :title, "Your Wishlist" %>
-<div style="margin-left: 200px; margin-right: 200px">
+<div class="page-container">
 <hr>
 <hr>
-<<h1 style="text-align: center">Your Wishlist</h1>
+<h1 style="text-align: center">Your Wishlist</h1>
 <div class="bookmark-container">
   <% if @bookmarks.empty? %>
   <p>You have not added anything to your Wishlist yet.</p>
   <% else %>
   <div class="row">
     <% @bookmarks.each do |bookmark| %>
-    <div class="col-xs-12 col-sm-4">
-      <div class="card_2" style="height: 460px; padding: 5px; margin-bottom: 40px; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path bookmark.venue.photos.first.path if bookmark.venue.photos.first %>');">
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <div class="card_2_wishlist" style="height: 460px; padding: 5px; margin-bottom: 40px; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path bookmark.venue.photos.first.path if bookmark.venue.photos.first %>');">
         <div class="card-category-2" style="color: white; text-transform: uppercase; padding: 10px">
           <%= bookmark.venue.city %>
         </div>
-        <div class="d-flex justify-center">
-          <%= cl_image_tag bookmark.venue.user.profile.photo.path, class: 'card-user-wishlist' if bookmark.venue.user.profile.photo %>
-        </div>
+
+        <%= cl_image_tag bookmark.venue.user.profile.photo.path, class: 'card-user-wishlist' if bookmark.venue.user.profile && bookmark.venue.user.profile.photo %>
+
         <div class="card-description-title" style="padding-top: 40px; padding-bottom: 192px; text-align: center;">
-          <div style="font-size: 30px; margin-top: 175px">
+          <div style="font-size: 30px; margin-top: 185px">
             <%= bookmark.venue.name %>
           </div>
           Price: <%= bookmark.venue.price.to_i %> € per hour | Max. <%= bookmark.venue.capacity %> people
           <br>
-          <div class="btn-normal">
-            <%= link_to "Remove from your Wishlist", bookmark_path(bookmark), method: :delete, style: "text-decoration: none !important; color: black"%>
+          <div class="btn-normal" style="position: relative; align-items: bottom">
+            <%= link_to "Remove from Wishlist", bookmark_path(bookmark), method: :delete, style: "text-decoration: none !important; color: black"%>
           </div>
           <%= link_to bookmark.venue.name, venue_path(bookmark.venue), class: "card-link-wishlist" %>
         </div>
