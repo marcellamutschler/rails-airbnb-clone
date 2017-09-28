@@ -66,7 +66,6 @@ class VenuesController < ApplicationController
     @venue = Venue.new(venue_params)
     @venue.user = current_user
     authorize @venue
-
     if @venue.save
       redirect_to venue_path(@venue)
     else

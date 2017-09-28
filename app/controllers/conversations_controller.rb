@@ -8,19 +8,15 @@ class ConversationsController < ApplicationController
     @venue = Venue.find(message_and_conversation_params[:venue_id])
     @owner = @venue.owner
 
-    @conversation = Conversation.new
-    @conversation.owner = @owner
-    @conversation.booker = current_user
-    @conversation.venue = @venue
+    @conversation = Conversation.find_or_initialize_by(owner: @owner, booker: current_user, venue: @venue)
     authorize @conversation
 
     @message = Message.new(content: message_and_conversation_params[:content])
     @message.user = current_user
     @message.conversation = @conversation
 
-
     if @message.save && @conversation.save
-       redirect_to @venue, notice: "Successfully sent"
+       redirect_to @conversation, notice: "Successfully sent"
     else
        redirect_to @venue, alert: "Couldn't send"
     end
@@ -38,7 +34,6 @@ class ConversationsController < ApplicationController
 
   def message_and_conversation_params
     params.require(:message).permit(:content, :venue_id)
-    params.require(:conversation).permit(:venue_id)
   end
 
   # def find_venue
