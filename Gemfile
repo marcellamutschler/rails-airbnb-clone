@@ -30,7 +30,7 @@ gem 'time_diff'
 # gem 'bootstrap-datepicker-rails'
 # gem 'jquery-timepicker-rails'
 gem 'momentjs-rails'
-gem "geocoder"
+gem 'geocoder'
 
 gem 'faker'
 
