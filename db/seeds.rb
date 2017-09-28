@@ -7,23 +7,30 @@ RAMDOM_PEOPLE = 'http://lorempixel.com/640/480/people'
 # puts "destroying records... please wait..."
 # User.destroy_all
 
+########### luca experimenting ###########
 
 
-category_venue = [Venue::CATEGORIES.sample]
-amenitiy_venue = [Venue::AMENITIES.sample]
-city = CITY_VENUE.sample
-venue_name = ADJECTIVE_VENUE.sample + " " + category_venue.first + " " + "Venue"
-venue = Venue.new(name: venue_name, categories: category_venue, amenities: amenitiy_venue, city: city, capacity: rand((20)+1)*10, location: city, description: Faker::Lorem.sentence, price: rand(20..200))
-
-venue.photo_urls = [RAMDOM_VENUE_IMAGE]
-venue.user = User.last
-puts "venue: #{venue.name} created" if venue.save
+      urls = [
+        'https://i.pinimg.com/736x/6c/2a/a7/6c2aa737b44ae57ae6252e319254022b--outdoor-wedding-venues-wedding-locations-florida.jpg',
+        'http://mtlweddingblog.com/wp-content/uploads/2015/12/montreal-wedding-venues_0957.jpg',
+        'https://i.pinimg.com/736x/25/ef/03/25ef03c6ad3861c0087954c7b86aefbf--boston-wedding-venues-wedding-reception-venues.jpg',
+        'https://www.oliverbonacinievents.com/OBEvents/media/venue-images/carlu-01.jpg?width=1930&height=1080&ext=.jpg'
+      ]
 
 
+      category_venue = [Venue::CATEGORIES.sample]
+      amenitiy_venue = [Venue::AMENITIES.sample]
+      city = CITY_VENUE.sample
+      venue_name = ADJECTIVE_VENUE.sample + " " + category_venue.first + " " + "Venue"
+      venue = Venue.new(name: venue_name, categories: category_venue, amenities: amenitiy_venue, city: city, capacity: rand((20)+1)*10, location: city, description: Faker::Lorem.sentence, price: rand(20..200))
+
+      venue.photo_urls = urls
+      venue.user = User.last
+      puts "venue: #{venue.name} created" if venue.save
 
 
 
-
+###############################@@#################
 
 
 
