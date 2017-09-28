@@ -16,8 +16,8 @@
           <div class="card-city">
             <%= venue.city %>
           </div>
-          <div class="card-price">
-            <%= venue.price.to_i %> € per hour
+          <div class="card-price" style= "font-family: Helvetica Neue; font-size: 20px;">
+            <%= venue.price.to_i %>€ per hour
           </div>
           <div class="card-name">
             <h1>
@@ -25,7 +25,9 @@
             </h1>
           </div>
           <div class="card-description" >
-            <div class="fa fa-users" aria-hidden="true" style="color: gray; margin-top: 88px; margin-left: -10px; font-size: 17px">  <%=venue.capacity%></div>
+            <div style="color: gray; margin-top: 88px; margin-left: -10px; font-size: 15px; font-family: Helvetica Neue;">
+            <i class="fa fa-users" aria-hidden="true"></i> <%=venue.capacity%>
+            </div>
               <div>
                 <%= simple_form_for(@bookmark, url: bookmarks_path, html: {method: :post}) do |f| %>
                 <%= f.hidden_field :venue_id, value: venue.id %>
