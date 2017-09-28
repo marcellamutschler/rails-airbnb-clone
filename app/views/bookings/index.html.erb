@@ -1,11 +1,8 @@
 <% content_for :title, "Your Bookings" %>
-
 <hr>
-
 <div class="page-container">
   <div class="container-index-booking">
     <h1 style= "text-align: center">Your Bookings </h1>
-    <hr>
     <hr>
     <div class="row">
   <% @bookings.each_with_index do |booking, index| %>
@@ -20,10 +17,10 @@
               <h2><%= booking.venue.location %></h2>
               <p class="description-2"><%= booking.venue.name %></p>
               <p class="description-2" style="font-size: 15px">
-              <%= booking.start_date.strftime("%b %d") if booking.start_date %> - <%= booking.end_date.strftime("%b %d") if booking.end_date %><br>
-              <strong>Duration: <%= booking.hours.to_i %> hours<br></strong>
-              <strong>Total price: <%= booking.total_price.to_i %> €</strong></p>
-              <p class="description-2" style="font-size: 15px">Booking status: <%= booking.status %></p>
+              Dates: <strong><%= booking.start_date.strftime("%b %d") if booking.start_date %> - <%= booking.end_date.strftime("%b %d") if booking.end_date %><br></strong>
+              Duration: <strong><%= booking.hours.to_i %> hours<br></strong>
+              Total price: <strong><%= booking.total_price.to_i %> €</strong></p>
+              <p class="description-2" style="font-size: 15px">Booking status: <strong><%= booking.status %></strong></p>
               <% if booking.status == "accepted" %>
 
 
