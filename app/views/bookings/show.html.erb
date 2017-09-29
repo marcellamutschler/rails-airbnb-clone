@@ -13,7 +13,7 @@
       <p class="description-2" style="font-size: 25px"><%= @booking.venue.name %></p>
       <p class="description-2" style="font-size: 20px">
       <%= @booking.start_date.strftime("%b %d") if @booking.start_date %> - <%= @booking.end_date.strftime("%b %d") if @booking.end_date %><br>
-      Number of hours: <%= @booking.hours %><br>
+      Number of hours: <%= @booking.hours.to_i %><br>
       <strong>Total price: <%= @booking.total_price.to_i %> €</strong></p>
       <p class="description-2" style="font-size: 20px">Booking status: <%= @booking.status %></p>
       <div style="margin-top: 20px"><%= link_to 'Edit Booking', edit_profile_booking_path(@booking), class: "btn-normal" %></div>

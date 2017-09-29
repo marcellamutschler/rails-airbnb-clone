@@ -1,10 +1,9 @@
 <% content_for :title, "Your Bookings" %>
-
 <hr>
-
 <div class="page-container">
   <div class="container-index-booking">
-    <h1 style= "font-size: 30px; text-align: center">Your Bookings </h1>
+    <h1 style= "text-align: center">Your Bookings </h1>
+    <hr>
     <div class="row">
   <% @bookings.each_with_index do |booking, index| %>
     <%= render 'modals/new_review', review: @review, booking: booking, index: index %>
@@ -18,19 +17,19 @@
               <h2><%= booking.venue.location %></h2>
               <p class="description-2"><%= booking.venue.name %></p>
               <p class="description-2" style="font-size: 15px">
-              <%= booking.start_date.strftime("%b %d") if booking.start_date %> - <%= booking.end_date.strftime("%b %d") if booking.end_date %><br>
-              Number of hours: <%= booking.hours %><br>
-              <strong>Total price: <%= booking.total_price.to_i %> €</strong></p>
-              <p class="description-2" style="font-size: 15px">Booking status: <%= booking.status %></p>
+              Dates: <strong><%= booking.start_date.strftime("%b %d") if booking.start_date %> - <%= booking.end_date.strftime("%b %d") if booking.end_date %><br></strong>
+              Duration: <strong><%= booking.hours.to_i %> hours<br></strong>
+              Total price: <strong><%= booking.total_price.to_i %> €</strong></p>
+              <p class="description-2" style="font-size: 15px">Booking status: <strong><%= booking.status %></strong></p>
               <% if booking.status == "accepted" %>
 
 
-              <% if policy(@review).create? %>
+              <% if booking.user == current_user && booking.review.nil? %>
                 <button type="button" class="btn-normal" style= "background: transparent;" data-toggle="modal" data-target="#new_review_modal<%= index %>">
                   Add Review
                 </button>
               <% else %>
-                You've already left a review for <%= booking.venue.name %>
+                You left a review for <%= booking.venue.name %>
               <% end %>
 
               <% end %>
