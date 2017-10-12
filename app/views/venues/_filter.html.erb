@@ -1,23 +1,24 @@
 <form action="/venues" method="get">
 
-    <table style='width:80%; margin-left: auto; margin-right: auto'>
+    <table style='width:90%; margin-left: auto; margin-right: auto'>
       <tr>
-        <td rowspan="2" style="width: 25%; font-size: 12px">
+        <td rowspan="2" style="width: 25%; font-size: 15px; font-family: Helvetica Neue; font-weight: lighter;">
           <input class="filterdropdown" type="dropdown" name="city" min="0" value="<%= @city %>" placeholder="<%= @city %>" style= "margin-bottom: 15px">
           </td>
-        <td rowspan="2" style="width: 25%; font-size: 12px">
+        <td rowspan="2" style="width: 25%; font-size: 15px; font-family: Helvetica Neue; font-weight: lighter;">
+
           <input class="filterdropdown" type="dropdown" name="categories" min="0" value="<%= @categ %>" placeholder="<%= @categ %>" style= "margin-bottom: 15px">
           </td>
         <div>
-          <td style="width: 25%; font-size: 14px">Capacity<br><br>
+          <td style="width: 25%; font-size: 17px; font-family: Helvetica Neue; font-weight: lighter;">Capacity<br><br>
             <input type="range" name="capacity" id="capacityInputId" value="<%= @capacity || 1 %>" min="1" max="500" oninput="capacityOutputId.value = capacityInputId.value">
-            <output name="capacityOutputName" id="capacityOutputId" style= "margin-left: 85%; margin-top: -26px; font-size: 15px; font-family: Raleway"><%= @capacity || 1 %></output>
+            <output name="capacityOutputName" id="capacityOutputId" style= "margin-left: 85%; margin-top: -26px; font-size: 17px; font-family: Helvetica Neue; font-weight: lighter"><%= @capacity || 1 %></output>
           </td>
         </div>
         <div>
-          <td style="width: 25%; font-size: 14px">Max Price per hour<br><br>
+          <td style="width: 25%; font-size: 17px; font-family: Helvetica Neue; font-weight: lighter;">Max Price per hour<br><br>
             <input type="range" name="price" id="priceInputId" value="<%= @price || 500 %>" min="1" max="500" oninput="priceOutputId.value = priceInputId.value">
-            <output name="priceOutputName" id="priceOutputId" style= "margin-left: 85%; margin-top: -26px; font-size: 15px; font-family: Raleway"><%= @price || 500 %></output>
+            <output name="priceOutputName" id="priceOutputId" style= "margin-left: 85%; margin-top: -26px; font-size: 17px; font-family: Helvetica Neue; font-weight: lighter"><%= @price || 500 %></output>
           </td>
         </div>
         <td><input type="submit" value="Search" class="btn-normal" style="background-color: white; border: 1px solid gray">

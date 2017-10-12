@@ -2,7 +2,7 @@
 <br>
 <div class="cards_wrapper">
   <div class="filter-bar">
-  <%= render 'filter' %>
+    <%= render 'filter' %>
   </div>
   <div class="cards_list">
     <div style="margin-top: 50px;">
@@ -14,41 +14,41 @@
           <div class="card-city">
             <%= venue.city %>
           </div>
-          <div class="card-price" style= "font-family: Helvetica Neue; font-size: 15px; margin-top: 88px; margin-left: 5px">
-             <i class="fa fa-eur" aria-hidden="true"></i>         <%= venue.price.to_i %>/hour
-          </div>
-          <div class="card-name" style="text-align: left">
-            <h1>
-              <%= venue.name %>
-            </h1>
-          </div>
-          <div class="card-description" >
-            <div style="color: gray; margin-top: 88px; margin-left: -10px; font-size: 15px; font-family: Helvetica Neue;">
-            <i class="fa fa-users" aria-hidden="true"></i> <%=venue.capacity%> people max.
-            </div>
-              <div>
-                <%= simple_form_for(@bookmark, url: bookmarks_path, html: {method: :post}) do |f| %>
-                <%= f.hidden_field :venue_id, value: venue.id %>
-                <button class="btn btn-success" style="position: relative; margin-left: 262px; margin-top: 5px" type='submit'>
-                  <i class="fa fa-heart" aria-hidden="true"></i>
-                </button>
-                <% end %>
-              </div>
-          </div>
-          <br>
-          <a> <%= link_to venue.name, venue_path(venue), class: "card-link-2" %></a>
+          <div class="card-price" style= "font-family: Helvetica Neue; font-weight: lighter; font-size: 20px; margin-top: 88px; margin-left: 5px">
+            <i class="fa fa-eur" aria-hidden="true"></i> <%= venue.price.to_i %>€/hour
+         </div>
+         <div class="card-name" style="text-align: left;">
+          <h1 style="font-family: Helvetica Neue; font-weight: lighter; font-size: 35px;">
+            <%= venue.name %>
+          </h1>
         </div>
+        <div class="card-description" >
+          <div style="color: gray; margin-top: 88px; margin-left: -10px; font-size: 17px; font-family: Helvetica Neue; font-weight: lighter;">
+            <i class="fa fa-users" aria-hidden="true"></i> <%=venue.capacity%> people max.
+          </div>
+          <div>
+            <%= simple_form_for(@bookmark, url: bookmarks_path, html: {method: :post}) do |f| %>
+            <%= f.hidden_field :venue_id, value: venue.id %>
+            <button class="btn btn-success" style="position: relative; margin-left: 262px; margin-top: 5px" type='submit'>
+              <i class="fa fa-heart" aria-hidden="true"></i>
+            </button>
+            <% end %>
+          </div>
+        </div>
+        <br>
+        <a> <%= link_to venue.name, venue_path(venue), class: "card-link-2" %></a>
       </div>
-      <% end %>
     </div>
+    <% end %>
   </div>
+</div>
 
-  </div>
-  <div id="map" ><div>
+</div>
+<div id="map" ><div>
 <!-- <div style="position: fixed; top:0">
 -->
-    </div>
-  </div>
+</div>
+</div>
 
 </div>
 
